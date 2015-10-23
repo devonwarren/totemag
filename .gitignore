@@ -1,0 +1,11 @@
+*~
+*.pyc
+*.pyo
+local_settings.py
+__pycache__/
+.directory
+*.sqlite3
+.sass-cache/
+config.rb
+static_final/
+media/*

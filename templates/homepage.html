@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+        <section id="grid">
+
+        {% for post in articles %}    
+            <div class="item">
+            <!-- the_post_thumbnail('medium') -->
+            <p class="itemExcerpt">{{ post.title }}</p>
+            </div>
+        {% endfor %}
+
+        <div class="clearfix"></div>
+    
+        </section>
+    
+        <section id="load">
+        
+            <a href="#">Load More</a>
+        
+        </section>
+        
+        
+        <section id="ad">
+
+            <a href=""><img src="images/ads/sass_banner_468x60.jpg" alt="SASS Banner Advertisement"></a>
+
+        </section>
+        <!-- End Footer Ad -->
+
+
+{% endblock %}

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tote Magazine</title>
+    
+    <meta name="description" content="Tote Magazine">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'>
+    
+    <meta property="og:title" content="totemag.com">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://totemag.com">
+ 
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content ="Tote Magazine">
+
+    {% load staticfiles %}
+    {% load compress %}
+
+    {% compress css %}
+    <link href="{% static "css/jquery-ui.min.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "css/jquery-ui.structure.min.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "css/jquery-ui.theme.min.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "css/mobile.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css">
+    {% endcompress %}
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    
+    <!-- Google Analytics -->
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-40610810-1', 'auto');          
+        ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+</head>
+    
+<body id="{% block bodyid %}{% endblock %}">
+    
+    <section id="sidebar">
+    
+        <ul>
+            <!-- Wordpress Post Categories -->
+            
+            <li><a href="blog.php?fashion">Fashion</a></li>
+            <li><a href="blog.php?beauty">Beauty</a></li>
+            <li><a href="blog.php?lifestyle">Lifestyle</a></li>
+            <li><a href="blog.php?entertainment">Entertainment</a></li>
+        
+        </ul>
+        
+        <hr>
+        
+        <ul class="last">
+
+            <li><a href="magazine">Magazine</a></li>
+            <li><a href="videos.php">Videos</a></li>
+            <li><a href="bazaar.php">Bazaar</a></li>
+        
+        </ul>
+        <!--
+        <form action="search.php" method="post" class="search">
+        
+            <input type="text" placeholder="Search">
+            <input type="submit" value="Search">
+        
+        </form>
+        -->
+    
+    </section>
+    
+    <section id="contact">
+    
+        <h2><img src="{% static "images/headings/get_in_touch_sidebar.png" %}" alt="Get In Touch!" description="Contact us now"></h2>
+        <p class="subtitle">We love hearing from you. Go ahead, hit the send button.</p>
+
+        <form action="contact.php" method="post">
+        
+            <input type="text" name="name" placeholder="Name"><br>
+            <input type="email" name="email" placeholder="Email"><br>
+            <select name="reason">
+                <option>Reason..</option>
+                <option value="general">General Inquiry</option>
+                <option value="join">Join #TeamTote</option>
+                <option value="intern">Intern With Tote</option>
+                <option value="feature">Feature Suggestion</option>
+                <option value="support">Technical Support</option>
+            </select>
+            <textarea name="message" placeholder="Message" rows="5"></textarea>
+            <input type="submit" value="Submit">
+        
+        </form>
+    
+    </section>
+    
+    <section id="content">
+
+        <header>
+    
+            <div class="container">
+        
+                <nav>
+                    <a href="#" class="navOpen"><img src="{% static "images/icons/menu.png" %}" alt="Open Menu" description="Open Sidebar Menu"></a>
+                    <a href="#" class="contactOpen"><img src="{% static "images/icons/envelope.png" %}" alt="Contact Us" description="Open Sidebar Contact Form"></a>
+                </nav>
+            
+                <div id="logo">
+                    <a href="index.php"><img src="{% static "images/logo/logo.png" %}" alt="Tote Magazine's Logo" description="Tote Magazine"></a>
+                </div>
+            
+                <ul id="navigation">
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="latest.php">Latest Issue</a></li>
+                    <li><a href="videos.php">Videos</a></li>
+                    <li><a href="bazaar.php">Bazaar</a></li>
+                </ul>
+            
+                <div id="mobile">
+                    <select name="mobile">
+                        <option value="about">About</option>
+                        <option value="latest">Latest Issue</option>
+                        <option value="videos">Videos</option>
+                        <option value="bazaar">Bazaar</option>
+                    </select>
+                </div>
+            
+            </div>
+        
+        </header>
+        <!-- End Header -->
+
+
+        {% block content %}{% endblock %}
+
+
+
+        <section id="footer">
+
+            <div class="container">
+
+                <div class="column">
+                    <h2>Tote Magazine</h2>
+                    <ul>
+                        <li><a href="about.php">About</a></li>
+                        <li><a href="advertise.php">Advertise</a></li>
+                        <li><a href="contact.php">Contact Us</a></li>
+                        <li><a href="terms.php">Privacy &amp; Terms</a></li>
+                    </ul>
+                    <p class="social">
+                        <a href="https://twitter.com/tote_mag" target="_blank"><img src="{% static "images/icons/social_twitter.png" %}" alt="Visit our Twitter Page"></a>
+                        <a href="https://www.facebook.com/totemagazine" target="_blank"><img src="{% static "images/icons/social_facebook.png" %}" alt="Visit our Facebook Page"></a>
+                        <a href="https://instagram.com/tote_mag/" target="_blank"><img src="{% static "images/icons/social_instagram.png" %}" alt="Visit our Instagram Page"></a>
+                        <a href="https://www.pinterest.com/totemagazine/" target="_blank"><img src="{% static "images/icons/social_pinterest.png" %}" alt="Visit our Pinterest Page"></a>
+                        <a href="https://www.youtube.com/channel/UCNe5sUD0iuWUJ4AfzxbhBKA" target="_blank"><img src="{% static "images/icons/social_youtube.png" %}" alt="Visit our Youtube Channel"></a>
+                        <a href="http://totemagazine.tumblr.com" target="_blank"><img src="{% static "images/icons/social_tumblr.png" %}" alt="Visit our Tumblr Page"></a>
+                    </p>
+                    <p>Tote Media LLC.<br>All Rights Reserved.</p>
+                </div>
+
+                <div class="column">
+                    <img src="{% static "images/headings/tote_tuesday_footer.png" %}" alt="Tote Tuesday"><br>
+                    <p>Subscribe to our weekly newsletter</p>
+                    <form action="subscribe.php" method="post">
+                        <input type="email" placeholder="Email">
+                        <input type="submit" value=">">
+                    </form>
+                </div>
+
+                <div class="column">
+                    <h2>Our Mission</h2>
+                    <p>Tote Media is a digital platform created to inspire and empower young women.</p>
+                    <p>We are redefining the next generation by shaking up how young women ingest digital information and build communities. We aren't afraid to break the rules and neither are Tote's readers.</p>
+                    <p>We're giving our readers (and writers) a call to action. We want them to redefine the conversation about, for and between women. We want young women to be curious, to question everything, to think innovatively and to always share their thoughts.</p>
+                </div>
+
+            </div>
+    
+        </section>
+        <!-- End Footer -->
+        
+    </section>
+    <!-- End Content -->
+    
+    {% compress js %}
+    <script src="{% static "js/jquery.js" %}"></script>
+    <script src="{% static "js/jquery-ui.min.js" %}"></script>
+    {% block scriptload %}{% endblock %}
+    {% endcompress %}
+
+    <!-- JQuery -->
+    
+    <script>
+    
+     $( "#subscription" ).dialog({
+       autoOpen: true,
+       show: {
+         effect: "blind",
+         duration: 1000
+       },
+       hide: {
+         effect: "fade",
+         duration: 1000
+       }
+     });
+     
+     $( ".staff" ).dialog({
+        autoOpen: false,
+        show: {
+            effect: "blind",
+            duration: 0
+        },
+        hide: {
+            effect: "fade",
+            duration: 500
+        }
+     });
+     
+     function staff(member) {
+      $( "#"+member ).dialog( "open" );
+     }
+     
+     $( "#subscribe" ).click(function() {
+        $( "#subscription" ).dialog( "open" );
+     });
+     
+     $(".navOpen").click(function() {
+       $("body").removeClass("contactOpen");
+       $("body").toggleClass("sidebarOpen");
+     });
+     
+     $(".contactOpen").click(function() {
+       $("body").removeClass("sidebarOpen");
+       $("body").toggleClass("contactOpen");
+     });
+    
+    </script>
+    
+</body>
+
+</html>

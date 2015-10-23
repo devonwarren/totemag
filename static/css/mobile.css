@@ -1,0 +1,28 @@
+@media(max-width: 900px) {
+
+}
+
+@media(max-width: 750px) {
+	.container { max-width: 100%; }
+	#footer .column { width: 100%; padding: 20px 0 50px; border: 0; border-bottom: 1px solid; margin: 0 0 30px 0; }
+	#footer .column.last { border: 0; }
+	#footer .column p { padding: 0px 20px; }
+	#grid .item { width: 33.3%; }
+}
+
+@media(max-width: 650px) {
+	.ui-dialog { max-width: 600px; width: 90% !important; }
+	#subscription { padding: 20px; }
+	.text .column.one-half { width: 100%; padding: 20px 0 0; }
+	#grid .item { width: 50%; }
+}
+
+@media(max-width: 400px) {
+	#navigation { display: none; }
+	#mobile { display: block; }
+	#grid .item { width: 100%; }
+}
+
+@media(max-width: 300px) {
+
+}

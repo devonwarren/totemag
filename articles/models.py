@@ -1,7 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from imagekit.models import ImageSpecField
-from imagekit.processors import ResizeToCover
+from imagekit.processors import ResizeToFill
 from autoslug import AutoSlugField
 from django.contrib.auth.models import User
 
@@ -20,7 +20,7 @@ class Article(models.Model):
 
     image_web = ImageSpecField(
         source='image',
-        processors=[ResizeToCover(width=225, height=200)],
+        processors=[ResizeToFill(width=225, height=200)],
         format='JPEG',
         options={'quality': 78})
 

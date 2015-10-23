@@ -1,7 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from imagekit.models import ImageSpecField
-from imagekit.processors import ResizeToFill
+from imagekit.processors import ResizeToFill, ResizeToFit
 from autoslug import AutoSlugField
 from django.contrib.auth.models import User
 
@@ -16,13 +16,19 @@ class Article(models.Model):
         unique=True,
         null=True)
 
-    image = models.ImageField(upload_to='journal')
+    image = models.ImageField(upload_to='articles')
 
-    image_web = ImageSpecField(
+    image_thumbnail = ImageSpecField(
         source='image',
         processors=[ResizeToFill(width=225, height=200)],
         format='JPEG',
-        options={'quality': 78})
+        options={'quality': 76})
+
+    image_web = ImageSpecField(
+        source='image',
+        processors=[ResizeToFit(width=800)],
+        format='JPEG',
+        options={'quality': 76})
 
     body = RichTextField()
 

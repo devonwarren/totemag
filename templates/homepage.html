@@ -6,10 +6,13 @@
 
         {% for post in articles %}    
             <div class="item">
-            <a href="{{ post.get_absolute_url }}" title="{{ post.title }}">
-                <img src="{{ post.image_web.url }}">
-            </a>
-            <p class="itemExcerpt">{{ post.title }}</p>
+                <a href="{{ post.get_absolute_url }}" title="{{ post.title }}">
+                    <img src="{{ post.image_thumbnail.url }}">
+                </a>
+                
+                <a href="{{ post.get_absolute_url }}" title="{{ post.title }}" class="itemExcerpt">
+                    {{ post.title }}
+                </a>
             </div>
         {% endfor %}
 

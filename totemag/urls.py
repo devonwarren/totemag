@@ -17,13 +17,15 @@ from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
 
+from totemag.views import homepage
+from articles.views import article
+
 from django.contrib import admin
 admin.autodiscover()
-
-from totemag.views import homepage
 
 
 urlpatterns = [
     url(r'^$', homepage, name='homepage'),
+    url(r'^article/(?P<slug>.+?)/$', article),
     url(r'^admin/', include(admin.site.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

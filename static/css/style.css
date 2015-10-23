@@ -90,6 +90,7 @@ header nav a img { display: block; width: 17px; width: 25.5px; }
 
 /* Content */
 
+h2 { margin: 0; padding: .8em 3em; text-transform: uppercase; text-align: center; font-size: 1.6em; }
 #grid { max-width: 900px; margin: 0 auto; }
 #grid .item { width: 25%; position: relative; display: inline-block; margin: 0; padding: 0; float: left; background-color: #9E9CD1; overflow: hidden; cursor: pointer; }
 #grid .item { height: 200px; }

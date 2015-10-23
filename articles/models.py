@@ -1,7 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from imagekit.models import ImageSpecField
-from imagekit.processors import ResizeToFit
+from imagekit.processors import ResizeToCover
 from autoslug import AutoSlugField
 from django.contrib.auth.models import User
 
@@ -20,7 +20,7 @@ class Article(models.Model):
 
     image_web = ImageSpecField(
         source='image',
-        processors=[ResizeToFit(width=225, height=200)],
+        processors=[ResizeToCover(width=225, height=200)],
         format='JPEG',
         options={'quality': 78})
 
@@ -32,3 +32,6 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return '/article/' + self.slug + '/'

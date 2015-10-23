@@ -6,7 +6,9 @@
 
         {% for post in articles %}    
             <div class="item">
-            <!-- the_post_thumbnail('medium') -->
+            <a href="{{ post.get_absolute_url }}" title="{{ post.title }}">
+                <img src="{{ post.image_web.url }}">
+            </a>
             <p class="itemExcerpt">{{ post.title }}</p>
             </div>
         {% endfor %}

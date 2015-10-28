@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
 
-from totemag.views import homepage
+from totemag.views import homepage, about, videos
 from articles.views import article
 
 from django.contrib import admin
@@ -26,6 +26,8 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^$', homepage, name='homepage'),
+    url(r'^about/$', about, name='about'),
+    url(r'^videos/$', videos, name='videos'),
     url(r'^article/(?P<slug>.+?)/$', article),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', include(admin.site.urls)),

@@ -11,7 +11,7 @@ class Article(models.Model):
 
     slug = AutoSlugField(
         populate_from='title',
-        editable=False,
+        editable=True,
         always_update=True,
         unique=True,
         null=True)

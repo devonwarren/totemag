@@ -4,6 +4,10 @@
 
     <h2>{{ article.title }}</h2>
 
+    <section class="sub-header">
+        <time>{{ article.published_date|date:"F j, Y"|upper }}</time>
+    </section>
+
     <section class="main-image"><img src="{{ article.image_web.url }}"></section>
 
 {% endblock %}

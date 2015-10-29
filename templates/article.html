@@ -1,13 +1,57 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {% block content %}
 
-    <h2>{{ article.title }}</h2>
+    <div class="container">
 
-    <section class="sub-header">
-        <time>{{ article.published_date|date:"F j, Y"|upper }}</time>
-    </section>
+        <h2>{{ article.title }}</h2>
 
-    <section class="main-image"><img src="{{ article.image_web.url }}"></section>
+        <section class="sub-header">
+            <author>TEXT: {{ article.publisher }}</author>
+            <time>{{ article.published_date|date:"F j, Y" }}</time>
+        </section>
+
+        <section class="main-image">
+            <img src="{{ article.image_web.url }}">
+            {% if article.image_attribution %}
+                <br>PHOTOS: {{ article.image_attribution }}
+            {% endif %}
+        </section>
+
+        <article>
+            {{ article.body|safe }}
+        </article>
+
+        <section class="article-footer">
+
+            <div class="share">
+                <div class="label">SHARE:</div> 
+                <div class="icon">
+                    <img src="{% static "images/icons/social_twitter_dark.png" %}" alt="Twitter"> 
+                </div>
+                <div class="icon">
+                    <img src="{% static "images/icons/social_facebook_dark.png" %}" alt="Facebook"> 
+                </div>
+                <div class="icon">
+                    <img src="{% static "images/icons/social_pinterest_dark.png" %}" alt="Pinterest"> 
+                </div>
+                <div class="icon">
+                    <img src="{% static "images/icons/social_tumblr_dark.png" %}" alt="Tumblr"> 
+                </div>
+            </div>
+
+
+            <div class="author">
+                <img src="{{ article.publisher.image_thumbnail.url }}" class="staff-image" alt="{{ article.publisher }}">
+
+                <div class="info">
+                    <span class="name">{{ article.publisher }}</span> {{ article.publisher.info_text|safe }}
+                </div>
+
+            </div>
+        </section>
+
+    </div>
 
 {% endblock %}

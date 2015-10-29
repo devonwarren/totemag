@@ -3,7 +3,7 @@ from ckeditor.fields import RichTextField
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill, ResizeToFit
 from autoslug import AutoSlugField
-from django.contrib.auth.models import User
+from staff.models import Staff
 
 
 class Article(models.Model):
@@ -26,15 +26,21 @@ class Article(models.Model):
 
     image_web = ImageSpecField(
         source='image',
-        processors=[ResizeToFit(width=800)],
+        processors=[ResizeToFit(width=900)],
         format='JPEG',
         options={'quality': 76})
+
+    image_attribution = models.ForeignKey(
+        Staff,
+        related_name='image_attribution',
+        blank=True,
+        null=True)
 
     body = RichTextField()
 
     published_date = models.DateField()
 
-    publisher = models.ForeignKey(User)
+    publisher = models.ForeignKey(Staff)
 
     def __str__(self):
         return self.title

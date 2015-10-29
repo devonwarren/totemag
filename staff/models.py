@@ -8,7 +8,19 @@ class Staff(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='staff')
+    image = models.ImageField(
+        upload_to='staff',
+        null=True,
+        blank=True)
+
+    featured = models.BooleanField(
+        default=False,
+        help_text="Show on About page")
+
+    info_text = RichTextField(
+        help_text="Text to show under articles for author",
+        blank=True)
+
     description = RichTextField()
 
     image_full = ImageSpecField(
@@ -25,9 +37,9 @@ class Staff(models.Model):
 
     image_thumbnail = ImageSpecField(
         source='image',
-        processors=[ResizeToFill(width=140, height=140)],
+        processors=[ResizeToFill(width=75, height=75)],
         format='JPEG',
-        options={'quality': 75})
+        options={'quality': 86})
 
     def __str__(self):
         return self.first_name + " " + self.last_name

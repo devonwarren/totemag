@@ -99,7 +99,13 @@ h2 { margin: 0; padding: .8em 3em; text-transform: uppercase; text-align: center
 .item:hover > .itemExcerpt, .item.open > .itemExcerpt { display: block; }
 .item:hover > .itemImage { opacity: 0.1; }
 
-.sub-header, .main-image { text-align: center; margin: 1em; font-size: .9em; color: #383838; }
+.sub-header, .main-image { text-transform: uppercase; text-align: center; margin: 1em 0; font-size: .8em; color: #585A59; }
+.sub-header author, .sub-header time { display: block; }
+.sub-header time { font-size: .9em; padding-top: .4em; }
+.main-image { text-align: left; }
+
+article { font-weight: normal; }
+
 
 #ad { text-align: center; margin: 50px 0 30px; display: block; max-width: 100%; }
 #ad img { max-width: 100%; }
@@ -183,3 +189,10 @@ span.ui-button-text { color: #555555; font-size: 12px; text-indent: 0!important;
 #subscription input[type=submit] { border: 0; border-radius: 100%; width: 35px; height: 35px; padding: 0px 0px 3px 4px; font-weight: bold; color: #9E9CD1; background-color: #FFFFFF; margin: 10px 0; display: block; float: right; }
 #subscription .unsubscribe { font-size: 14px; margin: 45px 0 0; letter-spacing: 0; }
 #tote-tuesday { max-width: 100%; }
+.article-footer { padding-top: 2em; border-top: solid 1px #ECECF6; color: #585A59; }
+.article-footer .share div { display: inline-block; padding: 0 .3em; }
+.article-footer .share .label { position: relative; top: -20px; }
+.article-footer .author { background-color: #ECECF6; padding: 1em; margin: 1em; min-height: 80px; }
+.author img.staff-image { border-radius: 50%; margin: 0 2em 0 1.2em; float: left; }
+.author .info { font-size: 12px; color: #888888; font-weight: 100; }
+.author .name { color: #9B9DD0; font-weight: bold; font-size: 14px; }

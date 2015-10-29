@@ -64,22 +64,25 @@ header nav a img { display: block; width: 17px; width: 25.5px; }
 
 /* Sidebars */
 
-#sidebar, #contact { z-index: 1; display: none; background-color: #A699D2; position: fixed; width: 250px; color: #ffffff; padding: 100px 50px; top: 0; height: 100%; }
-#sidebar { left: 0; }
+#sidebar, #contact { z-index: 1; position: fixed; transition: left 1s, right 1s; background-color: #A699D2; position: fixed; width: 250px; color: #ffffff; padding: 100px 50px; top: 0; height: 100%; }
+#sidebar { left: -350px; }
+#contact { right: -350px; }
 #sidebar hr { margin: 40px 0 40px 40px; width: 100px; color: #fff; height: 1px; border-color: #fff; background: #fff; }
 #sidebar ul { list-style: none; }
 #sidebar ul.last { margin-bottom: 40px; }
 #sidebar ul li { padding: 10px 0; }
 #sidebar ul li a { color: #ffffff; text-transform: uppercase; font-size: 13px; }
 #sidebar input[type=text] { background-color: transparent; border: 2px solid #FFF; padding: 10px 0; text-indent: 10px; text-transform: uppercase; letter-spacing: 0px; width: 100%; color: #ffffff; }
-.sidebarOpen #sidebar { display: block; }
+.sidebarOpen #sidebar { left: 0; transition: left 1s; }
+.sidebarOpen a.navOpen rect { fill: white !important; }
 .sidebarOpen #content { margin-left: 350px; }
 
-#contact { right: 0; }
 #contact form input, #contact form select, #contact form textarea { background-color: transparent; border: 2px solid #FFF; padding: 10px 0; text-indent: 10px; text-transform: uppercase; letter-spacing: 0px; width: 100%; color: #ffffff; border-radius: 0; -moz-border-radius: 0; margin: 0 0 20px; }
 #contact form input[type=submit] { background: #fff; color: #A699D2; width: auto; padding: 10px 40px; text-indent: 0; letter-spacing: 2px; font-size: 12px; margin: 0 auto; display: block; }
 #contact h2 { text-align: center; }
-.contactOpen #contact { display: block; }
+.contactOpen #contact { right: 0; }
+.contactOpen a.contactOpen #envelope-color { fill: white !important; }
+.contactOpen a.contactOpen .bgfill { fill: #9ba0d0 !important; }
 .contactOpen #content { margin-left: -350px; }
 
 /* Body */
@@ -103,6 +106,7 @@ h2 { margin: 0; padding: .8em 3em; text-transform: uppercase; text-align: center
 .sub-header author, .sub-header time { display: block; }
 .sub-header time { font-size: .9em; padding-top: .4em; }
 .main-image { text-align: left; }
+.main-image img { max-width: 100%; }
 
 article { font-weight: normal; }
 

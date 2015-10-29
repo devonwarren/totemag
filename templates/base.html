@@ -150,6 +150,13 @@
         </header>
         <!-- End Header -->
 
+        {% if messages %}
+        <ul id="site-messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
 
         {% block content %}{% endblock %}
 
@@ -181,8 +188,9 @@
                 <div class="column">
                     <img src="{% static "images/headings/tote_tuesday_footer.png" %}" alt="Tote Tuesday"><br>
                     <p>Subscribe to our weekly newsletter</p>
-                    <form action="subscribe.php" method="post">
-                        <input type="email" placeholder="Email">
+                    <form action="/subscribe/" method="post">
+                        {% csrf_token %}
+                        <input type="email" name="email" placeholder="Email">
                         <input type="submit" value=">">
                     </form>
                 </div>

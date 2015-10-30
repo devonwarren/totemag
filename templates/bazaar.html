@@ -23,7 +23,7 @@
                 {% if contentside == 'left' %}
                 <div class="column one-half">
                     <h2>{{ shop.title }}</h2>
-                    {{ shop.body }}
+                    {{ shop.body|safe }}
                 </div>
                 {% endif %}
 

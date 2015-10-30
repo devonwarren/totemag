@@ -1,7 +1,7 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from imagekit.models import ImageSpecField
-from imagekit.processors import ResizeToFit
+from imagekit.processors import ResizeToFill
 
 
 class Shop(models.Model):
@@ -12,17 +12,19 @@ class Shop(models.Model):
 
     image1_web = ImageSpecField(
         source='image1',
-        processors=[ResizeToFit(width=400, height=500)],
+        processors=[ResizeToFill(width=400, height=400)],
         format='JPEG',
         options={'quality': 76})
 
     image2_web = ImageSpecField(
         source='image2',
-        processors=[ResizeToFit(width=400, height=500)],
+        processors=[ResizeToFill(width=400, height=400)],
         format='JPEG',
         options={'quality': 76})
 
     body = RichTextField()
+
+    submitted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title

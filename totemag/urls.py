@@ -21,6 +21,7 @@ from django.views.generic import TemplateView
 from totemag.views import homepage, about, videos, contact, \
     advertise, subscribe
 from articles.views import article
+from bazaar.views import bazaar
 
 from django.contrib import admin
 admin.autodiscover()
@@ -35,6 +36,7 @@ urlpatterns = [
     url(r'^terms/$',
         TemplateView.as_view(template_name='terms.html'),
         name='terms'),
+    url(r'^bazaar/$', bazaar, name='bazaar'),
     url(r'^subscribe/$', subscribe, name='subscribe'),
     url(r'^article/(?P<slug>.+?)/$', article),
     url(r'^grappelli/', include('grappelli.urls')),

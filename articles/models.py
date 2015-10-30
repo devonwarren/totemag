@@ -14,7 +14,9 @@ class Article(models.Model):
         editable=True,
         always_update=True,
         unique=True,
-        null=True)
+        null=True,
+        verbose_name='URL',
+        help_text='URL for page details (\'/article/URL\')')
 
     image = models.ImageField(upload_to='articles')
 

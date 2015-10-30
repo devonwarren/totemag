@@ -67,6 +67,7 @@ header nav a img { display: block; width: 17px; width: 25.5px; }
 #sidebar, #contact { z-index: 1; position: fixed; transition: left 1s, right 1s; background-color: #A699D2; position: fixed; width: 250px; color: #ffffff; padding: 100px 50px; top: 0; height: 100%; }
 #sidebar { left: -350px; }
 #contact { right: -350px; }
+#content { transition: width 1s, margin 1s; }
 #sidebar hr { margin: 40px 0 40px 40px; width: 100px; color: #fff; height: 1px; border-color: #fff; background: #fff; }
 #sidebar ul { list-style: none; }
 #sidebar ul.last { margin-bottom: 40px; }

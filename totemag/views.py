@@ -55,11 +55,43 @@ def contact(request):
             request.POST.get('email'),
             [to_email])
 
-        messages.add_message(request, messages.INFO,
+        messages.add_message(
+            request, messages.INFO,
             "Thanks for contacting us! We will get back to you shortly!")
 
         return redirect(request.POST.get('return_url'))
     t = get_template('contact.html')
+    html = t.render(RequestContext(request))
+    return HttpResponse(html)
+
+
+def advertise(request):
+    if request.method == 'POST':
+#        to_email = 'advertise@totemag.com'
+        to_email = 'devon.warren@gmail.com'
+        subject = "Advertising Opportunity"
+
+        message = "Name: %s %s\n" % \
+            (request.POST.get('fname'), request.POST.get('lname'))
+        message += "Company: %s\n" % \
+            (request.POST.get('company'))
+        message += "Email: %s\n" % \
+            (request.POST.get('email'))
+        if request.POST.get('option') == 'partner':
+            subject = "Partnering Opportunity"
+        message += "\nMessage:\n\n%s" % \
+            (request.POST.get('message'))
+
+        send_mail(
+            subject,
+            message,
+            'website@totemag.com',
+            [to_email])
+
+        messages.add_message(request, messages.INFO,
+            "Thanks for contacting us! We will get back to you shortly!")
+
+    t = get_template('advertise.html')
     html = t.render(RequestContext(request))
     return HttpResponse(html)
 

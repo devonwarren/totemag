@@ -16,8 +16,10 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
 
-from totemag.views import homepage, about, videos, contact, subscribe
+from totemag.views import homepage, about, videos, contact, \
+    advertise, subscribe
 from articles.views import article
 
 from django.contrib import admin
@@ -29,6 +31,10 @@ urlpatterns = [
     url(r'^about/$', about, name='about'),
     url(r'^videos/$', videos, name='videos'),
     url(r'^contact/$', contact, name='contact'),
+    url(r'^advertise/$', advertise, name='advertise'),
+    url(r'^terms/$',
+        TemplateView.as_view(template_name='terms.html'),
+        name='terms'),
     url(r'^subscribe/$', subscribe, name='subscribe'),
     url(r'^article/(?P<slug>.+?)/$', article),
     url(r'^grappelli/', include('grappelli.urls')),

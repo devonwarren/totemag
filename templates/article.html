@@ -28,16 +28,24 @@
             <div class="share">
                 <div class="label">SHARE:</div> 
                 <div class="icon">
-                    <img src="{% static "images/icons/social_twitter_dark.png" %}" alt="Twitter"> 
+                    <a href="http://twitter.com/home?status={{ article.title }}+http://www.totemag.com/article/{{ article.slug }}">
+                        <img src="{% static "images/icons/social_twitter_dark.png" %}" alt="Twitter">
+                    </a>
                 </div>
                 <div class="icon">
-                    <img src="{% static "images/icons/social_facebook_dark.png" %}" alt="Facebook"> 
+                    <a href="http://www.facebook.com/sharer/sharer.php?u=http://www.totemag.com/article/{{ article.slug }}&title={{ article.title }}">
+                        <img src="{% static "images/icons/social_facebook_dark.png" %}" alt="Facebook"> 
+                    </a>
                 </div>
                 <div class="icon">
-                    <img src="{% static "images/icons/social_pinterest_dark.png" %}" alt="Pinterest"> 
+                    <a href="http://pinterest.com/pin/create/button/?url=http://www.totemag.com/article/{{ article.slug }}&is_video=false&description={{ article.title }}">
+                        <img src="{% static "images/icons/social_pinterest_dark.png" %}" alt="Pinterest"> 
+                    </a>
                 </div>
                 <div class="icon">
-                    <img src="{% static "images/icons/social_tumblr_dark.png" %}" alt="Tumblr"> 
+                    <a href="http://www.tumblr.com/share?v=3&u=http://www.totemag.com/article/{{ article.slug }}&t{={ article.title }}">
+                        <img src="{% static "images/icons/social_tumblr_dark.png" %}" alt="Tumblr"> 
+                    </a>
                 </div>
             </div>
 

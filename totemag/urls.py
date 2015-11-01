@@ -18,9 +18,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
-from totemag.views import homepage, about, videos, contact, \
+from totemag.views import about, videos, contact, \
     advertise, subscribe
-from articles.views import article
+from articles.views import article, list_articles
 from bazaar.views import bazaar
 
 from django.contrib import admin
@@ -28,7 +28,7 @@ admin.autodiscover()
 
 
 urlpatterns = [
-    url(r'^$', homepage, name='homepage'),
+    url(r'^$', list_articles, name='list_articles'),
     url(r'^about/$', about, name='about'),
     url(r'^videos/$', videos, name='videos'),
     url(r'^contact/$', contact, name='contact'),
@@ -39,5 +39,6 @@ urlpatterns = [
     url(r'^bazaar/$', bazaar, name='bazaar'),
     url(r'^subscribe/$', subscribe, name='subscribe'),
     url(r'^article/(?P<slug>.+?)/$', article),
+    url(r'^list/(?P<slug>.+?)/$', list_articles),
     url(r'^admin/', include(admin.site.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

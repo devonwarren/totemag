@@ -6,12 +6,44 @@ from autoslug import AutoSlugField
 from staff.models import Staff
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+    slug = AutoSlugField(
+        populate_from='name',
+        editable=False,
+        always_update=True,
+        unique=True,
+        null=True,
+        verbose_name='URL')
+
+    allow_select = models.BooleanField(
+        default=True, help_text='Allow articles to be added to this category')
+
+    parent = models.ForeignKey(
+        "self", null=True, blank=True,
+        related_name='children')
+
+    def __str__(self):
+        if self.parent:
+            return self.parent.name + " > " + self.name
+        else:
+            return self.name
+
+    class Meta:
+        verbose_name_plural = "categories"
+
+
 class Article(models.Model):
     title = models.CharField(max_length=200)
 
+    published = models.BooleanField(
+        default=False,
+        help_text='Allow the public to see the page')
+
     slug = AutoSlugField(
         populate_from='title',
-        editable=True,
+        editable=False,
         always_update=True,
         unique=True,
         null=True,
@@ -39,6 +71,10 @@ class Article(models.Model):
         null=True)
 
     body = RichTextField()
+
+    category = models.ForeignKey(
+        Category,
+        limit_choices_to={'allow_select': True})
 
     published_date = models.DateField()
 

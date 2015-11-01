@@ -5,18 +5,8 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
-from articles.models import Article
 from staff.models import Staff
 import mailchimp
-
-
-def homepage(request):
-    articles = Article.objects.all()
-    t = get_template('homepage.html')
-    html = t.render(RequestContext(request, {
-            'articles': articles,
-        }))
-    return HttpResponse(html)
 
 
 def about(request):

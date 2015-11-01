@@ -53,7 +53,17 @@
         <ul>      
             <li><a href="/list/fashion/">Fashion</a></li>
             <li><a href="/list/beauty/">Beauty</a></li>
-            <li><a href="/list/lifestyle/">Lifestyle</a></li>
+            <li><a href="#" onclick="toggleSub(this)">Lifestyle</a>
+                <ul class="sub">
+                    <li><a href="/list/high-school/">High School</a></li>
+                    <li><a href="/list/college/">College</a></li>
+                    <li><a href="/list/post-grad/">Post Grad</a></li>
+                    <li><a href="/list/career/">Career</a></li>
+                    <li><a href="/list/wellness/">Wellness</a></li>
+                    <li><a href="/list/relationships/">Relationships</a></li>
+                    <li><a href="/list/travel/">Travel</a></li>
+                </ul>
+            </li>
             <li><a href="/list/entertainment/">Entertainment</a></li>
         
         </ul>
@@ -257,6 +267,10 @@
        $("body").removeClass("sidebarOpen");
        $("body").toggleClass("contactOpen");
      });
+
+     function toggleSub(t) {
+        $(t).parent().toggleClass("open");
+     }
     
     </script>
     

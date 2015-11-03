@@ -2,8 +2,10 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
+from django.utils.encoding import python_2_unicode_compatible
 
 
+@python_2_unicode_compatible
 class Shop(models.Model):
     title = models.CharField(max_length=200)
 

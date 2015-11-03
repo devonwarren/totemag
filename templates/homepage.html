@@ -14,6 +14,8 @@
                     {{ post.title }}
                 </a>
             </div>
+        {% empty %}
+            <center><h3>Sorry, it looks like we don't have any articles on this section yet</h3></center>
         {% endfor %}
 
         <div class="clearfix"></div>

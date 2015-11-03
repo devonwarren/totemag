@@ -2,8 +2,10 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
+from django.utils.encoding import python_2_unicode_compatible
 
 
+@python_2_unicode_compatible
 class Staff(models.Model):
     first_name = models.CharField(max_length=200)
     last_name = models.CharField(max_length=200)

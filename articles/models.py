@@ -4,8 +4,10 @@ from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill, ResizeToFit
 from autoslug import AutoSlugField
 from staff.models import Staff
+from django.utils.encoding import python_2_unicode_compatible
 
 
+@python_2_unicode_compatible
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
@@ -34,6 +36,7 @@ class Category(models.Model):
         verbose_name_plural = "categories"
 
 
+@python_2_unicode_compatible
 class Article(models.Model):
     title = models.CharField(max_length=200)
 

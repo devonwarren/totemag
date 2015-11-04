@@ -271,6 +271,11 @@
      function toggleSub(t) {
         $(t).parent().toggleClass("open");
      }
+     $('#goto_bazaar').on('change', function() {
+        if (this.value != '') {
+            location.href = "#shop-" + this.value;
+        }
+     });
     
     </script>
     

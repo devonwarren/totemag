@@ -38,6 +38,8 @@ class Category(models.Model):
 
 @python_2_unicode_compatible
 class SlideshowImage(models.Model):
+    article = models.ForeignKey('Article')
+
     image = models.ImageField(upload_to='articles')
 
     image_web = ImageSpecField(
@@ -69,7 +71,10 @@ class Article(models.Model):
         verbose_name='URL',
         help_text='URL for page details (\'/article/URL\')')
 
-    image = models.ImageField(upload_to='articles')
+    image = models.ImageField(
+        upload_to='articles',
+        help_text='Image used on homepage grid, \
+        also shown at top of the page unless there are slideshow images')
 
     image_thumbnail = ImageSpecField(
         source='image',
@@ -91,10 +96,6 @@ class Article(models.Model):
 
     body = RichTextField()
 
-    #slideshow_images = models.ManyToManyField(
-    #    SlideshowImage,
-    #    blank=True, null=True)
-
     category = models.ForeignKey(
         Category,
         limit_choices_to={'allow_select': True})
@@ -108,3 +109,9 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         return '/article/' + self.slug + '/'
+
+    def is_slideshow(self):
+        if (SlideshowImage.objects.filter(article=self.id)):
+            return True
+        else:
+            return False

@@ -9,19 +9,35 @@
 
         <section class="sub-header">
             <author>TEXT: {{ article.publisher }}</author>
+            {% if article.is_slideshow and article.image_attribution %}
+            <author>PHOTOS: {{ article.image_attribution }}</author>
+            {% endif %}
             <time>{{ article.published_date|date:"F j, Y" }}</time>
         </section>
 
+        {% if not article.is_slideshow %}
         <section class="main-image">
             <img src="{{ article.image_web.url }}">
             {% if article.image_attribution %}
                 <br>PHOTOS: {{ article.image_attribution }}
             {% endif %}
         </section>
+        {% endif %}
 
         <article>
             {{ article.body|safe }}
         </article>
+
+        {% if article.is_slideshow %}
+        <section class="slideshow">
+            {% for img in slideshow %}
+            <div class="image">
+                <img src="{{ img.image_web.url }}" title="{{ img.description }}"><br>
+                {{ img.description }}
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
 
         <section class="article-footer">
 

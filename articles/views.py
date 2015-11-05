@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404
-from articles.models import Article, Category
+from articles.models import Article, SlideshowImage, Category
 from django.template.loader import get_template
 from django.template import Context, RequestContext
 from django.http import HttpResponse
@@ -27,9 +27,11 @@ def list_articles(request, slug=None):
 
 def article(request, slug):
     article = get_object_or_404(Article, slug=slug)
+    slideshow_images = SlideshowImage.objects.filter(article=article)
 
     t = get_template('article.html')
     html = t.render(Context({
-        'article': article
+        'article': article,
+        'slideshow': slideshow_images
         }))
     return HttpResponse(html)

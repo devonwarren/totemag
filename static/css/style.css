@@ -201,7 +201,8 @@ span.ui-button-text { color: #555555; font-size: 12px; text-indent: 0!important;
 #tote-tuesday { max-width: 100%; }
 .article-footer { padding-top: 2em; border-top: solid 1px #ECECF6; color: #585A59; }
 .article-footer .share div { display: inline-block; padding: 0 .3em; }
-.article-footer .share .label { position: relative; top: -20px; }
+.article-footer .share .label { position: relative; top: -12px; }
+.article-footer .share .icon img { width: 32px; }
 .article-footer .author { background-color: #ECECF6; padding: 1em; margin: 1em; min-height: 80px; }
 .author img.staff-image { border-radius: 50%; margin: 0 2em 0 1.2em; float: left; }
 .author .info { font-size: 12px; color: #888888; font-weight: 100; }

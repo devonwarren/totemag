@@ -36,17 +36,20 @@ class Category(models.Model):
         verbose_name_plural = "categories"
 
 
-#@python_2_unicode_compatible
-#class SlideshowImage(models.Model):
-#    image = models.ImageField(upload_to='articles')
+@python_2_unicode_compatible
+class SlideshowImage(models.Model):
+    image = models.ImageField(upload_to='articles')
 
-#    image_web = ImageSpecField(
-#        source='image',
-#        processors=[ResizeToFit(width=900)],
-#        format='JPEG',
-#        options={'quality': 76})
-#
-#    description = models.CharField(max_length=250)
+    image_web = ImageSpecField(
+        source='image',
+        processors=[ResizeToFit(width=900)],
+        format='JPEG',
+        options={'quality': 76})
+
+    description = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.description
 
 
 @python_2_unicode_compatible
@@ -89,7 +92,8 @@ class Article(models.Model):
     body = RichTextField()
 
     #slideshow_images = models.ManyToManyField(
-    #    SlideshowImage, through='ArticleSlideshowImage')
+    #    SlideshowImage,
+    #    blank=True, null=True)
 
     category = models.ForeignKey(
         Category,
@@ -104,9 +108,3 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         return '/article/' + self.slug + '/'
-
-
-#@python_2_unicode_compatible
-#class ArticleSlideshowImage(models.Model):
-#    article = models.ForeignKey(Article)
-#    slideshow = models.ForeignKey(SlideshowImage)

@@ -11,9 +11,7 @@ class Staff(models.Model):
     last_name = models.CharField(max_length=200)
     title = models.CharField(max_length=200)
     image = models.ImageField(
-        upload_to='staff',
-        null=True,
-        blank=True)
+        upload_to='staff')
 
     featured = models.BooleanField(
         default=False,

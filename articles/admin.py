@@ -2,13 +2,13 @@ from django.contrib import admin
 from articles import models
 
 
-#class SlideshowInline(admin.TabularInline):
-#    model = models.Article.slideshow_images.through
+class SlideshowInline(admin.TabularInline):
+    model = models.Article.slideshow_images.through
 
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'published', 'publisher', 'category')
-    #inlines = [SlideshowInline, ]
+    inlines = [SlideshowInline, ]
 
 
 class CategoryAdmin(admin.ModelAdmin):

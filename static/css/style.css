@@ -199,6 +199,9 @@ span.ui-button-text { color: #555555; font-size: 12px; text-indent: 0!important;
 #subscription input[type=submit] { border: 0; border-radius: 100%; width: 35px; height: 35px; padding: 0px 0px 3px 4px; font-weight: bold; color: #9E9CD1; background-color: #FFFFFF; margin: 10px 0; display: block; float: right; }
 #subscription .unsubscribe { font-size: 14px; margin: 45px 0 0; letter-spacing: 0; }
 #tote-tuesday { max-width: 100%; }
+
+/* Article */
+.slideshow .image img { max-width: 100%; }
 .article-footer { padding-top: 2em; border-top: solid 1px #ECECF6; color: #585A59; }
 .article-footer .share div { display: inline-block; padding: 0 .3em; }
 .article-footer .share .label { position: relative; top: -12px; }

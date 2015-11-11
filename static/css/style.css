@@ -201,6 +201,7 @@ span.ui-button-text { color: #555555; font-size: 12px; text-indent: 0!important;
 #tote-tuesday { max-width: 100%; }
 
 /* Article */
+.category-tag { background-color: #9CA0D0; color: white; padding: .6em 1.2em; text-transform: uppercase; margin: 0 0 1em; text-align: center; font-size: .7em; display: inline-block; }
 .slideshow .image img { max-width: 100%; }
 .article-footer { padding-top: 2em; border-top: solid 1px #ECECF6; color: #585A59; }
 .article-footer .share div { display: inline-block; padding: 0 .3em; }

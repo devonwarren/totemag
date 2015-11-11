@@ -63,19 +63,19 @@
 
 .slick-prev, .slick-next
 {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     background-size: cover;
 }
 
 .slick-prev {
     background-image: url(../images/icons/slideshow_prev.png);
-    right: 10px;
+    right: 30px;
 }
 
 .slick-next {
     background-image: url(../images/icons/slideshow_next.png);
-    left: 10px;
+    left: 30px;
 }
 
 /* Dots */

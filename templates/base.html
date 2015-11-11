@@ -28,6 +28,7 @@
     <link href="{% static "css/jquery-ui.theme.min.css" %}" rel="stylesheet" type="text/css">
     <link href="{% static "css/mobile.css" %}" rel="stylesheet" type="text/css">
     <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css">
+    {% block styleload %}{% endblock %}
     {% endcompress %}
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -217,7 +218,7 @@
     <!-- End Content -->
     
     {% compress js %}
-    <script src="{% static "js/jquery.js" %}"></script>
+    <script src="{% static "js/jquery.min.js" %}"></script>
     <script src="{% static "js/jquery-ui.min.js" %}"></script>
     {% block scriptload %}{% endblock %}
     {% endcompress %}

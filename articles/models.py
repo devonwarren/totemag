@@ -115,3 +115,6 @@ class Article(models.Model):
             return True
         else:
             return False
+
+    class Meta:
+        ordering = ('-published_date',)

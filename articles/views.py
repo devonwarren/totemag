@@ -1,8 +1,19 @@
 from django.shortcuts import get_object_or_404
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from articles.models import Article, SlideshowImage, Category
+from articles.serializers import ArticleSerializer
+from rest_framework.renderers import JSONRenderer
 from django.template.loader import get_template
 from django.template import Context, RequestContext
 from django.http import HttpResponse
+
+
+class JSONResponse(HttpResponse):
+
+    def __init__(self, data, **kwargs):
+        content = JSONRenderer().render(data)
+        kwargs['content_type'] = 'application/json'
+        super(JSONResponse, self).__init__(content, **kwargs)
 
 
 def list_articles(request, slug=None):
@@ -16,11 +27,11 @@ def list_articles(request, slug=None):
         articles = Article.objects.filter(
             published=True
             ).order_by('-published_date')
-    categories = Category.objects.filter(parent=None)
+        category = None
     t = get_template('homepage.html')
     html = t.render(RequestContext(request, {
             'articles': articles,
-            'categories': categories,
+            'category': category,
         }))
     return HttpResponse(html)
 
@@ -35,3 +46,26 @@ def article(request, slug):
         'slideshow': slideshow_images
         }))
     return HttpResponse(html)
+
+
+def api_article_list(request, page=1, category=None):
+    if request.method == 'GET':
+
+        if category:
+            cat = get_object_or_404(Category, slug=category)
+            article_list = Article.objects.filter(
+                published=True,
+                category=cat)
+        else:
+            article_list = Article.objects.filter(published=True)
+
+        paginator = Paginator(article_list, 8)
+        try:
+            articles = paginator.page(page)
+        except PageNotAnInteger:
+            articles = paginator.page(1)
+        except EmptyPage:
+            articles = paginator.page(paginator.num_pages)
+
+        serializer = ArticleSerializer(articles, many=True)
+        return JSONResponse(serializer.data)

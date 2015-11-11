@@ -1,0 +1,11 @@
+from rest_framework import serializers
+from articles.models import Article
+
+
+class ArticleSerializer(serializers.ModelSerializer):
+    thumbnail_url = serializers.ReadOnlyField(source='image_thumbnail.url')
+    url = serializers.ReadOnlyField(source='get_absolute_url')
+
+    class Meta:
+        model = Article
+        fields = ('id', 'title', 'url', 'thumbnail_url')

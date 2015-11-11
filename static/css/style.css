@@ -35,7 +35,7 @@
 			
 html, body { padding: 0; margin: 0; }
 body { background-color: #ffffff; font-family: 'Aileron', tahoma; letter-spacing: 1px; font-weight: bold; }
-a { text-decoration: none; color: #9ca0d0; }
+a { text-decoration: none; color: #9ca0d0; cursor: pointer; }
 .clearfix { clear: both; }
 .container { width: 100%; max-width: 900px; margin: 0 auto; }
 .search { position: relative; max-width: 200px; }

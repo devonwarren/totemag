@@ -2,7 +2,7 @@
 
 {% block content %}
 
-        <section id="grid">
+        <section id="grid" data-category="{{ category.slug }}">
 
         {% for post in articles %}    
             <div class="item">
@@ -17,16 +17,16 @@
         {% empty %}
             <center><h3>Sorry, it looks like we don't have any articles on this section yet</h3></center>
         {% endfor %}
-
-        <div class="clearfix"></div>
     
         </section>
+        
+        <div class="clearfix"></div>
     
-        <!--<section id="load">
+        <section id="load" data-page="1">
         
-            <a href="#">Load More</a>
+            <a onclick="moreArticles()">Load More</a>
         
-        </section>-->
+        </section>
         
         
         <section id="ad">
@@ -36,4 +36,32 @@
         <!-- End Footer Ad -->
 
 
+{% endblock %}
+
+{% block scriptload %}
+<script type="text/javascript">
+    function moreArticles() {
+        var page = parseInt($('#load').attr('data-page'));
+        $('#load').attr('data-page', page + 1);
+        var category = $('#grid').attr('data-category');
+        if (category != '') {
+            var articles = $.getJSON("api/article_list/" + category + '/' + page, function(data) { addArticles(data); })
+        } else {
+            var articles = $.getJSON("api/article_list/" + page, function(data) { addArticles(data); })
+        }
+    }
+
+    function addArticles(list) {
+        var grid = $('#grid');
+        $.each(list, function (key, article) {
+
+            grid.append('<div class="item"><a href="' + article.url +
+                '" title="' + article.title + '"><img src="' +
+                article.thumbnail_url + '"></a><a href="' + article.url +
+                '" title="' + article.title +
+                '" class="itemExcerpt">' + article.title + '</a></div>')
+            console.log(article.title);
+        });
+    }
+</script>
 {% endblock %}

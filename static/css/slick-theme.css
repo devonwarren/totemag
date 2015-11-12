@@ -70,12 +70,12 @@
 
 .slick-prev {
     background-image: url(../images/icons/slideshow_prev.png);
-    right: 30px;
+    left: 30px;
 }
 
 .slick-next {
     background-image: url(../images/icons/slideshow_next.png);
-    left: 30px;
+    right: 30px;
 }
 
 /* Dots */

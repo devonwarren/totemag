@@ -35,7 +35,7 @@
             {% for img in slideshow %}
             <div class="image">
                 <img src="{{ img.image_web.url }}" title="{{ img.description }}"><br>
-                {{ forloop.counter }}/{{ forloop.revcounter }} - {{ img.description }}
+                {{ forloop.counter }}/{{ slideshow|length }} - {{ img.description }}
             </div>
             {% endfor %}
         </section>

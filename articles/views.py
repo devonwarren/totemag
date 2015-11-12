@@ -5,7 +5,7 @@ from articles.serializers import ArticleSerializer
 from rest_framework.renderers import JSONRenderer
 from django.template.loader import get_template
 from django.template import Context, RequestContext
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 
 
 ARTICLE_PAGINATION = 16
@@ -38,6 +38,7 @@ def list_articles(request, slug=None):
     html = t.render(RequestContext(request, {
             'articles': articles,
             'category': category,
+            'has_more': articles.has_next(),
         }))
     return HttpResponse(html)
 
@@ -71,7 +72,7 @@ def api_article_list(request, page=1, category=None):
         except PageNotAnInteger:
             articles = paginator.page(1)
         except EmptyPage:
-            articles = paginator.page(paginator.num_pages)
+            raise Http404('No more articles on page ' + page)
 
         serializer = ArticleSerializer(articles, many=True)
         return JSONResponse(serializer.data)

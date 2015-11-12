@@ -8,6 +8,9 @@ from django.template import Context, RequestContext
 from django.http import HttpResponse
 
 
+ARTICLE_PAGINATION = 16
+
+
 class JSONResponse(HttpResponse):
 
     def __init__(self, data, **kwargs):
@@ -28,7 +31,7 @@ def list_articles(request, slug=None):
             published=True
             ).order_by('-published_date')
         category = None
-    paginator = Paginator(articles, 8)
+    paginator = Paginator(articles, ARTICLE_PAGINATION)
     articles = paginator.page(1)
 
     t = get_template('homepage.html')
@@ -62,7 +65,7 @@ def api_article_list(request, page=1, category=None):
         else:
             article_list = Article.objects.filter(published=True)
 
-        paginator = Paginator(article_list, 8)
+        paginator = Paginator(article_list, ARTICLE_PAGINATION)
         try:
             articles = paginator.page(page)
         except PageNotAnInteger:

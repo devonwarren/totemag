@@ -28,6 +28,9 @@ def list_articles(request, slug=None):
             published=True
             ).order_by('-published_date')
         category = None
+    paginator = Paginator(articles, 8)
+    articles = paginator.page(1)
+
     t = get_template('homepage.html')
     html = t.render(RequestContext(request, {
             'articles': articles,

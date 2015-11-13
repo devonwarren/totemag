@@ -4,6 +4,11 @@
 
         <section id="grid" data-category="{{ category.slug }}">
 
+        {% if category %}
+        <center><div class="category-tag">{{ category.name }}</div></center>
+        {% endif %}
+
+
         {% for post in articles %}    
             <div class="item count-{{ forloop.counter }}" >
                 <a onclick="loadArticle('{{ post.slug }}', {{ forloop.counter }})" title="{{ post.title }}">

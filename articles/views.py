@@ -47,6 +47,18 @@ def article(request, slug):
     article = get_object_or_404(Article, slug=slug)
     slideshow_images = SlideshowImage.objects.filter(article=article)
 
+    t = get_template('article_full.html')
+    html = t.render(Context({
+        'article': article,
+        'slideshow': slideshow_images
+        }))
+    return HttpResponse(html)
+
+
+def article_html(request, slug):
+    article = get_object_or_404(Article, slug=slug)
+    slideshow_images = SlideshowImage.objects.filter(article=article)
+
     t = get_template('article.html')
     html = t.render(Context({
         'article': article,

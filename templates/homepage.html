@@ -5,12 +5,12 @@
         <section id="grid" data-category="{{ category.slug }}">
 
         {% for post in articles %}    
-            <div class="item">
-                <a href="{{ post.get_absolute_url }}" title="{{ post.title }}">
+            <div class="item count-{{ forloop.counter }}" >
+                <a onclick="loadArticle('{{ post.slug }}', {{ forloop.counter }})" title="{{ post.title }}">
                     <img src="{{ post.image_thumbnail.url }}">
                 </a>
                 
-                <a href="{{ post.get_absolute_url }}" title="{{ post.title }}" class="itemExcerpt">
+                <a onclick="loadArticle('{{ post.slug }}', {{ forloop.counter }})" title="{{ post.title }}" class="itemExcerpt">
                     {{ post.title }}
                 </a>
             </div>
@@ -40,16 +40,40 @@
 
 {% endblock %}
 
+{% block styleload %}
+<link rel="stylesheet" type="text/css" href="{% static "css/slick.css" %}"/>
+<link rel="stylesheet" type="text/css" href="{% static "css/slick-theme.css" %}"/>
+{% endblock %}
+
 {% block scriptload %}
+<script type="text/javascript" src="{% static "js/slick.min.js" %}"></script>
 <script type="text/javascript">
+
+    function loadArticle(slug, count) {
+        $.get( "api/article/" + slug, function( data ) {
+            $('#grid .container').remove();
+            var row = $('.count-' + Math.ceil(( count /4.0))*4)
+            if (row.length != 0) {
+                $(data).insertAfter(row);
+            } else {
+                $(data).appendTo($('#grid'));
+            }
+            startSlideshows();
+        });
+    }
+
     function moreArticles() {
         var page = parseInt($('#load').attr('data-page'));
         $('#load').attr('data-page', page + 1);
         var category = $('#grid').attr('data-category');
         if (category != '') {
-            var articles = $.getJSON("api/article_list/" + category + '/' + page, function(data) { addArticles(data); })
+            var articles = $.getJSON("api/article_list/" + category + '/' + page, function(data) { addArticles(data); }).fail(function() {
+                    $('#load').hide();
+                });
         } else {
-            var articles = $.getJSON("api/article_list/" + page, function(data) { addArticles(data); })
+            var articles = $.getJSON("api/article_list/" + page, function(data) { addArticles(data); }).fail(function() {
+                    $('#load').hide();
+                });
         }
     }
 
@@ -62,7 +86,16 @@
                 article.thumbnail_url + '"></a><a href="' + article.url +
                 '" title="' + article.title +
                 '" class="itemExcerpt">' + article.title + '</a></div>')
-            console.log(article.title);
+        });
+    }
+
+     function startSlideshows() {
+        $('.slideshow').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1
         });
     }
 </script>

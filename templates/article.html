@@ -1,7 +1,4 @@
-{% extends "base.html" %}
 {% load staticfiles %}
-
-{% block content %}
 
     <div class="container">
 
@@ -79,25 +76,3 @@
         </section>
 
     </div>
-
-{% endblock %}
-
-{% block scriptload %}
-<script type="text/javascript" src="{% static "js/slick.min.js" %}"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('.slideshow').slick({
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1
-        });
-    });
-</script>
-{% endblock %}
-
-{% block styleload %}
-<link rel="stylesheet" type="text/css" href="{% static "css/slick.css" %}"/>
-<link rel="stylesheet" type="text/css" href="{% static "css/slick-theme.css" %}"/>
-{% endblock %}

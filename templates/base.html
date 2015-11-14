@@ -28,6 +28,8 @@
     <link href="{% static "css/jquery-ui.theme.min.css" %}" rel="stylesheet" type="text/css">
     <link href="{% static "css/mobile.css" %}" rel="stylesheet" type="text/css">
     <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "css/remodal.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "css/remodal-default-theme.css" %}" rel="stylesheet" type="text/css">
     {% block styleload %}{% endblock %}
     {% endcompress %}
 
@@ -220,6 +222,7 @@
     {% compress js %}
     <script src="{% static "js/jquery.min.js" %}"></script>
     <script src="{% static "js/jquery-ui.min.js" %}"></script>
+    <script src="{% static "js/remodal.min.js" %}"></script>
     {% block scriptload %}{% endblock %}
     {% endcompress %}
 
@@ -238,22 +241,6 @@
          duration: 1000
        }
      });
-     
-     $( ".staff" ).dialog({
-        autoOpen: false,
-        show: {
-            effect: "blind",
-            duration: 0
-        },
-        hide: {
-            effect: "fade",
-            duration: 500
-        }
-     });
-     
-     function staff(member) {
-      $( "#"+member ).dialog( "open" );
-     }
      
      $( "#subscribe" ).click(function() {
         $( "#subscription" ).dialog( "open" );

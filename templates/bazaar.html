@@ -30,7 +30,7 @@
                 {% cycle 'right' 'left' as contentside silent %}
 
                 {% if contentside == 'left' %}
-                <div class="column one-half">
+                <div class="column one-half wide-60">
                     <h2>{{ shop.title }}</h2>
                     <p>{{ shop.body|safe }}</p>
                     <p class="share-icons">
@@ -44,9 +44,9 @@
                 {% endif %}
 
                 {% if contentside == 'right' %}
-                <div class="column one-half">
+                <div class="column one-half wide-40">
                 {% elif contentside == 'left' %}
-                <div class="column one-half last">
+                <div class="column one-half wide-40 last">
                 {% endif %}
                     <p><img src="{{ shop.image1_web.url }}"></p>
 
@@ -56,7 +56,7 @@
                 </div>
 
                 {% if contentside == 'right' %}
-                <div class="column one-half last">
+                <div class="column one-half wide-60 last">
                     <h2>{{ shop.title }}</h2>
                     <p>{{ shop.body|safe }}</p>
                     <p class="share-icons">

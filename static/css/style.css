@@ -125,7 +125,10 @@ article { font-weight: normal; }
 .subtitle { font-weight: bold; text-align: center; margin-bottom: 50px; }
 #contact .subtitle { font-size: 14px; }
 .text .column { display: inline-block; float: left; padding: 10px 0; }
+.text .column img { max-width: 100%; }
 .text .column.one-half { width: 48%; text-align: right; padding-right: 2%; clear: left; }
+.text .column.one-half.wide-40 { width: 40%; }
+.text .column.one-half.wide-60 { width: 55%; }
 .text .column.one-half.last { text-align: left; padding-right: 0; padding-left: 2%; clear: right; }
 .text .column.one-half.center { margin: 0 auto; text-align: center; float: none; display: block; }
 #bazaarPage article { clear: both; border-top: solid 1px #9ca0d0; margin-top: 3em; padding-top: 2em; }
@@ -154,6 +157,8 @@ article { font-weight: normal; }
 /* Modals */
 
 .staff img { max-width: 100%; }
+.staff h1, .staff h2 { text-align: left; padding: .2em 0; margin: 0; }
+.staff h2 { color: #58595b; font-size: 1.3em; }
 
 
 /* Footer */
@@ -209,7 +214,7 @@ span.ui-button-text { color: #555555; font-size: 12px; text-indent: 0!important;
 .article-footer .share div { display: inline-block; padding: 0 .3em; }
 .article-footer .share .label { position: relative; top: -12px; }
 .article-footer .share .icon img { width: 32px; }
-.article-footer .author { background-color: #ECECF6; padding: 1em; margin: 1em; min-height: 80px; }
-.author img.staff-image { border-radius: 50%; margin: 0 2em 0 1.2em; float: left; }
+.article-footer .author { background-color: #ECECF6; padding: 1em; margin: 1em 0; min-height: 80px; }
+.author img.staff-image { border-radius: 50%; margin: 0 1em 0 .2em; float: left; }
 .author .info { font-size: 12px; color: #888888; font-weight: 100; }
 .author .name { color: #9B9DD0; font-weight: bold; font-size: 14px; }

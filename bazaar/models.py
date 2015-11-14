@@ -28,5 +28,22 @@ class Shop(models.Model):
 
     submitted = models.DateTimeField(auto_now_add=True)
 
+    facebook = models.URLField(blank=True, null=True)
+    twitter = models.URLField(blank=True, null=True)
+    pinterest = models.URLField(blank=True, null=True)
+    instagram = models.URLField(blank=True, null=True)
+    tumblr = models.URLField(blank=True, null=True)
+    youtube = models.URLField(blank=True, null=True)
+
+    def social_media(self):
+        return {
+            'facebook': self.facebook,
+            'twitter': self.twitter,
+            'pinterest': self.pinterest,
+            'instagram': self.instagram,
+            'tumblr': self.tumblr,
+            'youtube': self.youtube,
+        }
+
     def __str__(self):
         return self.title

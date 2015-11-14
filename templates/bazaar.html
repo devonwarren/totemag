@@ -32,7 +32,14 @@
                 {% if contentside == 'left' %}
                 <div class="column one-half">
                     <h2>{{ shop.title }}</h2>
-                    {{ shop.body|safe }}
+                    <p>{{ shop.body|safe }}</p>
+                    <p class="share-icons">
+                        {% for site,location in shop.social_media.items %}
+                            {% if location %}
+                                <a href="{{ location }}" title="{{ site }}"><img src="{% static "images/icons/social_" %}{{ site }}_dark.png"></a>
+                            {% endif %}
+                        {% endfor %}
+                    </p>
                 </div>
                 {% endif %}
 
@@ -51,7 +58,14 @@
                 {% if contentside == 'right' %}
                 <div class="column one-half last">
                     <h2>{{ shop.title }}</h2>
-                    {{ shop.body|safe }}
+                    <p>{{ shop.body|safe }}</p>
+                    <p class="share-icons">
+                        {% for site,location in shop.social_media.items %}
+                            {% if location %}
+                                <a href="{{ location }}" title="{{ site }}"><img src="{% static "images/icons/social_" %}{{ site }}_dark.png"></a>
+                            {% endif %}
+                        {% endfor %}
+                    </p>
                 </div>
                 {% endif %}
     

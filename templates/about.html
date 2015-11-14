@@ -46,7 +46,14 @@
         <h2>{{ person.title }}</h2>
       </div>
       <div class="column one-half last">
-        {{ person.description|safe }}
+        <p>{{ person.description|safe }}</p>
+        <p class="share-icons">
+            {% for site,location in person.social_media.items %}
+                {% if location %}
+                    <a href="{{ location }}" title="{{ site }}"><img src="{% static "images/icons/social_" %}{{ site }}_dark.png"></a>
+                {% endif %}
+            {% endfor %}
+        </p>
       </div>
     </div>
 {% endfor %}

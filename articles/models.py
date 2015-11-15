@@ -46,7 +46,7 @@ class SlideshowImage(models.Model):
         source='image',
         processors=[ResizeToFit(width=900)],
         format='JPEG',
-        options={'quality': 76})
+        options={'quality': 85})
 
     description = models.TextField()
 
@@ -80,13 +80,13 @@ class Article(models.Model):
         source='image',
         processors=[ResizeToFill(width=225, height=200)],
         format='JPEG',
-        options={'quality': 76})
+        options={'quality': 85})
 
     image_web = ImageSpecField(
         source='image',
         processors=[ResizeToFit(width=900)],
         format='JPEG',
-        options={'quality': 76})
+        options={'quality': 85})
 
     image_attribution = models.ForeignKey(
         Staff,

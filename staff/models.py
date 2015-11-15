@@ -27,13 +27,13 @@ class Staff(models.Model):
         source='image',
         processors=[ResizeToFill(width=500, height=500)],
         format='JPEG',
-        options={'quality': 80})
+        options={'quality': 85})
 
     image_small = ImageSpecField(
         source='image',
         processors=[ResizeToFill(width=225, height=200)],
         format='JPEG',
-        options={'quality': 75})
+        options={'quality': 85})
 
     image_thumbnail = ImageSpecField(
         source='image',

@@ -11,11 +11,11 @@
 
         {% for post in articles %}    
             <div class="item count-{{ forloop.counter }}" >
-                <a onclick="loadArticle('{{ post.slug }}', {{ forloop.counter }})" title="{{ post.title }}">
+                <a href="/article/{{ post.slug }}" title="{{ post.title }}">
                     <img src="{{ post.image_thumbnail.url }}">
                 </a>
                 
-                <a onclick="loadArticle('{{ post.slug }}', {{ forloop.counter }})" title="{{ post.title }}" class="itemExcerpt">
+                <a href="/article/{{ post.slug }}" title="{{ post.title }}" class="itemExcerpt">
                     {{ post.title }}
                 </a>
             </div>

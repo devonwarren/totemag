@@ -14,13 +14,13 @@ class Shop(models.Model):
 
     image1_web = ImageSpecField(
         source='image1',
-        processors=[ResizeToFill(width=320, height=400)],
+        processors=[ResizeToFill(width=320, height=300)],
         format='JPEG',
         options={'quality': 85})
 
     image2_web = ImageSpecField(
         source='image2',
-        processors=[ResizeToFill(width=320, height=400)],
+        processors=[ResizeToFill(width=320, height=300)],
         format='JPEG',
         options={'quality': 85})
 

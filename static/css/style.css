@@ -1,20 +1,17 @@
 @font-face {
 	font-family: 'AileronLight';
-	font-style: normal;
 	font-weight: 100;
 	src: local('Aileron Light'), local('Aileron-Light'), url(../fonts/Aileron-Light.otf) format('opentype');
 }
 
 @font-face {
 	font-family: 'Aileron';
-	font-style: normal;
 	font-weight: 500;
 	src: local('Aileron'), local('Aileron'), url(../fonts/Aileron.otf) format('opentype');
 }
 
 @font-face {
 	font-family: 'AileronBold';
-	font-style: normal;
 	font-weight: 900;
 	src: local('Aileron Bold'), local('Aileron-Bold'), url(../fonts/Aileron-Bold.otf) format('opentype');
 }
@@ -34,7 +31,7 @@
 */
 			
 html, body { padding: 0; margin: 0; }
-body { background-color: #ffffff; font-family: 'Aileron', tahoma; letter-spacing: 1px; }
+body { background-color: #ffffff; font-family: 'Aileron', tahoma; letter-spacing: 1px; font-weight: 100; }
 a { text-decoration: none; color: #9ca0d0; cursor: pointer; }
 .clearfix { clear: both; }
 .container { width: 100%; max-width: 900px; margin: 0 auto; }
@@ -44,6 +41,8 @@ a { text-decoration: none; color: #9ca0d0; cursor: pointer; }
 :-moz-placeholder { color: #ffffff; }
 ::-moz-placeholder { color: #ffffff; }
 :-ms-input-placeholder { color: #ffffff; }
+blockquote { font-size: 1.8em; background: transparent url(../images/icons/quotation_1.png) no-repeat center top; font-family: "Unna", tahoma; text-align: center; max-width: 500px; font-weight: bold; padding: 70px 2em 40px; margin: 40px auto 0; }
+blockquote .author { font-size: .65em; padding-top: .8em; display: block; color: #A699D2; font-family: 'Aileron', tahoma; }
 			
 /* Header */
 
@@ -64,7 +63,7 @@ header nav a img { display: block; width: 17px; width: 25.5px; }
 
 /* Sidebars */
 
-#sidebar, #contact { z-index: 1; position: fixed; transition: left 1s, right 1s; background-color: #A699D2; position: fixed; width: 250px; color: #ffffff; padding: 100px 50px; top: 0; height: 100%; }
+#sidebar, #contact { z-index: 1; position: fixed; transition: left 1s, right 1s; background-color: #A699D2; position: fixed; width: 250px; color: #ffffff; padding: 100px 50px; top: 0; height: 100%; font-weight: 900; }
 #sidebar { left: -350px; }
 #contact { right: -350px; }
 #content { transition: width 1s, margin 1s; }

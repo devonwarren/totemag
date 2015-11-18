@@ -16,7 +16,7 @@
             <p>Every shop owner, designer, and artist featured is a young woman with her own story to tell of how and why she decided to begin her own company. Whether it’s an Etsy shop or a boutique with a permanent location, you can find it here with links to the store’s shopping and social media pages, as well as a short biography of the company. The symbiotic relationship between these business owners and us was created to build respect, foster support, and uncover and share the work and lives of other real, hard-working, and inspirational women.</p>
         
 
-            <p><select id="goto_bazaar">
+            <p class="center"><select id="goto_bazaar">
                 <option value="">JUMP TO</option>
             {% for shop in shops %}
                 <option value="{{ shop.id }}">{{ shop.title }}</option>
@@ -68,7 +68,7 @@
                     </p>
                 </div>
                 {% endif %}
-    
+                <div class="top"><a href="#top"><img src="{% static "images/icons/top.png" %}"></a></div>
             </article>
             {% endfor %}
         

@@ -27,36 +27,36 @@
     
     {% for person in staff %}
         <div class="item" data-remodal-target="staff-{{ person.id }}">
-            
-            <img src="{{ person.image_small.url }}" alt="{{ person }}" class="itemImage">
-            
-            <p class="itemExcerpt">{{ person }}</p>
-
+            <a>
+                <img src="{{ person.image_small.url }}" alt="{{ person }}" class="itemImage">
+            </a>
+            <a class="itemExcerpt">{{ person }}</a>
         </div>
     {% endfor %}
+
         <div class="clearfix"></div>
     </section>
-        
-        
-{% for person in staff %}        
-<div class="remodal text staff" data-remodal-id="staff-{{ person.id }}">
-  <button data-remodal-action="close" class="remodal-close"></button>
-      <div class="column one-half wide-40">
-        <img src="{{ person.image_full.url }}" alt="{{ person }}">
-        <h1>{{ person }}</h1>
-        <h2>{{ person.title }}</h2>
-      </div>
-      <div class="column one-half wide-60 last">
-        <p>{{ person.description|safe }}</p>
-        <p class="share-icons">
-            {% for site,location in person.social_media.items %}
-                {% if location %}
-                    <a href="{{ location }}" title="{{ site }}"><img src="{% static "images/icons/social_" %}{{ site }}_dark.png"></a>
-                {% endif %}
-            {% endfor %}
-        </p>
-      </div>
-</div>
-{% endfor %}
+
+    {% for person in staff %}        
+    <div class="remodal text staff" data-remodal-id="staff-{{ person.id }}">
+      <button data-remodal-action="close" class="remodal-close"></button>
+          <div class="column one-half wide-40">
+            <img src="{{ person.image_full.url }}" alt="{{ person }}">
+            <h1>{{ person }}</h1>
+            <h2>{{ person.title }}</h2>
+          </div>
+          <div class="column one-half wide-60 last">
+            <p>{{ person.description|safe }}</p>
+            <p class="share-icons">
+                {% for site,location in person.social_media.items %}
+                    {% if location %}
+                        <a href="{{ location }}" title="{{ site }}"><img src="{% static "images/icons/social_" %}{{ site }}_dark.png"></a>
+                    {% endif %}
+                {% endfor %}
+            </p>
+          </div>
+    </div>
+    {% endfor %}
+
 
 {% endblock %}

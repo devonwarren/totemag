@@ -101,8 +101,8 @@ h2 { margin: 0; padding: .8em 3em; text-transform: uppercase; text-align: center
 #grid .item { height: 200px; }
 #grid .container { clear: both; padding: 2em 0; }
 .itemImage { width: 100%; height: 200px; }
-.itemExcerpt { width: 160px; background-color: rgba(166, 153, 210, 0.8); position: absolute; text-align: center; display: none; color: #ffffff; font-size: 20px; text-transform: uppercase; top: 0; height: 100%; margin: 0; padding: 30px 35px 0; }
-.item:hover > .itemExcerpt, .item.open > .itemExcerpt { display: block; }
+.itemExcerpt { width: 185px; height: 160px; background-color: rgba(166, 153, 210, 0.9); position: absolute; text-align: center; display: none; color: #ffffff; font-size: 20px; text-transform: uppercase; top: 0; margin: 0; padding: 0;}
+.item:hover > .itemExcerpt, .item.open > .itemExcerpt { justify-content: center; display: flex; align-items: center; padding: 20px; }
 .item:hover > .itemImage { opacity: 0.1; }
 
 .sub-header, .main-image { text-transform: uppercase; text-align: center; margin: 1em 0; font-size: .8em; color: #585A59; }
@@ -126,10 +126,12 @@ article { font-weight: normal; }
 .text .column { display: inline-block; float: left; padding: 10px 0; }
 .text .column img { max-width: 100%; }
 .text .column.one-half { width: 48%; text-align: right; padding-right: 2%; clear: left; }
+.text .column.one-half h2 { text-align: inherit; padding: 0; }
 .text .column.one-half.wide-40 { width: 40%; }
 .text .column.one-half.wide-60 { width: 55%; }
 .text .column.one-half.last { text-align: left; padding-right: 0; padding-left: 2%; clear: right; }
 .text .column.one-half.center { margin: 0 auto; text-align: center; float: none; display: block; }
+#contactsPage .text a { font-weight: bold; }
 #bazaarPage article { clear: both; border-top: solid 1px #9ca0d0; margin-top: 3em; padding-top: 2em; }
 #bazaarPage #goto_bazaar { border: solid 2px #bfc3e0; padding: .2em 3em .2em .2em; color: #888888; outline: none; appearance: none; -webkit-appearance: none; background: url(../images/icons/dropdown_arrow.png) white center right no-repeat; }
 

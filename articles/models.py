@@ -116,5 +116,12 @@ class Article(models.Model):
         else:
             return False
 
+    def is_tall_image(self):
+        """ Returns true if the image is tall instead of wide """
+        if ((self.image.height / self.image.width) >= 1.0):
+            return True
+        else:
+            return False
+
     class Meta:
         ordering = ('-published_date',)

@@ -15,7 +15,7 @@
         </section>
 
         {% if not article.is_slideshow %}
-        <section class="main-image">
+        <section class="main-image{% if article.is_tall_image %} tall{% endif %}">
             <img src="{{ article.image_web.url }}">
             {% if article.image_attribution %}
                 <br>PHOTOS: {{ article.image_attribution }}

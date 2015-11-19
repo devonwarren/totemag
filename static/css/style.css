@@ -42,7 +42,7 @@ a { text-decoration: none; color: #9ca0d0; cursor: pointer; }
 :-moz-placeholder { color: #ffffff; }
 ::-moz-placeholder { color: #ffffff; }
 :-ms-input-placeholder { color: #ffffff; }
-blockquote { font-size: 1.8em; background: transparent url(../images/icons/quotation_1.png) no-repeat center top; font-family: "Unna", tahoma; text-align: center; max-width: 500px; font-weight: bold; padding: 70px 2em 40px; margin: 40px auto 0; }
+blockquote { font-size: 1.6em; background: transparent url(../images/icons/quotation_1.png) no-repeat center top; font-family: "Unna", tahoma; text-align: center; max-width: 500px; font-weight: bold; padding: 70px 2em 40px; margin: 40px auto 0; }
 article blockquote { float: left; width: 200px; }
 blockquote .author { font-size: .65em; padding-top: .8em; display: block; color: #A699D2; font-family: 'Aileron', tahoma; }
 			
@@ -111,6 +111,7 @@ h2 { margin: 0; padding: .8em 3em; text-transform: uppercase; text-align: center
 .sub-header author, .sub-header time { display: block; }
 .sub-header time { font-size: .9em; padding-top: .4em; }
 .main-image { text-align: left; margin-top: 3em; }
+.main-image.tall { float: left; margin: 0; padding: 0 1em 1em; width: 500px; }
 .main-image img { max-width: 100%; }
 #subscribe-popup { background-color: #9ca0d0; color: white; }
 #subscribe-popup a { color: white; }

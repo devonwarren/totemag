@@ -146,6 +146,7 @@ article { font-weight: normal; }
 .text .column.one-half.wide-60 { width: 55%; }
 .text .column.one-half.last { text-align: left; padding-right: 0; padding-left: 2%; clear: right; }
 .text .column.one-half.center { margin: 0 auto; text-align: center; float: none; display: block; }
+.intro { font-size: 1.2em; font-weight: 500; line-height: 1.4em; }
 #contactsPage .text a { font-weight: bold; }
 #bazaarPage article { font-size: 1.3em; clear: both; border-top: solid 1px #9ca0d0; margin-top: 3em; padding-top: 2em; }
 #bazaarPage article h2 { font-size: 2em; padding-top: .6em; font-family: 'Aileron', tahoma; }

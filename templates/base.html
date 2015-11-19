@@ -161,11 +161,13 @@
         <!-- End Header -->
 
         {% if messages %}
-        <ul id="site-messages">
-            {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
+        <div id="messages" class="modal">
+            <ul id="site-messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
         {% endif %}
 
         {% block content %}{% endblock %}
@@ -231,6 +233,12 @@
     
     <script>
     
+    {% if messages %}
+        $(document).ready(function() {
+            $('#messages').remodal().open();
+        });
+    {% endif %}
+
      $( "#subscription" ).dialog({
        autoOpen: true,
        show: {

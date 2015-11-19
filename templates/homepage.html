@@ -42,6 +42,34 @@
         </section>
         <!-- End Footer Ad -->
 
+<div class="modal" id="subscribe-popup" data-remodal-id="subscribe">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <p>
+    <img src="{% static "images/headings/tote_tuesday_popup.png" %}" alt="Tote Tuesday">
+  </p>
+  <p class="subheader">
+    OUR WEEKLY<br>
+    NEWSLETTER ROUNDUP
+  </p>
+  <hr>
+  <p>
+    Break off a piece of the conversation,<br>
+    save it for later or give it to a friend,<br>
+    and pass along the Tote conversation.
+  </p>
+  <p>
+    <form action="/subscribe/" method="post">
+        {% csrf_token %}
+        <input type="email" name="email" placeholder="Email">
+        <input type="submit" value=">">
+    </form>
+  </p>
+  <p class="subtext">
+      Want to go on a break? We'll understand.<br>
+      Unsubscibe whenever you like- see our <a href="/terms">Privacy Policy</a> for more information. 
+  </p>
+</div>
+
 
 {% endblock %}
 
@@ -53,6 +81,11 @@
 {% block scriptload %}
 <script type="text/javascript" src="{% static "js/slick.min.js" %}"></script>
 <script type="text/javascript">
+    {% if not messages %}
+    $(document).ready(function() {
+        $('[data-remodal-id=subscribe]').remodal().open();
+    });
+    {% endif %}
 
     function loadArticle(slug, count) {
         $.get( "api/article/" + slug, function( data ) {

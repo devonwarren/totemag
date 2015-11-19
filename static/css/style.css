@@ -112,6 +112,17 @@ h2 { margin: 0; padding: .8em 3em; text-transform: uppercase; text-align: center
 .sub-header time { font-size: .9em; padding-top: .4em; }
 .main-image { text-align: left; margin-top: 3em; }
 .main-image img { max-width: 100%; }
+#subscribe-popup { background-color: #9ca0d0; color: white; }
+#subscribe-popup a { color: white; }
+#subscribe-popup img { max-width: 100%; }
+#subscribe-popup .remodal-close { color: white; }
+#subscribe-popup .remodal-close:hover { color: black; }
+#subscribe-popup .subheader { font-weight: bold; font-size: 1.2em; }
+#subscribe-popup hr { margin: 1.4em auto; width: 90px; border: solid 2px white; }
+#subscribe-popup .subtext { font-size: .7em; }
+#subscribe-popup input { color: #FFFFFF; display: inline-block; }
+#subscribe-popup input[type=email] { background-color: transparent; border: 1px solid #FFF; padding: 3px 10px; text-transform: uppercase; font-size: 13px; font-weight: bold; letter-spacing: 0px; }
+#subscribe-popup input[type=submit] { border: 0; border-radius: 100%; width: 20px; height: 20px; padding: 0px 0px 3px 2px; font-weight: bold; color: #9E9CD1; background-color: #FFFFFF; margin: 0 5px; }
 
 article { font-weight: normal; }
 #site-messages { list-style: none; text-align: center; }

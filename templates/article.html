@@ -32,7 +32,7 @@
             {% for img in slideshow %}
             <div class="image">
                 <img src="{{ img.image_web.url }}" title="{{ img.description }}"><br>
-                {{ forloop.counter }}/{{ slideshow|length }} - {{ img.description }}
+                {{ forloop.counter }}/{{ slideshow|length }} - {{ img.description|safe }}
             </div>
             {% endfor %}
         </section>
@@ -43,22 +43,22 @@
             <div class="share">
                 <div class="label">SHARE:</div> 
                 <div class="icon">
-                    <a href="http://twitter.com/home?status={{ article.title }}+http://www.totemag.com/article/{{ article.slug }}">
+                    <a target="_blank" href="http://twitter.com/home?status=@tote_mag+{{ article.title|urlencode }}+http://www.totemag.com/article/{{ article.slug|urlencode }}">
                         <img src="{% static "images/icons/social_twitter_dark.png" %}" alt="Twitter">
                     </a>
                 </div>
                 <div class="icon">
-                    <a href="http://www.facebook.com/sharer/sharer.php?u=http://www.totemag.com/article/{{ article.slug }}&title={{ article.title }}">
+                    <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://www.totemag.com/article/{{ article.slug|urlencode }}&title={{ article.title|urlencode }}">
                         <img src="{% static "images/icons/social_facebook_dark.png" %}" alt="Facebook"> 
                     </a>
                 </div>
                 <div class="icon">
-                    <a href="http://pinterest.com/pin/create/button/?url=http://www.totemag.com/article/{{ article.slug }}&is_video=false&description={{ article.title }}">
+                    <a target="_blank" href="http://pinterest.com/pin/create/button/?url=http://www.totemag.com/article/{{ article.slug|urlencode }}&is_video=false&description={{ article.title|urlencode }}">
                         <img src="{% static "images/icons/social_pinterest_dark.png" %}" alt="Pinterest"> 
                     </a>
                 </div>
                 <div class="icon">
-                    <a href="http://www.tumblr.com/share?v=3&u=http://www.totemag.com/article/{{ article.slug }}&t={{ article.title }}">
+                    <a target="_blank" href="http://www.tumblr.com/share?v=3&u=http://www.totemag.com/article/{{ article.slug|urlencode }}&t={{ article.title|urlencode }}">
                         <img src="{% static "images/icons/social_tumblr_dark.png" %}" alt="Tumblr"> 
                     </a>
                 </div>

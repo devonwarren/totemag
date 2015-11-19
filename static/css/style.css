@@ -1,5 +1,5 @@
 @font-face {
-	font-family: 'AileronLight';
+	font-family: 'Aileron';
 	font-weight: 100;
 	src: local('Aileron Light'), local('Aileron-Light'), url(../fonts/Aileron-Light.otf) format('opentype');
 }
@@ -11,7 +11,7 @@
 }
 
 @font-face {
-	font-family: 'AileronBold';
+	font-family: 'Aileron';
 	font-weight: 900;
 	src: local('Aileron Bold'), local('Aileron-Bold'), url(../fonts/Aileron-Bold.otf) format('opentype');
 }
@@ -176,7 +176,7 @@ article { font-weight: normal; }
 
 .staff img { max-width: 100%; }
 .staff h1, .staff h2 { text-align: left; padding: .2em 0; margin: 0; }
-.staff h2 { color: #58595b; font-size: 1.3em; }
+.staff .column.one-half h2 { text-align: left; color: #58595b; font-size: 1.3em; }
 
 
 /* Footer */

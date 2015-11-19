@@ -48,7 +48,7 @@ class SlideshowImage(models.Model):
         format='JPEG',
         options={'quality': 90})
 
-    description = models.TextField()
+    description = RichTextField()
 
     def __str__(self):
         return self.description

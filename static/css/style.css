@@ -105,7 +105,7 @@ h2 { margin: 0; padding: .8em 3em; text-transform: uppercase; text-align: center
 #grid .container { clear: both; padding: 2em 0; }
 .itemImage { width: 100%; height: 200px; }
 .itemExcerpt { width: 185px; height: 160px; background-color: rgba(166, 153, 210, 0.9); position: absolute; text-align: center; display: none; color: #ffffff; font-size: 20px; text-transform: uppercase; top: 0; margin: 0; padding: 0;}
-.item:hover > .itemExcerpt, .item.open > .itemExcerpt { justify-content: center; display: -webkit-flex; display: flex; align-items: center; padding: 20px; }
+.item:hover > .itemExcerpt, .item.open > .itemExcerpt {  display: -webkit-flex; -webkit-justify-content: center; justify-content: center; display: -webkit-flex; display: flex; align-items: center; padding: 20px; }
 .item:hover > .itemImage { opacity: 0.1; }
 
 .sub-header, .main-image { text-transform: uppercase; text-align: center; margin: 2em 0; font-size: .8em; color: #585A59; }

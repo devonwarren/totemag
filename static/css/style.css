@@ -147,8 +147,8 @@ article { font-weight: normal; }
 .text .column.one-half.last { text-align: left; padding-right: 0; padding-left: 2%; clear: right; }
 .text .column.one-half.center { margin: 0 auto; text-align: center; float: none; display: block; }
 #contactsPage .text a { font-weight: bold; }
-#bazaarPage article { clear: both; border-top: solid 1px #9ca0d0; margin-top: 3em; padding-top: 2em; }
-#bazaarPage article h2 { font-size: 2em; padding-top: .6em; }
+#bazaarPage article { font-size: 1.3em; clear: both; border-top: solid 1px #9ca0d0; margin-top: 3em; padding-top: 2em; }
+#bazaarPage article h2 { font-size: 2em; padding-top: .6em; font-family: 'Aileron', tahoma; }
 #bazaarPage article .top { float: right; clear: both; }
 #bazaarPage article .top img { width: 22px; height: 15px; padding: 1em; }
 #bazaarPage #goto_bazaar { margin-top: .6em; min-width: 14em; border: solid 2px #bfc3e0; padding: .2em 3em .2em .2em; color: #888888; outline: none; appearance: none; -webkit-appearance: none; background: url(../images/icons/dropdown_arrow.png) white center right no-repeat; }

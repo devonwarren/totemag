@@ -59,6 +59,7 @@ header nav a img { display: block; width: 17px; width: 25.5px; }
 #mobile select { width: 90%; padding: 10px; margin: 0 0 10px; }
 #navigation { list-style: none; padding: 20px 0; margin: 0; text-align: center; background-color: #FFFFFF; }
 #navigation li { display: inline-block; margin-left: 16px; }
+#navigation li.bold a { font-weight: bold; color: #9B8BBF; }
 #navigation li:nth-child(1) { margin: 0; }
 #navigation li a { color: #919194; text-transform: uppercase; font-weight: 100; font-size: 16px; padding: 10px 20px; letter-spacing: 1px; }
 #navigation li a:hover, #navigation li a:active, #navigation li a.active { color: #9B8BBF }

@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill, ResizeToFit
 from autoslug import AutoSlugField
@@ -94,7 +95,7 @@ class Article(models.Model):
         blank=True,
         null=True)
 
-    body = RichTextField()
+    body = RichTextUploadingField()
 
     category = models.ForeignKey(
         Category,

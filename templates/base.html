@@ -7,19 +7,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Tote Magazine</title>
+
+    {% load staticfiles %}
     
     <meta name="description" content="Tote Magazine">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'>
     
-    <meta property="og:title" content="totemag.com">
+    <meta property="og:title" content="Tote Magazine">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="http://totemag.com">
+    <meta property="og:url" content="http://www.totemag.com">
+    <meta property="og:image" content="http://www.totemag.com{% block shareimage %}{% static "images/logo/logo.png" %}{% endblock %}" />
  
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content ="Tote Magazine">
 
-    {% load staticfiles %}
     {% load compress %}
 
     {% compress css %}
@@ -32,6 +34,8 @@
     <link href="{% static "css/remodal-default-theme.css" %}" rel="stylesheet" type="text/css">
     {% block styleload %}{% endblock %}
     {% endcompress %}
+
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}"/>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 

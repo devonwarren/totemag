@@ -34,11 +34,18 @@ def list_articles(request, slug=None):
     paginator = Paginator(articles, ARTICLE_PAGINATION)
     articles = paginator.page(1)
 
+    shown_subscribe = False
+    if request.session.get('shown_subscribe', False):
+        shown_subscribe = True
+    else:
+        request.session['shown_subscribe'] = True
+
     t = get_template('homepage.html')
     html = t.render(RequestContext(request, {
             'articles': articles,
             'category': category,
             'has_more': articles.has_next(),
+            'shown_subscribe': shown_subscribe,
         }))
     return HttpResponse(html)
 

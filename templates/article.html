@@ -43,7 +43,7 @@
             <div class="share">
                 <div class="label">SHARE:</div> 
                 <div class="icon">
-                    <a target="_blank" href="http://twitter.com/home?status=@tote_mag+{{ article.title|urlencode }}+http://www.totemag.com/article/{{ article.slug|urlencode }}">
+                    <a target="_blank" href="http://twitter.com/home?status={{ article.title|urlencode }}+http://www.totemag.com/article/{{ article.slug|urlencode }}+@tote_mag">
                         <img src="{% static "images/icons/social_twitter_dark.png" %}" alt="Twitter">
                     </a>
                 </div>

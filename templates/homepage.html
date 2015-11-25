@@ -81,7 +81,7 @@
 {% block scriptload %}
 <script type="text/javascript" src="{% static "js/slick.min.js" %}"></script>
 <script type="text/javascript">
-    {% if not messages %}
+    {% if not messages and not shown_subscribe %}
     $(document).ready(function() {
         $('[data-remodal-id=subscribe]').remodal().open();
     });

@@ -22,6 +22,8 @@
 	font-weight: 300;
 	src: local('Unna Regular'), local('Unna'), url(../fonts/Unna.otf) format('opentype');
 }
+
+@import url(https://fonts.googleapis.com/css?family=Lora);
 		
 /* Color Pallet
 				
@@ -70,7 +72,7 @@ header nav a img { display: block; width: 17px; width: 25.5px; }
 #sidebar { left: -350px; }
 #contact { right: -350px; }
 #content { transition: width 1s, margin 1s; }
-#content article { font-family: 'Unna', tahoma; line-height: 1.4em; font-size: 1.2em; color: #141414; }
+#content article { font-family: 'Lora', tahoma; line-height: 1.4em; font-size: 1.2em; color: #141414; }
 #sidebar hr { margin: 40px 0 40px 40px; width: 100px; color: #fff; height: 1px; border-color: #fff; background: #fff; }
 #sidebar ul { list-style: none; }
 #sidebar ul.last { margin-bottom: 40px; }

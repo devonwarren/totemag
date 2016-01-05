@@ -31,7 +31,7 @@
         <section class="slideshow">
             {% for img in slideshow %}
             <div class="image">
-                <img src="{{ img.image_web.url }}" title="{{ img.description }}"><br>
+                <img src="{{ img.image_web.url }}" alt="{{ img.description|striptags }}"><br>
                 {{ forloop.counter }}/{{ slideshow|length }} - {{ img.description|safe }}
             </div>
             {% endfor %}

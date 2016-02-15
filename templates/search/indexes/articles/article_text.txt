@@ -1,0 +1,5 @@
+{{ object.title }}
+{{ object.publisher.name }}
+{{ object.category.name }}
+{{ object.body }}
+{{ object.published_date }}

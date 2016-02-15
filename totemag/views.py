@@ -6,16 +6,41 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.conf import settings
 from staff.models import Staff
+from articles.models import Article
+from haystack.generic_views import SearchView
+from haystack.query import SearchQuerySet
+from totemag.forms import BasicSearchForm
 import mailchimp
+
+
+def homepage(request):
+    featured_articles = Article.objects.filter(
+        published=True).order_by('published_date')[:4]
+
+    latest_articles = Article.objects.filter(
+        published=True).order_by('published_date')[4:9]
+
+    t = get_template('homepage.html')
+    html = t.render(RequestContext(request, {
+        'featured_articles': featured_articles,
+        'latest_articles': latest_articles,
+    }))
+    return HttpResponse(html)
 
 
 def about(request):
     staff = Staff.objects.filter(featured=True)
     t = get_template('about.html')
     html = t.render(RequestContext(request, {
-            'staff': staff,
-        }))
+        'staff': staff,
+    }))
     return HttpResponse(html)
+
+
+class BasicSearchView(SearchView):
+    template_name = 'search.html'
+    queryset = SearchQuerySet().all()
+    form_class = BasicSearchForm
 
 
 def videos(request):
@@ -57,8 +82,8 @@ def contact(request):
 
 def advertise(request):
     if request.method == 'POST':
-#        to_email = 'advertise@totemag.com'
-        to_email = 'devon.warren@gmail.com'
+        to_email = 'advertise@totemag.com'
+#        to_email = 'devon.warren@gmail.com'
         subject = "Advertising Opportunity"
 
         message = "Name: %s %s\n" % \
@@ -79,7 +104,7 @@ def advertise(request):
             [to_email])
 
         messages.add_message(request, messages.INFO,
-            "Thanks for contacting us! We will get back to you shortly!")
+                             "Thanks for contacting us! We will get back to you shortly!")
 
     t = get_template('advertise.html')
     html = t.render(RequestContext(request))
@@ -93,8 +118,8 @@ def subscribe(request):
             api = mailchimp.Mailchimp(settings.MAILCHIMP_API_KEY)
             api.lists.subscribe('0c1c51c413', {'email': email})
             messages.add_message(request, messages.INFO,
-                "Thanks for subscribing! You should have a confirmation email.")
+                                 "Thanks for subscribing! You should have a confirmation email.")
         except mailchimp.ListAlreadySubscribedError as detail:
             messages.add_message(request, messages.INFO,
-                "You are already subscribed!")
+                                 "You are already subscribed!")
         return redirect('/')

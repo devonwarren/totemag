@@ -18,8 +18,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
-from totemag.views import about, videos, contact, \
-    advertise, subscribe
+from totemag.views import homepage, about, videos, \
+    contact, advertise, subscribe
 from articles.views import article, article_html, \
     list_articles, api_article_list
 from bazaar.views import bazaar
@@ -29,7 +29,7 @@ admin.autodiscover()
 
 
 urlpatterns = [
-    url(r'^$', list_articles, name='list_articles'),
+    url(r'^$', homepage, name='homepage'),
     url(r'^about/$', about, name='about'),
     url(r'^videos/$', videos, name='videos'),
     url(r'^contact/$', contact, name='contact'),
@@ -41,6 +41,7 @@ urlpatterns = [
     url(r'^subscribe/$', subscribe, name='subscribe'),
     url(r'^article/(?P<slug>.+?)/$', article),
     url(r'^list/(?P<slug>.+?)/$', list_articles),
+    url(r'^search/', include('haystack.urls')),
     url(r'^api/article_list/(?P<category>.+?)/(?P<page>[0-9]+)/$',
         api_article_list),
     url(r'^api/article_list/(?P<page>[0-9]+)/$', api_article_list),

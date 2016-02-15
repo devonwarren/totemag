@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,23 +21,27 @@
     {% load compress %}
 
     {% compress css %}
+    <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css">
     <link href="{% static "css/jquery-ui.min.css" %}" rel="stylesheet" type="text/css">
     <link href="{% static "css/jquery-ui.structure.min.css" %}" rel="stylesheet" type="text/css">
     <link href="{% static "css/jquery-ui.theme.min.css" %}" rel="stylesheet" type="text/css">
-    <link href="{% static "css/mobile.css" %}" rel="stylesheet" type="text/css">
-    <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css">
     <link href="{% static "css/remodal.css" %}" rel="stylesheet" type="text/css">
     <link href="{% static "css/remodal-default-theme.css" %}" rel="stylesheet" type="text/css">
     {% block styleload %}{% endblock %}
     {% endcompress %}
-    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+
+    {% compress js %}
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/jquery-ui.min.js" %}"></script>
+    <script src="{% static "js/remodal.min.js" %}"></script>
+    {% block scriptload %}{% endblock %}
+    {% endcompress %}
+
 
     <link rel="shortcut icon" href="{% static "images/favicon.ico" %}"/>
-
-    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-
     
-    <!-- Google Analytics -->
+    <!-- Google Analytics 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -48,8 +49,7 @@
         })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
         ga('create', 'UA-40610810-1', 'auto');          
         ga('send', 'pageview');
-    </script>
-    <!-- End Google Analytics -->
+    </script>-->
 
 </head>
     
@@ -89,14 +89,12 @@
             <li><a href="/bazaar/">Bazaar</a></li>
         
         </ul>
-        <!--
-        <form action="search.php" method="post" class="search">
-        
-            <input type="text" placeholder="Search">
+
+
+        <form action="/search/" method="get" class="search">
+            {{ search_form }}
             <input type="submit" value="Search">
-        
         </form>
-        -->
     
     </section>
     
@@ -126,18 +124,23 @@
     </section>
     
     <section id="content">
-    <a name="top"></a>
+
+        <section id="top-ad">
+            <!-- when there is a big ad put it here -->
+        </section>
+
+        <a name="top"></a>
 
         <header>
     
             <div class="container">
         
                 <nav>
-                    <a href="#" class="navOpen">
+                    <a href="#" class="navOpen" ng-click="setSidebarClass('sidebarOpen')">
                         <svg width="25px" height="25px" viewBox="0 0 48 48">
                             <g style="fill:#969ac9;fill-opacity:1" transform="matrix(1,0,0,0.72881356,0,6.5084746)"><rect width="48" height="7.75" style="fill:#969ac9;fill-opacity:1" x="0" y="0" /><rect y="40.25" width="48" height="7.75" style="fill:#969ac9;fill-opacity:1" x="0" /><rect y="20.125" width="48" height="7.75" style="fill:#969ac9;fill-opacity:1" x="0" /></g></svg>
                     </a>
-                    <a href="#" class="contactOpen">
+                    <a href="#" class="contactOpen"  ng-click="setSidebarClass('contactOpen')">
                         <svg width="30px" height="24px" viewBox="0 0 48 31" version="1.1" xmlns="http://www.w3.org/2000/svg">
                             <path fill="#9ba0d0" id="envelope-color" d=" M 0.00 0.00 L 48.00 0.00 L 48.00 31.00 L 0.00 31.00 L 0.00 0.00 Z" /><path class="bgfill" fill="#ffffff" d=" M 4.26 3.95 C 10.91 9.66 17.46 15.50 24.15 21.19 C 30.83 15.52 37.40 9.73 43.99 3.96 C 44.00 11.56 44.02 19.15 43.99 26.75 C 30.74 26.75 17.50 26.76 4.26 26.74 C 4.24 19.14 4.24 11.55 4.26 3.95 Z" /><path class="bgfill" fill="#ffffff" d=" M 11.03 4.02 C 19.81 3.97 28.58 4.00 37.36 4.01 C 32.94 7.80 28.58 11.63 24.19 15.45 C 19.78 11.67 15.40 7.85 11.03 4.02 Z" />
                         </svg>
@@ -150,19 +153,10 @@
             
                 <ul id="navigation">
                     <li><a href="/about/">About</a></li>
-                    <li class="bold"><a href="//magazine.totemag.com">Latest Issue</a></li>
+                    <li><a href="#">This Month</a></li>
                     <li><a href="/videos/">Video</a></li>
                     <li><a href="/bazaar/">Bazaar</a></li>
                 </ul>
-            
-                <div id="mobile">
-                    <select name="mobile">
-                        <option value="about">About</option>
-                        <option value="latest">Latest Issue</option>
-                        <option value="videos">Video</option>
-                        <option value="bazaar">Bazaar</option>
-                    </select>
-                </div>
             
             </div>
         
@@ -170,7 +164,7 @@
         <!-- End Header -->
 
         {% if messages %}
-        <div id="messages" class="modal">
+        <div id="messages">
             <ul id="site-messages">
                 {% for message in messages %}
                 <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
@@ -230,15 +224,6 @@
         
     </section>
     <!-- End Content -->
-    
-    {% compress js %}
-    <script src="{% static "js/jquery.min.js" %}"></script>
-    <script src="{% static "js/jquery-ui.min.js" %}"></script>
-    <script src="{% static "js/remodal.min.js" %}"></script>
-    {% block scriptload %}{% endblock %}
-    {% endcompress %}
-
-    <!-- JQuery -->
     
     <script>
     

@@ -63,8 +63,7 @@
                     </a>
                 </div>
             </div>
-
-
+            
             <div class="author">
                 <img src="{{ article.publisher.image_thumbnail.url }}" class="staff-image" alt="{{ article.publisher }}">
 
@@ -73,6 +72,33 @@
                 </div>
 
             </div>
+
+
+            <div id="disqus_thread"></div>
+            <script>
+            var disqus_config = function () {
+                this.page.url = '//127.0.0.1:8000{{ article.get_absolute_url }}';
+                this.page.identifier = '{{ article.slug }}';
+            };
+            
+            (function() { 
+            var d = document, s = d.createElement('script');
+
+            s.src = '//totemag.disqus.com/embed.js';
+
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+            {% load more_like_this %}
+
+            {% more_like_this article as related_content %}
+            {% for c in related_content %}
+            {{ c.author }}
+            {% endfor %}
+
         </section>
 
     </div>

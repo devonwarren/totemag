@@ -79,9 +79,9 @@ class Article(models.Model):
 
     image_thumbnail = ImageSpecField(
         source='image',
-        processors=[ResizeToFill(width=180, height=200)],
+        processors=[ResizeToFill(width=210, height=210)],
         format='JPEG',
-        options={'quality': 90})
+        options={'quality': 92})
 
     image_square_thumbnail = ImageSpecField(
         source='image',
@@ -110,6 +110,11 @@ class Article(models.Model):
     published_date = models.DateField()
 
     publisher = models.ForeignKey(Staff)
+
+    publish_after = models.DateTimeField(
+        null=True, blank=True,
+        help_text='If set will be published after this point automatically')
+
 
     def __str__(self):
         return self.title

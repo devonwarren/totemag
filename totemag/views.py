@@ -20,10 +20,14 @@ def homepage(request):
     latest_articles = Article.objects.filter(
         published=True).order_by('published_date')[4:9]
 
+    recent_articles = Article.objects.filter(
+        published=True).order_by('published_date')[10:20]
+
     t = get_template('homepage.html')
     html = t.render(RequestContext(request, {
         'featured_articles': featured_articles,
         'latest_articles': latest_articles,
+        'recent_articles': recent_articles,
     }))
     return HttpResponse(html)
 

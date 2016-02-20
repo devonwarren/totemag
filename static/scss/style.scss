@@ -19,11 +19,11 @@ $text-font: 'Georgia', serif;
  **/
 
 @font-face {
-    font-family: 'Aileron';
+    font-family: 'Aileron', serif;
     font-weight: 200;
-    src: 
-        local('Aileron Light'), 
-        local('Aileron-Light'), 
+    src:
+        local('Aileron Light'),
+        local('Aileron-Light'),
         url(../fonts/Aileron-Light.woff2) format('woff2'),
         url(../fonts/Aileron-Light.otf) format('opentype');
 }
@@ -31,7 +31,7 @@ $text-font: 'Georgia', serif;
 @font-face {
     font-family: 'Aileron';
     font-weight: 500;
-    src: 
+    src:
         local('Aileron'),
         local('Aileron'),
         url(../fonts/Aileron.woff2) format('woff2'),
@@ -211,7 +211,7 @@ header {
 }
 #sidebar {
     left: -350px;
-    
+
 
     .sidebarOpen & {
         left: 0;
@@ -378,11 +378,19 @@ h2 {
     font-weight: normal;
     font-family: $header-font;
 
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-content: flex-start;
+    }
     .column {
-        width: 235px;
+        width: 275px;
+        box-sizing: border-box;
+        flex-grow: 1;
         text-transform: uppercase;
         padding: 50px 20px;
-        margin: 0px 20px 30px 0px;
+        margin: 10px;
         display: inline-block;
         vertical-align: top;
         text-align: center;
@@ -393,7 +401,6 @@ h2 {
             max-width: 90%;
         }
         &:last-child {
-            margin: 0;
             text-transform: initial;
         }
         p:last-child {
@@ -614,7 +621,7 @@ article blockquote {
     }
     .author {
         background-color: #ECECF6;
-        padding: 1em; 
+        padding: 1em;
         margin: 1em 0;
         min-height: 80px;
     }
@@ -627,7 +634,7 @@ article blockquote {
     }
     .info {
         font-size: 12px;
-        color: #888888; 
+        color: #888888;
         font-weight: 100;
     }
     .name {
@@ -640,185 +647,31 @@ article blockquote {
 /**
  Layout elements
 **/
-
-.featured-articles {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-content: flex-start;
-    font-family: $header-font;
-
-    .article {
-        width: 180px;
-
-        div.category {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            align-content: center;
-            vertical-align: middle;
-            height: 22px;
-            position: relative;
-            margin: 0 auto;
-            text-align: center;
-            top: -16px;
-            width: 110px;
-            background-color: $primary-color;
-            color: #FFFFFF;
-            font-size: .5em;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        div.title {
-            font-weight: bold;
-            text-align: center;
-            font-size: .9em;
-
-            a {
-                color: $text-color;
-            }
-        }
-    }
-}
-
 .latest-articles {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 300px;
-    margin: 3em 0;
-
-    div.article {
-        height: 150px;
-        width: 300px;
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-
-        div.image {
-            width: 150px;
-            height: 150px;
-
-            img {
-                width: 100%;
-                height: 100%;
-            }
-
-        }
-        div.category, div.title {
-            align-content: flex-start;
-            width: 150px;
-            background-color: #F5F7F6;
-        }
-        div.category {
-            display: flex;
-            flex-shrink: 1;
-            padding: 5px;
-            width: 140px;
-            height: 24px;
-            color: #FFFFFF;
-            font-size: .74em;
-            font-weight: bold;
-            text-transform: uppercase;
-            text-align: right;
-            text-overflow: ellipsis;
-            overflow: hidden;
-
-            span {
-                background-color: $primary-color;
-                margin: 2px;
-                padding: 3px 7px;
-            }
-        }
-        div.title {
-            padding: 0 8px 8px;
-            width: 134px;
-            height: 108px;
-            font-weight: bold;
-            letter-spacing: 0;
-            text-transform: uppercase;
-
-            a:hover {
-                text-decoration: underline;
-            }
-        }
-        &:not(:last-child) {
-            div.image::before {
-                position: absolute;
-                content: '';
-                background-image: url(../images/icons/box_arrow_right.svg);
-                background-size: 12px 34px;
-                background-repeat: no-repeat;
-                background-position: center left;
-                width: 150px;
-                height: 150px;
-                pointer-events: none;
-            }
-        }
-        &:nth-child(1), &:nth-child(3) {
-            text-align: right;
-            
-            div.image {
-                order: 1;
-            }
-            div.category {
-                flex-direction: row-reverse;
-            }
-        }
-        &:nth-child(2), &:nth-child(4) {
-            div.image::before {
-                background-position: center right;
-                background-image: url(../images/icons/box_arrow_left.svg);
-            }
-        }
-    }
-    div.article:nth-child(5) {
-        height: 300px;
-        width: 300px;
-
-        div.image {
-            width: 300px;
-            height: 200px;
-        }
-        div.category, div.title {
-            position: relative;
-            top: -17px;
-            text-align: center;
-            justify-content: center;
-            width: 290px;
-            background-color: transparent;
-        }
-        div.title {
-            height: auto;
-
-            a {
-                color: $text-color;
-            }
-        }
-    }
+  div.article div.image img.fullsize {
+    display: none;
+  }
 }
 
-.recent-articles {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.recent-articles,
+.articles-list {
 
     div.article {
         width: 100%;
-        height: 200px;
+        height: 210px;
         margin: 1em 0;
-        display: flex;
         flex-wrap: wrap;
-        flex-direction: column;
 
         div.image {
-            width: 200px;
-            height: 200px;
+            width: 240px;
+            height: 210px;
+            float: left;
+            margin-left: 10px;
         }
         div.category {
             padding: 10px 0;
+            margin: 2px 0 0 240px;
             height: 24px;
-            width: 100%;
             color: #FFFFFF;
             font-weight: bold;
             text-transform: uppercase;
@@ -830,15 +683,27 @@ article blockquote {
         }
         div.title {
             font-size: 1.2em;
+            margin-left: 240px;
 
             a {
                 color: $text-color;
                 font-weight: bold;
             }
         }
+        div.description {
+          padding: .8em 0 0;
+        }
     }
 }
 
+.search-form {
+  text-align: center;
+  margin: 1em 0 2em;
+
+  input[type="search"] {
+    width: 40%;
+  }
+}
 
 #contactsPage .text a {
     font-weight: bold;
@@ -898,3 +763,61 @@ article blockquote {
 }
 
 
+/**
+ Media queries
+**/
+@media (min-width: 900px) {
+
+  @import 'tablet';
+
+}
+
+@media (min-width: 1200px) {
+
+  @import 'desktop';
+
+}
+
+@media (max-width: 560px) {
+
+  .articles-list div.article {
+    height: 192px;
+
+    div.image {
+      width: 180px;
+      height: 180px;
+
+      img {
+        width: 170px;
+      }
+    }
+    div.title, div.category {
+      margin-left: 190px;
+    }
+    div.category {
+      font-size: .8em;
+      padding: 8px 0 0;
+    }
+    div.title {
+      font-size: 1em;
+      line-height: 1em;
+    }
+    div.description {
+      font-size: .8em;
+    }
+  }
+
+}
+
+/**
+ Import library css
+ **/
+@import '../css/jquery-ui.min';
+
+@import '../css/jquery-ui.structure.min';
+
+@import '../css/jquery-ui.theme.min';
+
+@import '../css/remodal';
+
+@import '../css/remodal-default-theme';

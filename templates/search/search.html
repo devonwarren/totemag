@@ -5,19 +5,38 @@
         <h2>Search</h2>
 
         <form action="/search/" method="get" class="search">
-            {{ search_form }}
-            <input type="submit" value="Search">
+            <div class="search-form">
+              <input type="search" name="q" value="{{ query }}">
+              <input type="submit" value="Search">
+            </div>
 
             {% if query %}
-                <h3>Results</h3>
 
+                <div class="articles-list">
                 {% for result in page.object_list %}
-                    <p>
-                        <a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a>
-                    </p>
+                  <div class="article">
+
+                      <div class="image">
+                          <a href="{{ result.object.get_absolute_url }}"><img src="{{ result.object.image_thumbnail.url }}"></a>
+                      </div>
+
+                      <div class="category">
+                          <span>{{ result.object.category.name }}</span>
+                      </div>
+
+                      <div class="title">
+                          <a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a>
+                      </div>
+
+                      <div class="description">
+                        {{ result.object.body|safe|striptags|truncatewords:20 }}
+                      </div>
+
+                  </div>
                 {% empty %}
                     <p>No results found.</p>
                 {% endfor %}
+                </div>
 
                 {% if page.has_previous or page.has_next %}
                     <div>

@@ -4,7 +4,7 @@
 
 {% load staticfiles %}
 
-<div class="container">
+<div class="container articles-list">
 
 <section class="featured-articles">
 
@@ -12,12 +12,17 @@
     <div class="article">
         <div class="image">
             <a href="{{ article.get_absolute_url }}"><img src="{{ article.image_thumbnail.url }}"></a>
-            <div class="category">
-                <span>{{ article.category.name }}</span>
-            </div>
+        </div>
+
+        <div class="category">
+            <span>{{ article.category.name }}</span>
         </div>
 
         <div class="title"><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></div>
+
+        <div class="description">
+          {{ article.body|safe|striptags|truncatewords:20 }}
+        </div>
     </div>
 {% endfor %}
 
@@ -29,7 +34,10 @@
     <div class="article">
 
         <div class="image">
-            <a href="{{ article.get_absolute_url }}"><img src="{{ article.image_thumbnail.url }}"></a>
+            <a href="{{ article.get_absolute_url }}">
+              <img src="{{ article.image_thumbnail.url }}">
+              <img class="fullsize" src="{{ article.image_web.url }}">
+            </a>
         </div>
 
         <div class="category">
@@ -40,6 +48,10 @@
             <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
         </div>
 
+        <div class="description">
+          {{ article.body|safe|striptags|truncatewords:20 }}
+        </div>
+
     </div>
 {% endfor %}
 
@@ -48,7 +60,7 @@
 
 <section class="recent-articles">
 
-{% for article in latest_articles %}
+{% for article in recent_articles %}
     <div class="article">
 
         <div class="image">
@@ -63,9 +75,13 @@
             <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
         </div>
 
+        <div class="description">
+          {{ article.body|safe|striptags|truncatewords:20 }}
+        </div>
+
     </div>
 {% endfor %}
-    
+
 
 </section>
 
@@ -96,7 +112,7 @@
   </p>
   <p class="subtext">
       Want to go on a break? We'll understand.<br>
-      Unsubscibe whenever you like- see our <a href="/terms">Privacy Policy</a> for more information. 
+      Unsubscibe whenever you like- see our <a href="/terms">Privacy Policy</a> for more information.
   </p>
 </div>
 
@@ -168,5 +184,3 @@
     }
 </script>
 {% endblock %}
-
-

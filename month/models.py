@@ -32,13 +32,9 @@ class Theme(models.Model):
         upload_to='themes',
         help_text='Image of the header background')
 
-    month = models.IntegerField(
-        max_length=2,
-        choices=MONTHS)
+    month = models.IntegerField(choices=MONTHS)
 
-    year = models.IntegerField(
-        max_length=4,
-        choices=year_choices())
+    year = models.IntegerField(choices=year_choices())
 
     def name(self):
         return str(MONTHS[self.month - 1][1]) + ' ' + str(self.title)

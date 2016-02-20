@@ -9,3 +9,4 @@ __pycache__/
 config.rb
 static_final/
 media/*
+whoosh_index/

@@ -23,6 +23,7 @@ from totemag.views import homepage, about, videos, \
 from articles.views import article, article_html, \
     list_articles, api_article_list
 from bazaar.views import bazaar
+from staff.views import staff_view
 
 from django.contrib import admin
 admin.autodiscover()
@@ -40,6 +41,7 @@ urlpatterns = [
     url(r'^bazaar/$', bazaar, name='bazaar'),
     url(r'^subscribe/$', subscribe, name='subscribe'),
     url(r'^article/(?P<slug>.+?)/$', article),
+    url(r'^staff/(?P<slug>.+?)/$', staff_view),
     url(r'^list/(?P<slug>.+?)/$', list_articles),
     url(r'^search/', include('haystack.urls')),
     url(r'^api/article_list/(?P<category>.+?)/(?P<page>[0-9]+)/$',

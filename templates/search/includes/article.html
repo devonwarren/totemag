@@ -1,0 +1,16 @@
+
+  <div class="image">
+      <a href="{{ result.object.get_absolute_url }}"><img src="{{ result.object.image_thumbnail.url }}"></a>
+  </div>
+
+  <div class="category">
+      <span>{{ result.object.category.name }}</span>
+  </div>
+
+  <div class="title">
+      <a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a>
+  </div>
+
+  <div class="description">
+    {{ result.object.body|safe|striptags|truncatewords:20 }}
+  </div>

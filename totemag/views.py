@@ -7,9 +7,6 @@ from django.core.mail import send_mail
 from django.conf import settings
 from staff.models import Staff
 from articles.models import Article
-from haystack.generic_views import SearchView
-from haystack.query import SearchQuerySet
-from totemag.forms import BasicSearchForm
 import mailchimp
 
 
@@ -39,12 +36,6 @@ def about(request):
         'staff': staff,
     }))
     return HttpResponse(html)
-
-
-class BasicSearchView(SearchView):
-    template_name = 'search.html'
-    queryset = SearchQuerySet().all()
-    form_class = BasicSearchForm
 
 
 def videos(request):

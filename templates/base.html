@@ -27,6 +27,7 @@
     <script src="{% static "js/jquery.min.js" %}"></script>
     <script src="{% static "js/jquery-ui.min.js" %}"></script>
     <script src="{% static "js/remodal.min.js" %}"></script>
+    <script src="{% static "js/main.js" %}"></script>
     {% block scriptload %}{% endblock %}
 
 
@@ -223,41 +224,6 @@
             $('#messages').remodal().open();
         });
     {% endif %}
-
-     $( "#subscription" ).dialog({
-       autoOpen: true,
-       show: {
-         effect: "blind",
-         duration: 1000
-       },
-       hide: {
-         effect: "fade",
-         duration: 1000
-       }
-     });
-
-     $( "#subscribe" ).click(function() {
-        $( "#subscription" ).dialog( "open" );
-     });
-
-     $(".navOpen").click(function() {
-       $("body").removeClass("contactOpen");
-       $("body").toggleClass("sidebarOpen");
-     });
-
-     $(".contactOpen").click(function() {
-       $("body").removeClass("sidebarOpen");
-       $("body").toggleClass("contactOpen");
-     });
-
-     function toggleSub(t) {
-        $(t).parent().toggleClass("open");
-     }
-     $('#goto_bazaar').on('change', function() {
-        if (this.value != '') {
-            location.href = "#shop-" + this.value;
-        }
-     });
 
     </script>
 

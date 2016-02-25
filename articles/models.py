@@ -5,10 +5,8 @@ from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill, ResizeToFit
 from autoslug import AutoSlugField
 from staff.models import Staff
-from django.utils.encoding import python_2_unicode_compatible
 
 
-@python_2_unicode_compatible
 class Category(models.Model):
     name = models.CharField(max_length=100)
 
@@ -37,7 +35,6 @@ class Category(models.Model):
         verbose_name_plural = "categories"
 
 
-@python_2_unicode_compatible
 class SlideshowImage(models.Model):
     article = models.ForeignKey('Article')
 
@@ -55,7 +52,6 @@ class SlideshowImage(models.Model):
         return self.description
 
 
-@python_2_unicode_compatible
 class Article(models.Model):
     title = models.CharField(max_length=200)
 
@@ -91,7 +87,7 @@ class Article(models.Model):
 
     image_web = ImageSpecField(
         source='image',
-        processors=[ResizeToFit(width=900)],
+        processors=[ResizeToFit(width=800)],
         format='JPEG',
         options={'quality': 90})
 
@@ -114,7 +110,6 @@ class Article(models.Model):
     publish_after = models.DateTimeField(
         null=True, blank=True,
         help_text='If set will be published after this point automatically')
-
 
     def __str__(self):
         return self.title

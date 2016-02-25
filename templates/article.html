@@ -2,103 +2,124 @@
 
     <div class="container">
 
-        <center><div class="category-tag">{{ article.category.name }}</div></center>
-
-        <h2>{{ article.title }}</h2>
-
-        <section class="sub-header">
-            <author>TEXT: {{ article.publisher }}</author>
-            {% if article.is_slideshow and article.image_attribution %}
-            <author>PHOTOS: {{ article.image_attribution }}</author>
-            {% endif %}
-            <time>{{ article.published_date|date:"F j, Y" }}</time>
-        </section>
-
-        {% if not article.is_slideshow %}
-        <section class="main-image{% if article.is_tall_image %} tall{% endif %}">
-            <img src="{{ article.image_web.url }}">
-            {% if article.image_attribution %}
-                <br>PHOTOS: {{ article.image_attribution }}
-            {% endif %}
-        </section>
+        {% if header_ad %}
+        <div class="header-ad">
+            <a href="{{ header_ad.url }}" target="_blank"><img src="{{ header_ad.image_web.url }}" title="{{ header_ad.caption }}"></a>
+        </div>
         {% endif %}
-
-        <article>
-            {{ article.body|safe }}
-        </article>
-
-        {% if article.is_slideshow %}
-        <section class="slideshow">
-            {% for img in slideshow %}
-            <div class="image">
-                <img src="{{ img.image_web.url }}" alt="{{ img.description|striptags }}"><br>
-                {{ forloop.counter }}/{{ slideshow|length }} - {{ img.description|safe }}
-            </div>
-            {% endfor %}
-        </section>
-        {% endif %}
-
-        <section class="article-footer">
-
-            <div class="share">
-                <div class="label">SHARE:</div> 
-                <div class="icon">
-                    <a target="_blank" href="http://twitter.com/home?status={{ article.title|urlencode }}+http://www.totemag.com/article/{{ article.slug|urlencode }}+@tote_mag">
-                        <img src="{% static "images/icons/social_twitter_dark.png" %}" alt="Twitter">
-                    </a>
-                </div>
-                <div class="icon">
-                    <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://www.totemag.com/article/{{ article.slug|urlencode }}&title={{ article.title|urlencode }}">
-                        <img src="{% static "images/icons/social_facebook_dark.png" %}" alt="Facebook"> 
-                    </a>
-                </div>
-                <div class="icon">
-                    <a target="_blank" href="http://pinterest.com/pin/create/button/?url=http://www.totemag.com/article/{{ article.slug|urlencode }}&is_video=false&description={{ article.title|urlencode }}">
-                        <img src="{% static "images/icons/social_pinterest_dark.png" %}" alt="Pinterest"> 
-                    </a>
-                </div>
-                <div class="icon">
-                    <a target="_blank" href="http://www.tumblr.com/share?v=3&u=http://www.totemag.com/article/{{ article.slug|urlencode }}&t={{ article.title|urlencode }}">
-                        <img src="{% static "images/icons/social_tumblr_dark.png" %}" alt="Tumblr"> 
-                    </a>
-                </div>
-            </div>
-            
-            <div class="author">
-                <img src="{{ article.publisher.image_thumbnail.url }}" class="staff-image" alt="{{ article.publisher }}">
-
-                <div class="info">
-                    <span class="name">{{ article.publisher }}</span> {{ article.publisher.info_text|safe }}
-                </div>
-
-            </div>
-
-
-            <div id="disqus_thread"></div>
-            <script>
-            var disqus_config = function () {
-                this.page.url = '//127.0.0.1:8000{{ article.get_absolute_url }}';
-                this.page.identifier = '{{ article.slug }}';
-            };
-            
-            (function() { 
-            var d = document, s = d.createElement('script');
-
-            s.src = '//totemag.disqus.com/embed.js';
-
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-            })();
-            </script>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
-            {% load more_like_this %}
-
-            {% more_like_this article as related_content %}
-            {% for c in related_content %}
-            {{ c.author }}
-            {% endfor %}
-
-        </section>
 
     </div>
+    <div class="container article-flex">
+
+        <div class="article-container">
+
+            <center><div class="category-tag">{{ article.category.name }}</div></center>
+
+            <h2>{{ article.title }}</h2>
+
+            <section class="sub-header">
+                <author>TEXT: {{ article.publisher }}</author>
+                {% if article.is_slideshow and article.image_attribution %}
+                <author>PHOTOS: {{ article.image_attribution }}</author>
+                {% endif %}
+                <time>{{ article.published_date|date:"F j, Y" }}</time>
+            </section>
+
+            {% if not article.is_slideshow %}
+            <section class="main-image{% if article.is_tall_image %} tall{% endif %}">
+                <img src="{{ article.image_web.url }}">
+                {% if article.image_attribution %}
+                    <br>PHOTOS: {{ article.image_attribution }}
+                {% endif %}
+            </section>
+            {% endif %}
+
+            <article>
+                {{ article.body|safe }}
+            </article>
+
+            {% if article.is_slideshow %}
+            <section class="slideshow">
+                {% for img in slideshow %}
+                <div class="image">
+                    <img src="{{ img.image_web.url }}" alt="{{ img.description|striptags }}"><br>
+                    {{ forloop.counter }}/{{ slideshow|length }} - {{ img.description|safe }}
+                </div>
+                {% endfor %}
+            </section>
+            {% endif %}
+
+            <section class="article-footer">
+
+                <div class="share">
+                    <div class="label">SHARE:</div>
+                    <div class="icon">
+                        <a target="_blank" href="http://twitter.com/home?status={{ article.title|urlencode }}+http://www.totemag.com/article/{{ article.slug|urlencode }}+@tote_mag">
+                            <img src="{% static "images/icons/social_twitter_dark.png" %}" alt="Twitter">
+                        </a>
+                    </div>
+                    <div class="icon">
+                        <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://www.totemag.com/article/{{ article.slug|urlencode }}&title={{ article.title|urlencode }}">
+                            <img src="{% static "images/icons/social_facebook_dark.png" %}" alt="Facebook">
+                        </a>
+                    </div>
+                    <div class="icon">
+                        <a target="_blank" href="http://pinterest.com/pin/create/button/?url=http://www.totemag.com/article/{{ article.slug|urlencode }}&is_video=false&description={{ article.title|urlencode }}">
+                            <img src="{% static "images/icons/social_pinterest_dark.png" %}" alt="Pinterest">
+                        </a>
+                    </div>
+                    <div class="icon">
+                        <a target="_blank" href="http://www.tumblr.com/share?v=3&u=http://www.totemag.com/article/{{ article.slug|urlencode }}&t={{ article.title|urlencode }}">
+                            <img src="{% static "images/icons/social_tumblr_dark.png" %}" alt="Tumblr">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="author">
+                    <img src="{{ article.publisher.image_thumbnail.url }}" class="staff-image" alt="{{ article.publisher }}">
+
+                    <div class="info">
+                        <span class="name">{{ article.publisher }}</span> {{ article.publisher.info_text|safe }}
+                    </div>
+
+                </div>
+
+
+                <div id="disqus_thread"></div>
+                <script>
+                var disqus_config = function () {
+                    this.page.url = '//127.0.0.1:8000{{ article.get_absolute_url }}';
+                    this.page.identifier = '{{ article.slug }}';
+                };
+
+                (function() {
+                var d = document, s = d.createElement('script');
+
+                s.src = '//totemag.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+            </section>
+
+        </div>
+
+        <div id="side-ad">
+            {% if side_ad %}
+                <a href="{{ side_ad.url }}"><img src="{{ side_ad.image_web.url }}" title="{{ side_ad.caption }}"></a>
+            {% endif %}
+        </div>
+
+    </div>
+
+                {% load more_like_this %}
+
+                {% more_like_this article as related_content %}
+                {% for c in related_content %}
+                {{ c.author }}
+                {% endfor %}
+
+

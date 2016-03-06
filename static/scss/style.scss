@@ -290,7 +290,11 @@ header {
 .sidebarOpen a.navOpen rect {
     fill: white !important;
 }
-
+#top-ad {
+    img {
+        width: 100%;
+    }
+}
 #contact {
     right: -350px;
 
@@ -549,6 +553,7 @@ h2 {
         flex: 7;
     }
     #side-ad {
+        transition: margin 200ms;
         margin-left: 1em;
         flex: 3;
         text-align: right;

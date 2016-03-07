@@ -77,7 +77,7 @@ class Article(models.Model):
         source='image',
         processors=[ResizeToFill(width=210, height=210)],
         format='JPEG',
-        options={'quality': 92})
+        options={'quality': 90})
 
     image_square_thumbnail = ImageSpecField(
         source='image',

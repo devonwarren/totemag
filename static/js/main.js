@@ -1,19 +1,24 @@
 
 $(document).ready(function() {
 
-    var $sdiv = $("#side-ad");
-    var top = $("#side-ad").position().top;
-    var height = $('#side-ad').height();
+    
+    if ($("#side-ad").length) {
+        var $sdiv = $("#side-ad");
+        var top = $("#side-ad").position().top;
+        var height = $('#side-ad').height();
 
-    if ($(window).width() < 600) {
-        $sdiv.hide();
-    } else {
-        $(window).scroll(function() {
-            if ($(window).scrollTop() > top && $(window).scrollTop() < top + height) {
-                $sdiv.css('margin-top', $(window).scrollTop() - top + "px");
-            }
-        });
+        if ($(window).width() < 600) {
+            $sdiv.hide();
+        } else {
+            $(window).scroll(function() {
+                if ($(window).scrollTop() > top && $(window).scrollTop() < top + height) {
+                    $sdiv.css('margin-top', $(window).scrollTop() - top + "px");
+                }
+            });
+        }
+
     }
+   
 
     $( "#subscription" ).dialog({
         autoOpen: true,

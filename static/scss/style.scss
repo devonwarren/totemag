@@ -416,6 +416,34 @@ h2 {
     }
     .social {
         margin: 40px 0;
+
+        a {
+            width: 25px;
+            height: 25px;
+            display: inline-block;
+            background-repeat: no-repeat;
+            background-image: url(../images/icons/social_white.png);
+
+            &.twitter {
+                background-position: (-25px * 4) 0;
+            }
+            &.facebook {
+                background-position: (-25px * 0) 0;
+            }
+            &.instagram {
+                background-position: (-25px * 1) 0;
+            }
+            &.pinterest {
+                background-position: (-25px * 2) 0;
+            }
+            &.youtube {
+                background-position: (-25px * 5) 0;
+            }
+            &.tumblr {
+                background-position: (-25px * 3) 0;
+            }
+        }
+        
     }
     p {
         margin: 25px 0;
@@ -854,3 +882,7 @@ article blockquote {
 @import '../css/remodal';
 
 @import '../css/remodal-default-theme';
+
+@import '../css/slick';
+
+@import '../css/slick-theme';

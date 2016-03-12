@@ -20,20 +20,10 @@ $(document).ready(function() {
     }
    
 
-    $( "#subscription" ).dialog({
-        autoOpen: true,
-        show: {
-            effect: "blind",
-            duration: 1000
-        },
-        hide: {
-            effect: "fade",
-            duration: 1000
-        }
-    });
+    $( "#subscription" ).remodal();
 
      $( "#subscribe" ).click(function() {
-        $( "#subscription" ).dialog( "open" );
+        $( "#subscription" ).remodal();
      });
 
      $(".navOpen").click(function() {

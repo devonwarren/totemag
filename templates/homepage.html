@@ -119,7 +119,6 @@
 {% endblock %}
 
 {% block scriptload %}
-<script type="text/javascript" src="{% static "js/slick.min.js" %}"></script>
 <script type="text/javascript">
     {% if not messages and not shown_subscribe %}
     $(document).ready(function() {
@@ -164,16 +163,6 @@
                 article.thumbnail_url + '"></a><a href="' + article.url +
                 '" title="' + article.title +
                 '" class="itemExcerpt">' + article.title + '</a></div>')
-        });
-    }
-
-     function startSlideshows() {
-        $('.slideshow').slick({
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1
         });
     }
 </script>

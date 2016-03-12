@@ -1,7 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="48pt" height="31pt" viewBox="0 0 48 31" version="1.1" xmlns="http://www.w3.org/2000/svg">
-<path fill="#9ba0d0" d=" M 0.00 0.00 L 48.00 0.00 L 48.00 31.00 L 0.00 31.00 L 0.00 0.00 Z" />
-<path fill="#ffffff" d=" M 4.26 3.95 C 10.91 9.66 17.46 15.50 24.15 21.19 C 30.83 15.52 37.40 9.73 43.99 3.96 C 44.00 11.56 44.02 19.15 43.99 26.75 C 30.74 26.75 17.50 26.76 4.26 26.74 C 4.24 19.14 4.24 11.55 4.26 3.95 Z" />
-<path fill="#ffffff" d=" M 11.03 4.02 C 19.81 3.97 28.58 4.00 37.36 4.01 C 32.94 7.80 28.58 11.63 24.19 15.45 C 19.78 11.67 15.40 7.85 11.03 4.02 Z" />
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 612 792" xml:space="preserve" height="31.9" viewBox="0 0 50 31.9" width="50" version="1.1" y="0" x="0"><path fill-opacity="0" d="m0 0v31.9h50v-31.9zM8 3.9l17 15.2 17-15.2M8 3.9l17 15.2 17-15.2M8 3.9l17 15.2 17-15.2"/><path d="m8 3.9 17 15.2 17-15.2zm-8-3.9v31.9h50v-31.9zm4 6v22h42v-22l-21 18.8z" fill-rule="evenodd" fill="#231f20"/></svg>

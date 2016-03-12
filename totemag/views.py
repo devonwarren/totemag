@@ -50,14 +50,17 @@ def contact(request):
         to_email = 'comments@totemag.com'
         reason = request.POST.get('reason')
 
-        if reason == 'join':
-            to_email = 'contribute@totemag.com'
-        elif reason == 'intern':
-            to_email = 'intern@totemag.com'
-        elif reason == 'feature':
-            to_email = 'feature@totemag.com'
-        elif reason == 'support':
-            to_email = 'support@totemag.com'
+        if settings.TEST_EMAIL:
+            to_email = settings.TEST_EMAIL
+        else:
+            if reason == 'join':
+                to_email = 'contribute@totemag.com'
+            elif reason == 'intern':
+                to_email = 'intern@totemag.com'
+            elif reason == 'feature':
+                to_email = 'feature@totemag.com'
+            elif reason == 'support':
+                to_email = 'support@totemag.com'
 
         send_mail(
             'Message from ' + request.POST.get('name'),

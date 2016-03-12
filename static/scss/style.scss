@@ -10,43 +10,15 @@ $heading-color: #B3B4B8;
 $text-color: #848388;
 $dark-text-color: #141414;
 
-$header-font: 'Aileron', sans-serif;
-$text-font: 'Georgia', serif;
-
 
 /**
  Fonts
  **/
+@import url(https://fonts.googleapis.com/css?family=EB+Garamond);
 
-@font-face {
-    font-family: 'Aileron', serif;
-    font-weight: 200;
-    src:
-        local('Aileron Light'),
-        local('Aileron-Light'),
-        url(../fonts/Aileron-Light.woff2) format('woff2'),
-        url(../fonts/Aileron-Light.otf) format('opentype');
-}
+$header-font: 'EB Garamond', serif;
+$text-font: 'Arial', sans-serif;
 
-@font-face {
-    font-family: 'Aileron';
-    font-weight: 500;
-    src:
-        local('Aileron'),
-        local('Aileron'),
-        url(../fonts/Aileron.woff2) format('woff2'),
-        url(../fonts/Aileron.otf) format('opentype');
-}
-
-@font-face {
-    font-family: 'Aileron';
-    font-weight: 900;
-    src:
-        local('Aileron Bold'),
-        local('Aileron-Bold'),
-        url(../fonts/Aileron-Bold.woff2) format('woff2'),
-        url(../fonts/Aileron-Bold.otf) format('opentype');
-}
 
 
 /**
@@ -63,7 +35,7 @@ body {
     font-size: 1rem;
     letter-spacing: 1px;
     font-weight: 200;
-    font-family: $header-font;
+    font-family: $text-font;
 }
 
 a {
@@ -138,7 +110,7 @@ header {
         position: fixed;
         top: 0;
         width: 100%;
-        height: 5rem;
+        height: 4rem;
         z-index: 2;
         background-color: #FFF;
         border-bottom: solid 2px #848388;
@@ -159,13 +131,13 @@ header {
 
         a.icon {
             position: fixed;
-            top: 20px;
+            top: 18px;
             height: 24px;
 
             img {
                 display: block;
-                width: 32px;
-                height: 32px;
+                width: 28px;
+                height: 28px;
             }
         }
         .navOpen {
@@ -188,15 +160,15 @@ header {
     z-index: 1;
     position: fixed;
     transition: left 1s, right 1s;
-    background-color: #A699D2;
+    background-color: #FFF;
     position: fixed;
     width: 250px;
-    color: #ffffff;
+    color: #000;
     padding: 100px 50px;
     top: 0;
     height: 100%;
     font-weight: 900;
-    font-family: $header-font;
+    font-family: $text-font;
 }
 #sidebar {
     left: -350px;
@@ -211,8 +183,8 @@ header {
         width: 100px;
         color: #FFFFFF;
         height: 1px;
-        border-color: #FFFFFF;
-        background: #FFFFFF;
+        border-color: #000;
+        background: #000;
     }
     ul {
         list-style: none;
@@ -236,9 +208,12 @@ header {
                 height: auto;
             }
             a {
-                color: #FFFFFF;
+                color: #000;
                 text-transform: uppercase;
                 font-size: 13px;
+            }
+            a:hover {
+                color: $primary-color;
             }
         }
     }
@@ -364,12 +339,12 @@ h2 {
 #footer {
     width: 100%;
     padding: 50px 0;
-    background-color: #A699D2;
+    background-color: #000;
     color: #FFFFFF;
     letter-spacing: 1px;
     margin-top: 40px;
     font-weight: normal;
-    font-family: $header-font;
+    font-family: $text-font;
 
     .container {
       display: flex;
@@ -496,7 +471,7 @@ h2 {
 #subscribe-popup {
     background-color: black;
     color: white;
-    font-family: $header-font;
+    font-family: $text-font;
 
     a, .remodal-close {
         color: white;
@@ -588,14 +563,14 @@ blockquote {
         padding-top: .8em;
         display: block;
         color: $primary-color;
-        font-family: 'Aileron', tahoma;
+        font-family: $text-font;
     }
 }
 
 article blockquote {
     float: left;
     width: 200px;
-    font-family: 'Aileron', tahoma;
+    font-family: $header-font;
     line-height: 1.4rem;
 }
 
@@ -639,7 +614,7 @@ article blockquote {
     font-size: .7em;
     display: inline-block;
     font-weight: bold;
-    font-family: $header-font;
+    font-family: $text-font;
 }
 .slideshow .image img {
     max-width: 100%;
@@ -859,11 +834,6 @@ article blockquote {
 /**
  Import library css
  **/
-@import '../css/jquery-ui.min';
-
-@import '../css/jquery-ui.structure.min';
-
-@import '../css/jquery-ui.theme.min';
 
 @import '../css/remodal';
 

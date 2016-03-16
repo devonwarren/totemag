@@ -110,44 +110,34 @@ header {
         position: fixed;
         top: 0;
         width: 100%;
-        height: 4rem;
+        height: 3rem;
         z-index: 2;
         background-color: #FFF;
-        border-bottom: solid 2px #848388;
+        border-bottom: solid 2px #DDD;
 
         div.center {
             height: 100%;
             display: flex;
+            display: -ms-flexbox;
+            display: -webkit-flex;
             margin: 0 64px;
             flex-wrap: wrap;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             flex-grow: 1;
 
             a {
-                margin: 0 .4em;
+                font-size: .7rem;
+                font-weight: bold;
+                margin: 0 0.8em;
+                color: gray;
+                text-transform: uppercase;
             }
-        }
-
-        a.icon {
-            position: fixed;
-            top: 18px;
-            height: 24px;
-
-            img {
-                display: block;
-                width: 28px;
-                height: 28px;
-            }
-        }
-        .navOpen {
-            left: 20px;
-        }
-        .contactOpen {
-            right: 20px;
         }
         #logo {
             display: flex;
+            display: -ms-flexbox;
+            display: -webkit-flex;
 
             img {
                 width: 100px;
@@ -156,27 +146,59 @@ header {
     }
 }
 
-#sidebar, #contact {
-    z-index: 1;
+a#navOpen {
+    padding: 10px;
     position: fixed;
-    transition: left 1s, right 1s;
-    background-color: #FFF;
+    z-index: 10;
+    top: 7px;
+    left: 10px;
+
+    img {
+        display: block;
+        width: 20px;
+        height: 16px;
+    }
+}
+
+div#shadow {
     position: fixed;
-    width: 250px;
-    color: #000;
-    padding: 100px 50px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 4;
     top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0,0,0,0.5);
+    transition: all 1s;
+
+    body.sidebarOpen & {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+sidebar {
+    position: fixed;
+    left: -350px;
+    top: 0;
+    z-index: 5;
+    transition: left 1s;
+    background-color: #FFF;
+    box-sizing: border-box;
+    width: 300px;
+    height: 100%;
+    color: #000;
+    padding: 60px 50px;
     font-weight: 900;
     font-family: $text-font;
-}
-#sidebar {
-    left: -350px;
-
 
     .sidebarOpen & {
         left: 0;
         transition: left 1s;
+        overflow-y: auto;
     }
     hr {
         margin: 40px 0 40px 40px;
@@ -219,9 +241,9 @@ header {
     }
     input[type=search] {
         background-color: #FFFFFF;
-        border: 2px solid #FFFFFF;
-        padding: 10px 0;
-        text-indent: 10px;
+        border: 2px solid #BBB;
+        padding: 6px 0;
+        text-indent: 5px;
         text-transform: uppercase;
         letter-spacing: 0px;
         width: 100%;
@@ -235,7 +257,7 @@ header {
             height: 20px;
             width: 20px;
             position: absolute;
-            top: 9px;
+            top: 6px;
             right: 5px;
             background: transparent;
             border: 0;
@@ -244,12 +266,6 @@ header {
             cursor: pointer;
         }
     }
-}
-.sidebarOpen #content {
-    margin-left: 350px;
-}
-.sidebarOpen a.navOpen rect {
-    fill: white !important;
 }
 #top-ad {
     img {
@@ -264,12 +280,6 @@ header {
     }
     h2 {
         text-align: center;
-    }
-    a.contactOpen #envelope-color {
-        fill: white !important;
-    }
-    a.contactOpen .bgfill {
-        fill: #9BA0D0 !important;
     }
     form input, form select, form textarea {
         background-color: transparent;
@@ -294,22 +304,6 @@ header {
         margin: 0 auto;
         display: block;
     }
-    .contactOpen {
-        #content {
-            margin-left: -350px;
-        }
-        a.contactOpen {
-            #envelope-color {
-                fill: white !important;
-            }
-            .bgfill {
-                fill: #9ba0d0 !important;
-            }
-        }
-    }
-}
-.contactOpen #content {
-    margin-left: -350px;
 }
 #content {
     transition: width 1s, margin 1s;
@@ -347,10 +341,12 @@ h2 {
     font-family: $text-font;
 
     .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      align-content: flex-start;
+        display: flex;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: flex-start;
     }
     .column {
         width: 275px;
@@ -469,7 +465,7 @@ h2 {
     margin: .2em;
 }
 #subscribe-popup {
-    background-color: black;
+    background-color: #111;
     color: white;
     font-family: $text-font;
 
@@ -537,6 +533,8 @@ h2 {
     flex-wrap: wrap;
     flex-basis: 10%;
     display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
 
     .article-container {
         flex: 7;
@@ -691,7 +689,7 @@ article blockquote {
             }
         }
         div.category {
-            padding: 10px 0;
+            padding: 2px 0;
             margin: 2px 0 0 240px;
             height: 24px;
             color: #FFFFFF;
@@ -699,8 +697,9 @@ article blockquote {
             text-transform: uppercase;
 
             span {
-                background-color: $primary-color;
-                padding: 3px 7px;
+                color: $primary-color;
+                background-color: white;
+                font-size: 0.7rem;
             }
         }
         div.title {

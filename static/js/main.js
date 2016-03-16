@@ -26,19 +26,14 @@ $(document).ready(function() {
         $( "#subscription" ).remodal();
      });
 
-     $(".navOpen").click(function() {
-       $("body").removeClass("contactOpen");
+     $("#navOpen").click(function() {
        $("body").toggleClass("sidebarOpen");
      });
 
-     $(".contactOpen").click(function() {
+     $("#shadow").click(function() {
        $("body").removeClass("sidebarOpen");
-       $("body").toggleClass("contactOpen");
      });
-
-     function toggleSub(t) {
-        $(t).parent().toggleClass("open");
-     }
+    
      $('#goto_bazaar').on('change', function() {
         if (this.value != '') {
             location.href = "#shop-" + this.value;
@@ -47,3 +42,8 @@ $(document).ready(function() {
 
 
 });
+
+
+function toggleSub(t) {
+    $(t).parent().toggleClass("open");
+}

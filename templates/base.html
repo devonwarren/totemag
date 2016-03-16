@@ -28,8 +28,7 @@
     <script src="{% static "js/main.js" %}"></script>
     {% block scriptload %}{% endblock %}
 
-
-    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}"/>
+    <link rel="shortcut icon" href="{% static "images/favicon.ico" %}">
 
     <!-- Google Analytics
     <script>
@@ -45,12 +44,13 @@
 
 <body id="{% block bodyid %}{% endblock %}">
 
-    <section id="sidebar">
+
+    <sidebar id="main">
 
         <ul>
             <li><a href="/list/fashion/">Fashion</a></li>
             <li><a href="/list/beauty/">Beauty</a></li>
-            <li><a href="#" onclick="toggleSub(this)">Lifestyle</a>
+            <li><a onclick="javascript:toggleSub(this);">Lifestyle</a>
                 <ul class="sub">
                     <li><a href="/list/high-school/">High School</a></li>
                     <li><a href="/list/college/">College</a></li>
@@ -69,12 +69,12 @@
 
         <ul class="last">
 
-            <li><a href="#" onclick="toggleSub(this)">Magazine</a>
+            <li><a onclick="toggleSub(this)">Magazine</a>
                 <ul class="sub">
                     <li><a href="//magazine.totemag.com/january-2016.php">January 2016</a></li>
                     <li><a href="//magazine.totemag.com/november-2015.php">November 2015</a></li>
-		</ul>
-	    </li>
+        </ul>
+        </li>
             <li><a href="/videos/">Video</a></li>
             <li><a href="/bazaar/">Bazaar</a></li>
 
@@ -86,39 +86,17 @@
             <input type="submit" value="Search">
         </form>
 
-    </section>
+    </sidebar>
 
-    <section id="contact">
+    <a id="navOpen" class="icon"><img src="{% static "images/icons/menu.svg" %}"></a>
 
-        <p style="padding:1em 2em;"><img src="{% static "images/headings/get_in_touch_sidebar.png" %}" alt="Get In Touch!" description="Contact us now"></p>
-        <p class="subtitle">We love hearing from you. Go ahead, hit the send button.</p>
-
-        <form action="/contact/" method="post">
-            {% csrf_token %}
-            <input type="hidden" name="return_url" value="{{ request.path }}">
-            <input type="text" name="name" placeholder="Name"><br>
-            <input type="email" name="email" placeholder="Email"><br>
-            <select name="reason">
-                <option>Reason..</option>
-                <option value="general">General Inquiry</option>
-                <option value="join">Join #TeamTote</option>
-                <option value="intern">Intern With Tote</option>
-                <option value="feature">Feature Suggestion</option>
-                <option value="support">Technical Support</option>
-            </select>
-            <textarea name="message" placeholder="Message" rows="5"></textarea>
-            <input type="submit" value="Submit">
-
-        </form>
-
-    </section>
+    <div id="shadow"></div>
 
     <section id="content">
 
         <header>
 
             <nav>
-                <a href="#" class="icon navOpen"><img src="{% static "images/icons/menu.svg" %}"></a>
 
                 <div class="center">
                     <div id="logo">
@@ -131,7 +109,6 @@
                     <a href="/bazaar/">Bazaar</a>
                 </div>
 
-                <a href="#" class="icon contactOpen"><img src="{% static "images/icons/envelope.svg" %}"></a>
             </nav>
 
         </header>

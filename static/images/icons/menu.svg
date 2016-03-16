@@ -2,9 +2,9 @@
   <metadata/>
   <defs/>
   <style>
-    .s0{fill:#fff;stroke-width:8;stroke:#000;}
+    .s0{fill:#fff;stroke-width:8;stroke:#111;}
   </style>
-  <line stroke-miterlimit="10" x1="5" y1="9" x2="54" y2="9" class="s0" style="fill:#fff;stroke-width:8;stroke:#000"/>
-  <line stroke-miterlimit="10" x1="5" y1="29" x2="54" y2="29" class="s0" style="fill:#fff;stroke-width:8;stroke:#000"/>
-  <line stroke-miterlimit="10" x1="5" y1="49" x2="54" y2="49" class="s0" style="fill:#fff;stroke-width:8;stroke:#000"/>
+  <line stroke-miterlimit="10" x1="5" y1="9" x2="54" y2="9" class="s0" style="fill:#fff;stroke-width:8;stroke:#111"/>
+  <line stroke-miterlimit="10" x1="5" y1="29" x2="54" y2="29" class="s0" style="fill:#fff;stroke-width:8;stroke:#111"/>
+  <line stroke-miterlimit="10" x1="5" y1="49" x2="54" y2="49" class="s0" style="fill:#fff;stroke-width:8;stroke:#111"/>
 </svg>

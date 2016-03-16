@@ -10,39 +10,26 @@
 
             {% load staticfiles %}
             <h1><img src="{% static "images/headings/get_in_touch.png" %}" alt="Get In Touch!" class="page-title"></h1>
-                
-                
-            <p><center>We love hearing from you! Go ahead, hit the send button.</center></p>
+            
+            <p class="subtitle">We love hearing from you. Go ahead, hit the send button.</p>
 
-                <div class="column one-half">
-                    <h2>Join #TeamTote</h2>
-                    <p>We're constantly on the lookout for rising talent to contribute to our site. Whether you're a writer, graphic designer, photographer, videographer, marketer, or all around superstar, we want you! In the subject line, please write "CONTRIBUTE: (SPECIFIC SKILL)" and submit your resume with 3-5 portfolio samples.</p>
-                    <p><a href="mailto:contribute@totemag.com">contribute@totemag.com</a></p>
-                </div>
-                
-                <div class="column one-half last">
-                    <h2>Intern @ TOTE</h2>
-                    <p>Looking to gain invaluable experience with an online start-up company? We provide fall and spring semester, along with summer internships for editorial, graphic design, marketing/advertising, and social media. Include your resume and portfolio samples.</p>
-                    <p><a href="mailto:intern@totemag.com">intern@totemag.com</a></p>
-                </div>      
-                        
-                <div class="column one-half">
-                    <h2>Questions or Comments</h2>
-                    <p>Questions, comments, feedback, or just saying hi?</p>
-                    <p><a href="mailto:comments@totemag.com">comments@totemag.com</a></p>
-                </div>
-                
-                <div class="column one-half last">
-                    <h2>Technical Support</h2>
-                    <p>Having trouble accessing our website or certain features on it?</p>
-                    <p><a href="mailto:support@totemag.com">support@totemag.com</a></p>
-                </div>
-                
-                <div class="column one-half center">
-                    <h2>Tell Us Who to Feature</h2>
-                    <p>Do you know a stellar young woman who's going after her dreams, at the forefront of her industry, or is just completely rockin' it? Let us know and we may decide to feature her.</p>
-                    <p><a href="mailto:feature@totemag.com">feature@totemag.com</a></p>
-                </div>
+            <form action="/contact/" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="return_url" value="{{ request.path }}">
+                <input type="text" name="name" placeholder="Name"><br>
+                <input type="email" name="email" placeholder="Email"><br>
+                <select name="reason">
+                    <option>Reason..</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="join">Join #TeamTote</option>
+                    <option value="intern">Intern With Tote</option>
+                    <option value="feature">Feature Suggestion</option>
+                    <option value="support">Technical Support</option>
+                </select>
+                <textarea name="message" placeholder="Message" rows="5"></textarea>
+                <input type="submit" value="Submit">
+
+            </form>
                 
             <div class="clearfix"></div>
 

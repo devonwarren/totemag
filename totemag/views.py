@@ -12,13 +12,13 @@ import mailchimp
 
 def homepage(request):
     featured_articles = Article.objects.filter(
-        published=True).order_by('published_date')[:4]
+        published=True).order_by('-published_date')[:4]
 
     latest_articles = Article.objects.filter(
-        published=True).order_by('published_date')[4:9]
+        published=True).order_by('-published_date')[4:9]
 
     recent_articles = Article.objects.filter(
-        published=True).order_by('published_date')[10:20]
+        published=True).order_by('-published_date')[10:20]
 
     t = get_template('homepage.html')
     html = t.render(RequestContext(request, {

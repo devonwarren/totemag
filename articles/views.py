@@ -43,7 +43,7 @@ def list_articles(request, slug=None):
 
     t = get_template('homepage.html')
     html = t.render(RequestContext(request, {
-            'articles': articles,
+            'recent_articles': articles,
             'category': category,
             'has_more': articles.has_next(),
             'shown_subscribe': shown_subscribe,

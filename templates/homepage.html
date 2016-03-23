@@ -6,56 +6,66 @@
 
 <div class="container articles-list">
 
-<section class="featured-articles">
+{% if featured_articles %}
 
-{% for article in featured_articles %}
-    <div class="article">
-        <div class="image">
-            <a href="{{ article.get_absolute_url }}"><img src="{{ article.image_thumbnail.url }}"></a>
+    <section class="featured-articles">
+
+    {% for article in featured_articles %}
+        <div class="article">
+            <div class="image">
+                <a href="{{ article.get_absolute_url }}"><img src="{{ article.image_thumbnail.url }}"></a>
+            </div>
+
+            <div class="category">
+                <span>{{ article.category.name }}</span>
+            </div>
+
+            <div class="title"><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></div>
+
+            <div class="description">
+              {{ article.body|safe|striptags|truncatewords:20 }}
+            </div>
         </div>
+    {% endfor %}
 
-        <div class="category">
-            <span>{{ article.category.name }}</span>
+    </section>
+
+{% endif %}
+
+
+
+{% if latest_articles %}
+
+    <section class="latest-articles">
+
+    {% for article in latest_articles %}
+        <div class="article">
+
+            <div class="image">
+                <a href="{{ article.get_absolute_url }}">
+                  <img src="{{ article.image_thumbnail.url }}">
+                  <img class="fullsize" src="{{ article.image_web.url }}">
+                </a>
+            </div>
+
+            <div class="category">
+                <span>{{ article.category.name }}</span>
+            </div>
+
+            <div class="title">
+                <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+            </div>
+
+            <div class="description">
+              {{ article.body|safe|striptags|truncatewords:20 }}
+            </div>
+
         </div>
+    {% endfor %}
 
-        <div class="title"><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></div>
+    </section>
 
-        <div class="description">
-          {{ article.body|safe|striptags|truncatewords:20 }}
-        </div>
-    </div>
-{% endfor %}
-
-</section>
-
-<section class="latest-articles">
-
-{% for article in latest_articles %}
-    <div class="article">
-
-        <div class="image">
-            <a href="{{ article.get_absolute_url }}">
-              <img src="{{ article.image_thumbnail.url }}">
-              <img class="fullsize" src="{{ article.image_web.url }}">
-            </a>
-        </div>
-
-        <div class="category">
-            <span>{{ article.category.name }}</span>
-        </div>
-
-        <div class="title">
-            <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
-        </div>
-
-        <div class="description">
-          {{ article.body|safe|striptags|truncatewords:20 }}
-        </div>
-
-    </div>
-{% endfor %}
-
-</section>
+{% endif %}
 
 
 <section class="recent-articles">
@@ -80,6 +90,8 @@
         </div>
 
     </div>
+{% empty %}
+    <h3>No articles added here yet, try again later</h3>
 {% endfor %}
 
 

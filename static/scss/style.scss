@@ -205,8 +205,8 @@ sidebar {
         width: 100px;
         color: #FFFFFF;
         height: 1px;
-        border-color: #000;
-        background: #000;
+        border-color: #111;
+        background: #111;
     }
     ul {
         list-style: none;
@@ -230,7 +230,7 @@ sidebar {
                 height: auto;
             }
             a {
-                color: #000;
+                color: #111;
                 text-transform: uppercase;
                 font-size: 13px;
             }
@@ -445,7 +445,7 @@ h2 {
             height: 20px;
             padding: 0px 0px 3px 2px;
             font-weight: bold;
-            color: #9E9CD1;
+            color: #000;
             background-color: #FFFFFF;
             margin: 0 5px;
         }
@@ -510,7 +510,7 @@ h2 {
         height: 20px;
         padding: 0px 0px 3px 2px;
         font-weight: bold;
-        color: #9E9CD1;
+        color: #000;
         background-color: #FFFFFF;
         margin: 0 5px;
     }
@@ -734,7 +734,7 @@ article blockquote {
     #goto_bazaar {
         margin-top: .6em;
         min-width: 14em;
-        border: solid 2px #bfc3e0;
+        border: solid 2px $primary-color;
         padding: .2em 3em .2em .2em;
         color: #888888;
         outline: none;
@@ -743,9 +743,9 @@ article blockquote {
         background: url(../images/icons/dropdown_arrow.png) white center right no-repeat;
     }
     article {
-        font-size: 1.3em;
-        clear: both;
-        border-top: solid 1px $primary-color;
+        display: flex;
+        flex-wrap: wrap;
+        border-top: solid 1px #000;
         margin-top: 3em;
         padding-top: 2em;
 
@@ -753,14 +753,35 @@ article blockquote {
             font-size: 2em;
             padding-top: .6em;
         }
+        .text {
+            flex: 2;
+            padding: 1rem;
+        }
+        .images {
+            flex: 1;
+            text-align: center;
+
+            img {
+                margin: 0 auto
+            }
+        }
+        &:nth-child(even) {
+            .text {
+                order: 1;
+            }
+            .images {
+                order: 0;
+            }
+        }
         .top {
-            float: right;
-            clear: both;
+            width: 100%;
+            order: 3;
 
             img {
                 width: 22px;
                 height: 15px;
                 padding: 1em;
+                float: right;
             }
         }
     }

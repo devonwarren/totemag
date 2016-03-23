@@ -9,7 +9,7 @@
             <div class="container">
         
             {% load staticfiles %}
-            <h1><img src="{% static "images/headings/the_bazaar.png" %}" alt="The Bazaar" class="page-title"></h1>
+            <h2>The Bazaar</h2>
             
 
             <div class="intro">
@@ -29,10 +29,8 @@
             {% for shop in shops %}
             <article>
                 <a name="shop-{{ shop.id }}"></a>
-                {% cycle 'right' 'left' as contentside silent %}
-
-                {% if contentside == 'left' %}
-                <div class="column one-half wide-60">
+                
+                <div class="text">
                     <h2>{{ shop.title }}</h2>
                     <p>{{ shop.body|safe }}</p>
                     <p class="share-icons">
@@ -43,13 +41,8 @@
                         {% endfor %}
                     </p>
                 </div>
-                {% endif %}
-
-                {% if contentside == 'right' %}
-                <div class="column one-half wide-40">
-                {% elif contentside == 'left' %}
-                <div class="column one-half wide-40 last">
-                {% endif %}
+                
+                <div class="images">
                     <p><img src="{{ shop.image1_web.url }}"></p>
 
                     {% if shop.image2 %}
@@ -57,19 +50,6 @@
                     {% endif %}                        
                 </div>
 
-                {% if contentside == 'right' %}
-                <div class="column one-half wide-60 last">
-                    <h2>{{ shop.title }}</h2>
-                    <p>{{ shop.body|safe }}</p>
-                    <p class="share-icons">
-                        {% for site,location in shop.social_media.items %}
-                            {% if location %}
-                                <a href="{{ location }}" title="{{ site }}"><img src="{% static "images/icons/social_" %}{{ site }}_dark.png"></a>
-                            {% endif %}
-                        {% endfor %}
-                    </p>
-                </div>
-                {% endif %}
                 <div class="top"><a href="#top"><img src="{% static "images/icons/top.png" %}"></a></div>
             </article>
             {% endfor %}

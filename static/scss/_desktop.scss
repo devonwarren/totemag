@@ -4,6 +4,16 @@
 }
 
 .articles-list {
+  .featured-articles {
+    div.article {
+      width: 275px;
+
+      div.image img {
+        width: 275px;
+      }
+    }
+  }
+
   .latest-articles {
       height: 400px;
 

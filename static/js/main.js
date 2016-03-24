@@ -5,13 +5,14 @@ $(document).ready(function() {
     if ($("#side-ad").length) {
         var $sdiv = $("#side-ad");
         var top = $("#side-ad").position().top;
-        var height = $('#side-ad').height();
+        var height = $('#side-ad img').height();
+        var footer = $("#footer").position().top;
 
         if ($(window).width() < 600) {
             $sdiv.hide();
         } else {
             $(window).scroll(function() {
-                if ($(window).scrollTop() > top && $(window).scrollTop() < top + height) {
+                if ($(window).scrollTop() > top && $(window).scrollTop() < (footer - height - 60)) {
                     $sdiv.css('margin-top', $(window).scrollTop() - top + "px");
                 }
             });

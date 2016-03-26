@@ -48,20 +48,21 @@
     <sidebar id="main">
 
         <ul>
-            <li><a href="/list/fashion/">Fashion</a></li>
-            <li><a href="/list/beauty/">Beauty</a></li>
-            <li><a onclick="javascript:toggleSub(this);">Lifestyle</a>
+
+        {% for nav in navigation %}
+            {% if nav.children %}
+            <li><a onclick="javascript:toggleSub(this);">{{ nav.name }}</a>
                 <ul class="sub">
-                    <li><a href="/list/high-school/">High School</a></li>
-                    <li><a href="/list/college/">College</a></li>
-                    <li><a href="/list/post-grad/">Post Grad</a></li>
-                    <li><a href="/list/career/">Career</a></li>
-                    <li><a href="/list/wellness/">Wellness</a></li>
-                    <li><a href="/list/relationships/">Relationships</a></li>
-                    <li><a href="/list/travel/">Travel</a></li>
+                    {% for sub in nav.children %}
+                        <li><a href="/list/{{ sub.slug }}">{{ sub.name }}</a><li>
+                    {% endfor %}
                 </ul>
-            </li>
-            <li><a href="/list/entertainment/">Entertainment</a></li>
+            <li>
+            {% else %}
+            <li><a href="/list/{{ nav.slug }}">{{ nav.name }}</a><li>
+            {% endif %}
+        {% endfor %}
+
 
         </ul>
 

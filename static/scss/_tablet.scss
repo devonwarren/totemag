@@ -1,3 +1,11 @@
+header nav div.center {
+    justify-content: flex-start;
+
+    a {
+      display: block;
+    }
+}
+
 .articles-list {
   .featured-articles {
     display: flex;

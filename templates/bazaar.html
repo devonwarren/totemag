@@ -28,7 +28,7 @@
             
             {% for shop in shops %}
             <article>
-                <a name="shop-{{ shop.id }}"></a>
+                <a class="bazaar-anchor" name="shop-{{ shop.id }}"></a>
                 
                 <div class="text">
                     <h2>{{ shop.title }}</h2>
@@ -58,5 +58,12 @@
         </div>
     </section>
 
+    <script>
+        $('#goto_bazaar').on('change', function() {
+            if (this.value != '') {
+                location.href = "#shop-" + this.value;
+            }
+         });
+    </script>
 
 {% endblock %}

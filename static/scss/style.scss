@@ -123,10 +123,11 @@ header {
             margin: 0 64px;
             flex-wrap: wrap;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
             flex-grow: 1;
 
             a {
+                display: none;
                 font-size: .7rem;
                 font-weight: bold;
                 margin: 0 0.8em;
@@ -139,8 +140,12 @@ header {
             display: -ms-flexbox;
             display: -webkit-flex;
 
-            img {
-                width: 100px;
+            a {
+                display: block;
+
+                img {
+                    width: 100px;
+                }
             }
         }
     }
@@ -753,6 +758,7 @@ article blockquote {
         h2 {
             font-size: 2em;
             padding-top: .6em;
+            line-height: 2rem;
         }
         .text {
             flex: 2;
@@ -773,6 +779,10 @@ article blockquote {
             .images {
                 order: 0;
             }
+        }
+        a.bazaar-anchor {
+            position: relative;
+            top: -100px;
         }
         .top {
             width: 100%;

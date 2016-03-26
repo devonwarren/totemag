@@ -32,13 +32,6 @@ $(document).ready(function() {
      $("#shadow").click(function() {
        $("body").removeClass("sidebarOpen");
      });
-    
-     $('#goto_bazaar').on('change', function() {
-        if (this.value != '') {
-            location.href = "#shop-" + this.value;
-        }
-     });
-
 
 });
 

@@ -1,10 +1,16 @@
 from django.db import models
+from django.core.cache import cache
 from ckeditor.fields import RichTextField
 from ckeditor_uploader.fields import RichTextUploadingField
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill, ResizeToFit
 from autoslug import AutoSlugField
 from staff.models import Staff
+
+
+def refresh_navigation(**kwargs):
+    print("refreshing nav")
+    cache.delete('navigation')
 
 
 class Category(models.Model):
@@ -33,6 +39,10 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = "categories"
+
+
+models.signals.post_save.connect(refresh_navigation)
+models.signals.post_delete.connect(refresh_navigation)
 
 
 class SlideshowImage(models.Model):

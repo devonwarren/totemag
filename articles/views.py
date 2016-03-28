@@ -5,7 +5,7 @@ from advertising.models import TopAdImage, HeaderAdImage, SideAdImage
 from articles.serializers import ArticleSerializer
 from rest_framework.renderers import JSONRenderer
 from django.template.loader import get_template
-from django.template import Context, RequestContext
+from django.template import RequestContext
 from django.http import HttpResponse, Http404
 
 
@@ -68,7 +68,7 @@ def article(request, slug):
         side_ad = side_ad[0]
 
     t = get_template('article_full.html')
-    html = t.render(Context({
+    html = t.render(RequestContext(request, {
         'top_ad': top_ad,
         'header_ad': header_ad,
         'side_ad': side_ad,
@@ -83,7 +83,7 @@ def article_html(request, slug):
     slideshow_images = SlideshowImage.objects.filter(article=article)
 
     t = get_template('article.html')
-    html = t.render(Context({
+    html = t.render(RequestContext({
         'article': article,
         'slideshow': slideshow_images
         }))

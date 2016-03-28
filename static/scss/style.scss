@@ -537,8 +537,13 @@ h2 {
  Article elements
 **/
 .article-flex {
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
+    -webkit-flex-basis: 10%;
+    -ms-flex-preferred-size: 10%;
     flex-basis: 10%;
+    display: -webkit-box;
     display: flex;
     display: -ms-flexbox;
     display: -webkit-flex;

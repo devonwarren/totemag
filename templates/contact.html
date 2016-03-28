@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-{% block bodyid %}contactsPage{% endblock %}
-
 {% block content %}
 
     <section class="text">
@@ -9,12 +7,14 @@
         <div class="container">
 
             {% load staticfiles %}
-            <h1><img src="{% static "images/headings/get_in_touch.png" %}" alt="Get In Touch!" class="page-title"></h1>
-            
-            <p class="subtitle">We love hearing from you. Go ahead, hit the send button.</p>
+            <h2>Get In Touch</h2>
 
-            <form action="/contact/" method="post">
+            <form class="contact" action="/contact/" method="post">
+
+                <p class="subtitle">We love hearing from you. Go ahead, hit the send button.</p>
+                
                 {% csrf_token %}
+
                 <input type="hidden" name="return_url" value="{{ request.path }}">
                 <input type="text" name="name" placeholder="Name"><br>
                 <input type="email" name="email" placeholder="Email"><br>
@@ -25,8 +25,8 @@
                     <option value="intern">Intern With Tote</option>
                     <option value="feature">Feature Suggestion</option>
                     <option value="support">Technical Support</option>
-                </select>
-                <textarea name="message" placeholder="Message" rows="5"></textarea>
+                </select><br>
+                <textarea name="message" placeholder="Message" rows="8"></textarea><br>
                 <input type="submit" value="Submit">
 
             </form>

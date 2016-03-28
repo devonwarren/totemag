@@ -54,12 +54,12 @@
             <li><a onclick="javascript:toggleSub(this);">{{ nav.name }}</a>
                 <ul class="sub">
                     {% for sub in nav.children %}
-                        <li><a href="/list/{{ sub.slug }}">{{ sub.name }}</a><li>
+                        <li><a href="/list/{{ sub.slug }}">{{ sub.name }}</a></li>
                     {% endfor %}
                 </ul>
-            <li>
+            </li>
             {% else %}
-            <li><a href="/list/{{ nav.slug }}">{{ nav.name }}</a><li>
+            <li><a href="/list/{{ nav.slug }}">{{ nav.name }}</a></li>
             {% endif %}
         {% endfor %}
 

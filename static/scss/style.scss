@@ -43,50 +43,43 @@ a {
     color: $primary-color;
     cursor: pointer;
 }
-
-.form {
-    width: 80%;
-    margin: 0 auto;
+input, textarea, select {
+    border: 2px solid $primary-color;
     text-transform: uppercase;
-
-    fieldset {
-        width: 100%;
-    }
-
-    label {
-        width: 75%;
-        display: inline-block;
-    }
-    input, textarea {
-        border: 2px solid #A699D2;
-        width: 100%;
-        margin: 0 0 10px;
-        text-transform: uppercase;
-        padding: 10px;
-    }
-    input[type=submit] {
-        background: #A699D2;
-        color: #ffffff;
-        width: auto;
-        padding: 10px 40px;
-        text-indent: 0;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        font-size: 12px;
-        margin: 0 auto;
-        display: block;
-    }
-    input[type=radio] {
-        width: auto;
-        display: inline-block;
-    }
-    ::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
-        color: #A699D2;
-    }
+    margin: 0 0 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    min-width: 16rem;
 }
-
+input[type=submit] {
+    background: $primary-color;
+    color: #ffffff;
+    width: auto;
+    padding: 10px 40px;
+    text-indent: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin: 0 auto;
+    display: block;
+}
+input[type=radio] {
+    width: auto;
+    display: inline-block;
+}
+::-webkit-input-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+    color: $primary-color;
+}
 input[type=search]::-webkit-search-cancel-button {
     -webkit-appearance: none;
+}
+select {
+    color: #888888;
+    text-transform: uppercase;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    background: url(../images/icons/dropdown_arrow.png) white center right no-repeat;
 }
 
 .clearfix {
@@ -98,6 +91,7 @@ input[type=search]::-webkit-search-cancel-button {
     max-width: 900px;
     margin: 0 auto;
 }
+
 .article-container {
     max-width: 800px;
 }
@@ -206,7 +200,7 @@ sidebar {
         overflow-y: auto;
     }
     hr {
-        margin: 40px 0 40px 40px;
+        margin: 30px 0 30px 20px;
         width: 100px;
         color: #FFFFFF;
         height: 1px;
@@ -215,6 +209,7 @@ sidebar {
     }
     ul {
         list-style: none;
+        padding-left: 25px;
 
         &.last {
             margin-bottom: 40px;
@@ -233,6 +228,7 @@ sidebar {
                 visibility: visible;
                 opacity: 1;
                 height: auto;
+                padding-top: .6em;
             }
             a {
                 color: #111;
@@ -252,6 +248,7 @@ sidebar {
         text-transform: uppercase;
         letter-spacing: 0px;
         width: 100%;
+        min-width: 0;
         color: $text-color;
     }
     .search {
@@ -261,11 +258,14 @@ sidebar {
         input[type=submit] {
             height: 20px;
             width: 20px;
+            min-width: 0;
             position: absolute;
             top: 6px;
             right: 5px;
             background: transparent;
             border: 0;
+            padding: 0;
+            background-repeat: no-repeat;
             background-image: url(../images/icons/search.svg);
             font-size: 0;
             cursor: pointer;
@@ -453,6 +453,7 @@ h2 {
             color: #000;
             background-color: #FFFFFF;
             margin: 0 5px;
+            min-width: 0;
         }
 
     }
@@ -513,6 +514,7 @@ h2 {
         border-radius: 100%;
         width: 20px;
         height: 20px;
+        min-width: 0;
         padding: 0px 0px 3px 2px;
         font-weight: bold;
         color: #000;
@@ -726,28 +728,9 @@ article blockquote {
 .search-form {
   text-align: center;
   margin: 1em 0 2em;
-
-  input[type="search"] {
-    width: 40%;
-  }
-}
-
-#contactsPage .text a {
-    font-weight: bold;
 }
 
 #bazaarPage {
-    #goto_bazaar {
-        margin-top: .6em;
-        min-width: 14em;
-        border: solid 2px $primary-color;
-        padding: .2em 3em .2em .2em;
-        color: #888888;
-        outline: none;
-        appearance: none;
-        -webkit-appearance: none;
-        background: url(../images/icons/dropdown_arrow.png) white center right no-repeat;
-    }
     article {
         display: flex;
         flex-wrap: wrap;
@@ -798,6 +781,9 @@ article blockquote {
     }
 }
 
+form.contact {
+    text-align: center;
+}
 
 .staff {
     img {

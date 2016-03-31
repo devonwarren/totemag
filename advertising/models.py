@@ -1,9 +1,14 @@
 from django.db import models
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
+from articles.models import Category
 
 
 class AdImage(models.Model):
+    SECTIONS = (
+        ('1', 'homepage'),
+        )
+
     image = models.ImageField(
         upload_to='ads')
 
@@ -13,6 +18,13 @@ class AdImage(models.Model):
 
     url = models.URLField()
 
+    categories = models.ManyToManyField(Category)
+
+    sections = models.CharField(
+        max_length=4,
+        choices=SECTIONS,
+        null=True)
+
     def __str__(self):
         return self.caption
 
@@ -21,8 +33,8 @@ class TopAdImage(AdImage):
     image_web = ImageSpecField(
         source='image',
         processors=[ResizeToFill(
-            width=728,
-            height=90)],
+            width=970,
+            height=250)],
         format='JPEG',
         options={'quality': 90})
 

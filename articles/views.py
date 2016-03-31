@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from articles.models import Article, SlideshowImage, Category
-from advertising.models import TopAdImage, HeaderAdImage, SideAdImage
+#from ads.models import HeaderAdImage, SideAdImage
 from articles.serializers import ArticleSerializer
 from rest_framework.renderers import JSONRenderer
 from django.template.loader import get_template
@@ -55,10 +55,6 @@ def article(request, slug):
     article = get_object_or_404(Article, slug=slug)
     slideshow_images = SlideshowImage.objects.filter(article=article)
 
-    top_ad = TopAdImage.objects.filter(published=True)
-    if top_ad:
-        top_ad = top_ad[0]
-
     header_ad = HeaderAdImage.objects.filter(published=True)
     if header_ad:
         header_ad = header_ad[0]
@@ -67,23 +63,10 @@ def article(request, slug):
     if side_ad:
         side_ad = side_ad[0]
 
-    t = get_template('article_full.html')
+    t = get_template('article.html')
     html = t.render(RequestContext(request, {
-        'top_ad': top_ad,
         'header_ad': header_ad,
         'side_ad': side_ad,
-        'article': article,
-        'slideshow': slideshow_images
-        }))
-    return HttpResponse(html)
-
-
-def article_html(request, slug):
-    article = get_object_or_404(Article, slug=slug)
-    slideshow_images = SlideshowImage.objects.filter(article=article)
-
-    t = get_template('article.html')
-    html = t.render(RequestContext({
         'article': article,
         'slideshow': slideshow_images
         }))

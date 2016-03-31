@@ -1,4 +1,11 @@
+{% extends "base.html" %}
 {% load staticfiles %}
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block shareimage %}{{ article.image_web.url }}{% endblock %}
+
+{% block content %}
 
     <div class="container">
 
@@ -88,7 +95,7 @@
                 <div id="disqus_thread"></div>
                 <script>
                 var disqus_config = function () {
-                    this.page.url = '//www.totemag.com{{ article.get_absolute_url }}';
+                    this.page.url = 'www.totemag.com{{ article.get_absolute_url }}';
                     this.page.identifier = '{{ article.slug }}';
                 };
 
@@ -121,5 +128,22 @@
                 {% for c in related_content %}
                 {{ c.author }}
                 {% endfor %}
+
+{% endblock %}
+
+{% block scriptload %}
+<script type="text/javascript" src="{% static "js/slick.min.js" %}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.slideshow').slick({
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        });
+    });
+</script>
+{% endblock %}
 
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from advertising import models
+from ads import models
 
 
 class AdImageAdmin(admin.ModelAdmin):

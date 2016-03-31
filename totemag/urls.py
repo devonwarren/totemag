@@ -20,8 +20,8 @@ from django.views.generic import TemplateView
 
 from totemag.views import homepage, about, videos, \
     contact, advertise, subscribe
-from articles.views import article, article_html, \
-    list_articles, api_article_list
+from articles.views import article, list_articles, \
+    api_article_list
 from bazaar.views import bazaar
 from staff.views import staff_view
 
@@ -47,7 +47,6 @@ urlpatterns = [
     url(r'^api/article_list/(?P<category>.+?)/(?P<page>[0-9]+)/$',
         api_article_list),
     url(r'^api/article_list/(?P<page>[0-9]+)/$', api_article_list),
-    url(r'^api/article/(?P<slug>.+?)/$', article_html),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^admin/', include(admin.site.urls)),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

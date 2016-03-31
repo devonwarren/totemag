@@ -1,5 +1,8 @@
 from django.db import models
 from datetime import date
+from autoslug import AutoSlugField
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 
 MONTHS = (
@@ -28,9 +31,23 @@ def year_choices():
 class Theme(models.Model):
     title = models.CharField(max_length=200)
 
+    slug = AutoSlugField(
+        populate_from='name',
+        editable=False,
+        always_update=True,
+        unique=True,
+        null=True,
+        verbose_name='URL')
+
     image = models.ImageField(
         upload_to='themes',
         help_text='Image of the header background')
+
+    image_web = ImageSpecField(
+        source='image',
+        processors=[ResizeToFill(width=800, height=100)],
+        format='JPEG',
+        options={'quality': 90})
 
     month = models.IntegerField(choices=MONTHS)
 

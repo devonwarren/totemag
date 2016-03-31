@@ -24,6 +24,7 @@ from articles.views import article, list_articles, \
     api_article_list
 from bazaar.views import bazaar
 from staff.views import staff_view
+from month.views import month_view
 
 from django.contrib import admin
 admin.autodiscover()
@@ -32,6 +33,7 @@ admin.autodiscover()
 urlpatterns = [
     url(r'^$', homepage, name='homepage'),
     url(r'^about/$', about, name='about'),
+    url(r'^month/$', month_view, name='month'),
     url(r'^videos/$', videos, name='videos'),
     url(r'^contact/$', contact, name='contact'),
     url(r'^advertise/$', advertise, name='advertise'),
@@ -42,6 +44,7 @@ urlpatterns = [
     url(r'^subscribe/$', subscribe, name='subscribe'),
     url(r'^article/(?P<slug>.+?)/$', article),
     url(r'^staff/(?P<slug>.+?)/$', staff_view),
+    url(r'^month/(?P<slug>.+?)/$', month_view),
     url(r'^list/(?P<slug>.+?)/$', list_articles),
     url(r'^search/', include('haystack.urls')),
     url(r'^api/article_list/(?P<category>.+?)/(?P<page>[0-9]+)/$',

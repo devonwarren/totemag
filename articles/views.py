@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from articles.models import Article, SlideshowImage, Category
-#from ads.models import HeaderAdImage, SideAdImage
+from ads.models import HeaderAdImage, SideAdImage
 from articles.serializers import ArticleSerializer
 from rest_framework.renderers import JSONRenderer
 from django.template.loader import get_template

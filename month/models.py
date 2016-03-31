@@ -3,6 +3,7 @@ from datetime import date
 from autoslug import AutoSlugField
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
+from articles.models import Article
 
 
 MONTHS = (
@@ -58,3 +59,9 @@ class Theme(models.Model):
 
     def __str__(self):
         return self.name() + ' (' + str(self.year) + ')'
+
+
+class ThemeArticle(models.Model):
+    theme = models.ForeignKey(Theme, related_name='theme')
+
+    #article = models.ForeignKey(Article, related_name='article')

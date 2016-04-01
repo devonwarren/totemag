@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from datetime import date
-from month.models import Theme
+from month.models import Theme, ThemeArticle
 
 
 def month_view(request, slug=None):
@@ -11,7 +11,12 @@ def month_view(request, slug=None):
             month=date.today().month,
             year=date.today().year)
 
+    articles = ThemeArticle.objects.filter(theme=theme).select_related()
+
     return render(
         request,
         'month.html',
-        {'theme': theme})
+        {
+            'theme': theme,
+            'articles': articles
+        })

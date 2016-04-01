@@ -1,0 +1,25 @@
+<hr>
+
+<h3>POPULAR ARTICLES</h3>
+
+<section class="articles-list popular-articles horizontal">
+
+{% for article in articles %}
+    <div class="article">
+        <div class="image">
+            <a href="{{ article.get_absolute_url }}"><img src="{{ article.image_thumbnail.url }}"></a>
+        </div>
+
+        <div class="category">
+            <span>{{ article.category.name }}</span>
+        </div>
+
+        <div class="title"><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></div>
+
+        <div class="description">
+          {{ article.body|safe|striptags|truncatewords:20 }}
+        </div>
+    </div>
+{% endfor %}
+
+</section>

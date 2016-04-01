@@ -1,5 +1,7 @@
-from articles.models import Category
 from django.core.cache import cache
+from django.template.loader import render_to_string
+from datetime import date, timedelta
+from articles.models import Category, Article
 
 
 def navigation(request):
@@ -28,4 +30,16 @@ def navigation(request):
 
     return {
         'navigation': cache.get('navigation'),
+    }
+
+
+def popular_articles(request):
+    popular_articles = Article.objects.filter(published_date__gte=(
+        date.today() - timedelta(days=31))).order_by('-count')[:4]
+
+    html = render_to_string('popular_articles.html',
+        {'articles': popular_articles})
+
+    return {
+        'popular_articles': html
     }

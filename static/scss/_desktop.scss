@@ -3,61 +3,61 @@
     max-width: 1200px;
 }
 
-.articles-list {
-  .featured-articles {
-    div.article {
-      width: 275px;
+.featured-articles,
+.articles-list.horizontal {
+  div.article {
+    width: 275px;
 
-      div.image img {
-        width: 275px;
-      }
+    div.image img {
+      width: 275px;
     }
   }
+}
+ 
+.latest-articles {
+    height: 400px;
 
-  .latest-articles {
-      height: 400px;
+    div.article {
+        height: 200px;
+        width: 400px;
 
-      div.article {
-          height: 200px;
+        div.image {
+            width: 200px;
+            height: 200px;
+        }
+        div.category {
+            width: 200px;
+            font-size: .74em;
+        }
+        div.title {
+            width: 200px;
+            height: 180px;
+            box-sizing: border-box
+        }
+        &:nth-child(5) {
+          height: 400px;
           width: 400px;
 
           div.image {
-              width: 200px;
-              height: 200px;
-          }
-          div.category {
-              width: 200px;
-              font-size: .74em;
-          }
-          div.title {
-              width: 200px;
-              height: 180px;
-              box-sizing: border-box
-          }
-          &:nth-child(5) {
             height: 400px;
             width: 400px;
 
-            div.image {
-              height: 400px;
+            &::before {
               width: 400px;
-
-              &::before {
-                width: 400px;
-                height: 400px;
-              }
-            }
-            div.category, div.title {
-              top: 310px;
-            }
-            div.category {
-              padding: 0 2px;
+              height: 400px;
             }
           }
-          &:not(:last-child) div.image::before {
-            width: 200px;
-            height: 200px;
+          div.category, div.title {
+            top: 310px;
           }
-      }
-  }
+          div.category {
+            padding: 0 2px;
+          }
+        }
+        &:not(:last-child) div.image::before {
+          width: 200px;
+          height: 200px;
+        }
+    }
 }
+

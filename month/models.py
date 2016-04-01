@@ -64,4 +64,4 @@ class Theme(models.Model):
 class ThemeArticle(models.Model):
     theme = models.ForeignKey(Theme, related_name='theme')
 
-    #article = models.ForeignKey(Article, related_name='article')
+    article = models.ForeignKey(Article, related_name='article')

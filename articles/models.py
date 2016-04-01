@@ -121,6 +121,10 @@ class Article(models.Model):
         null=True, blank=True,
         help_text='If set will be published after this point automatically')
 
+    count = models.IntegerField(
+        default=0,
+        help_text='Total views')
+
     def __str__(self):
         return self.title
 

@@ -63,6 +63,9 @@ def article(request, slug):
     if side_ad:
         side_ad = side_ad[0]
 
+    article.count += 1
+    article.save(update_fields=["count"])
+
     t = get_template('article.html')
     html = t.render(RequestContext(request, {
         'header_ad': header_ad,

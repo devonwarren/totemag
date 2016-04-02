@@ -12,15 +12,15 @@
                 <p class="subtitle">Want to join the conversation? Find out how you can advertise and partner with us.</p>
                 
                 <div class="column one-half center">
-                    <form action="/advertise/" method="post" class="form">
+                    <form action="/advertise/" method="post" class="advertising">
                         {% csrf_token %}
-                        <input type="text" name="fname" placeholder="First Name">
-                        <input type="text" name="lname" placeholder="Last Name">
-                        <input type="text" name="company" placeholder="Company">
-                        <input type="email" name="email" placeholder="Email">
-                        <input type="radio" name="option" value="advertise" checked> Advertising
-                        <input type="radio" name="option" value="partner"> Partnering
-                        <textarea name="message" placeholder="Message" rows="5"></textarea>
+                        <input type="text" name="fname" placeholder="First Name"><br>
+                        <input type="text" name="lname" placeholder="Last Name"><br>
+                        <input type="text" name="company" placeholder="Company"><br>
+                        <input type="email" name="email" placeholder="Email"><br>
+                        <input type="radio" name="option" value="advertise" checked> Advertising<br>
+                        <input type="radio" name="option" value="partner"> Partnering<br>
+                        <textarea name="message" placeholder="Message" rows="5"></textarea><br>
                         <input type="submit" value="submit">
                     </form>
                 </div>

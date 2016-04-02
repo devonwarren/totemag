@@ -49,14 +49,17 @@ def popular_articles(request):
 
 def month_articles(request):
     theme = Theme.objects.current_theme()
-    articles = Theme.objects.current_articles()
+    if theme:
+        articles = Theme.objects.current_articles()
 
-    html = render_to_string(
-        'month_articles.html',
-        {
-            'theme': theme,
-            'articles': articles
-        })
+        html = render_to_string(
+            'month_articles.html',
+            {
+                'theme': theme,
+                'articles': articles
+            })
+    else:
+        html = ''
 
     return {
         'month_articles': html

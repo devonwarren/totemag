@@ -31,7 +31,11 @@ def year_choices():
 
 class ThemeManager(models.Manager):
     def current_theme(self):
-        return self.get(month=date.today().month, year=date.today().year)
+        theme = self.get(month=date.today().month, year=date.today().year)
+        if theme:
+            return theme
+        else:
+            return None
 
     def current_articles(self):
         theme = self.current_theme()

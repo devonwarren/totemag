@@ -6,6 +6,7 @@ class ThemeArticleInline(admin.StackedInline):
     verbose_name = 'Theme Articles'
     model = ThemeArticle
     extra = 1
+    max_num = 4
 
 
 class ThemeAdmin(admin.ModelAdmin):
@@ -14,7 +15,6 @@ class ThemeAdmin(admin.ModelAdmin):
     inlines = [
         ThemeArticleInline,
     ]
-    max_num = 4
 
 
 admin.site.register(Theme, ThemeAdmin)

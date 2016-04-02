@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from staff.models import Staff
 from articles.models import Article
 from django.shortcuts import get_object_or_404

@@ -25,9 +25,13 @@
             <h2>{{ article.title }}</h2>
 
             <section class="sub-header">
-                <author>TEXT: {{ article.publisher }}</author>
+                <author>TEXT: 
+                    <a href="{{ article.publisher.get_absolute_url }}">{{ article.publisher }}</a>
+                </author>
                 {% if article.is_slideshow and article.image_attribution %}
-                <author>PHOTOS: {{ article.image_attribution }}</author>
+                <author>PHOTOS: 
+                    <a href="{{ article.publisher.get_absolute_url }}">{{ article.image_attribution }}</a>
+                </author>
                 {% endif %}
                 <time>{{ article.published_date|date:"F j, Y" }}</time>
             </section>

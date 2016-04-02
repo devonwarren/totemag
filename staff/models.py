@@ -72,7 +72,7 @@ class Staff(models.Model):
         return self.first_name + " " + self.last_name
 
     def get_absolute_url(self):
-        return '/staff/' + self.slug + '/'
+        return '/staff/' + str(self.slug) + '/'
 
     class Meta:
         verbose_name_plural = "staff"

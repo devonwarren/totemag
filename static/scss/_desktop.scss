@@ -61,3 +61,35 @@
     }
 }
 
+.month-articles {
+    width: 1200px;
+    height: 400px;
+
+    div.article:nth-child(1),
+    div.article:nth-child(4) {
+      width: 400px;
+      height: 400px;
+
+      div.image {
+        width: 400px;
+        height: 400px;
+      }
+
+      div.category, div.title {
+        top: 300px;
+      }
+    }
+    div.article:nth-child(2),
+    div.article:nth-child(3) {
+      width: 400px;
+      height: 200px;
+
+      div.image img {
+        height: 200px;
+        width: 200px;
+      }
+      div.category, div.title {
+        margin-left: 210px;
+      }
+    }
+}

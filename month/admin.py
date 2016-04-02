@@ -14,6 +14,7 @@ class ThemeAdmin(admin.ModelAdmin):
     inlines = [
         ThemeArticleInline,
     ]
+    max_num = 4
 
 
 admin.site.register(Theme, ThemeAdmin)

@@ -29,6 +29,15 @@ def year_choices():
     return years
 
 
+class ThemeManager(models.Manager):
+    def current_theme(self):
+        return self.get(month=date.today().month, year=date.today().year)
+
+    def current_articles(self):
+        theme = self.current_theme()
+        return ThemeArticle.objects.filter(theme=theme)
+
+
 class Theme(models.Model):
     title = models.CharField(max_length=200)
 
@@ -54,8 +63,13 @@ class Theme(models.Model):
 
     year = models.IntegerField(choices=year_choices())
 
+    objects = ThemeManager()
+
     def name(self):
         return str(MONTHS[self.month - 1][1]) + ' ' + str(self.title)
+
+    def month_name(self):
+        return str(MONTHS[self.month - 1][1])
 
     def __str__(self):
         return self.name() + ' (' + str(self.year) + ')'
@@ -65,3 +79,6 @@ class ThemeArticle(models.Model):
     theme = models.ForeignKey(Theme, related_name='theme')
 
     article = models.ForeignKey(Article, related_name='article')
+
+    def __str__(self):
+        return self.article.title

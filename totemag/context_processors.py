@@ -2,6 +2,7 @@ from django.core.cache import cache
 from django.template.loader import render_to_string
 from datetime import date, timedelta
 from articles.models import Category, Article
+from month.models import Theme, ThemeArticle
 
 
 def navigation(request):
@@ -37,9 +38,26 @@ def popular_articles(request):
     popular_articles = Article.objects.filter(published_date__gte=(
         date.today() - timedelta(days=31))).order_by('-count')[:4]
 
-    html = render_to_string('popular_articles.html',
+    html = render_to_string(
+        'popular_articles.html',
         {'articles': popular_articles})
 
     return {
         'popular_articles': html
+    }
+
+
+def month_articles(request):
+    theme = Theme.objects.current_theme()
+    articles = Theme.objects.current_articles()
+
+    html = render_to_string(
+        'month_articles.html',
+        {
+            'theme': theme,
+            'articles': articles
+        })
+
+    return {
+        'month_articles': html
     }

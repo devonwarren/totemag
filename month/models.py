@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ObjectDoesNotExist
 from datetime import date
 from autoslug import AutoSlugField
 from imagekit.models import ImageSpecField
@@ -31,10 +32,9 @@ def year_choices():
 
 class ThemeManager(models.Manager):
     def current_theme(self):
-        theme = self.get(month=date.today().month, year=date.today().year)
-        if theme:
-            return theme
-        else:
+        try:
+            return self.get(month=date.today().month, year=date.today().year)
+        except ObjectDoesNotExist:
             return None
 
     def current_articles(self):

@@ -1,28 +1,32 @@
-<hr>
+<section class="container">
 
-<h3>{{ theme.month_name|upper }} {{ theme.title|upper }}</h3>
+    <hr>
 
-<section class="articles-list month-articles">
+    <h3>{{ theme.month_name|upper }} {{ theme.title|upper }}</h3>
 
-{% for article in articles %}
-    <div class="article">
-        <div class="image">
-            <a href="{{ article.article.get_absolute_url }}">
-                <img src="{{ article.article.image_thumbnail.url }}">
-                <img class="fullsize" src="{{ article.article.image_web.url }}">
-            </a>
+    <section class="articles-list month-articles">
+
+    {% for article in articles %}
+        <div class="article">
+            <div class="image">
+                <a href="{{ article.article.get_absolute_url }}">
+                    <img src="{{ article.article.image_thumbnail.url }}">
+                    <img class="fullsize" src="{{ article.article.image_web.url }}">
+                </a>
+            </div>
+
+            <div class="category">
+                <span>{{ article.article.category.name }}</span>
+            </div>
+
+            <div class="title"><a href="{{ article.article.get_absolute_url }}">{{ article.article.title }}</a></div>
+
+            <div class="description">
+              {{ article.article.body|safe|striptags|truncatewords:20 }}
+            </div>
         </div>
+    {% endfor %}
 
-        <div class="category">
-            <span>{{ article.article.category.name }}</span>
-        </div>
-
-        <div class="title"><a href="{{ article.article.get_absolute_url }}">{{ article.article.title }}</a></div>
-
-        <div class="description">
-          {{ article.article.body|safe|striptags|truncatewords:20 }}
-        </div>
-    </div>
-{% endfor %}
+    </section>
 
 </section>

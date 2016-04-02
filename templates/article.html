@@ -62,40 +62,6 @@
 
             <section class="article-footer">
 
-                <div class="share">
-                    <div class="label">SHARE:</div>
-                    <div class="icon">
-                        <a target="_blank" href="http://twitter.com/home?status={{ article.title|urlencode }}+http://www.totemag.com/article/{{ article.slug|urlencode }}+@tote_mag">
-                            <img src="{% static "images/icons/social_twitter_dark.png" %}" alt="Twitter">
-                        </a>
-                    </div>
-                    <div class="icon">
-                        <a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http://www.totemag.com/article/{{ article.slug|urlencode }}&title={{ article.title|urlencode }}">
-                            <img src="{% static "images/icons/social_facebook_dark.png" %}" alt="Facebook">
-                        </a>
-                    </div>
-                    <div class="icon">
-                        <a target="_blank" href="http://pinterest.com/pin/create/button/?url=http://www.totemag.com/article/{{ article.slug|urlencode }}&is_video=false&description={{ article.title|urlencode }}">
-                            <img src="{% static "images/icons/social_pinterest_dark.png" %}" alt="Pinterest">
-                        </a>
-                    </div>
-                    <div class="icon">
-                        <a target="_blank" href="http://www.tumblr.com/share?v=3&u=http://www.totemag.com/article/{{ article.slug|urlencode }}&t={{ article.title|urlencode }}">
-                            <img src="{% static "images/icons/social_tumblr_dark.png" %}" alt="Tumblr">
-                        </a>
-                    </div>
-                </div>
-
-                <div class="author">
-                    <img src="{{ article.publisher.image_thumbnail.url }}" class="staff-image" alt="{{ article.publisher }}">
-
-                    <div class="info">
-                        <span class="name">{{ article.publisher }}</span> {{ article.publisher.info_text|safe }}
-                    </div>
-
-                </div>
-
-
                 <div id="disqus_thread"></div>
                 <script>
                 var disqus_config = function () {
@@ -126,12 +92,44 @@
 
     </div>
 
-                {% load more_like_this %}
+    {% load more_like_this %}
 
-                {% more_like_this article as related_content %}
-                {% for c in related_content %}
-                {{ c.author }}
-                {% endfor %}
+<section class="container">
+
+    <hr>
+
+    <h3>Recommended Articles</h3>
+
+    <section class="articles-list recommended-articles horizontal">
+
+    {% more_like_this article as related_content limit 4 %}
+    
+    {% for article in related_content %}
+    
+        <div class="article">
+            <div class="image">
+                <a href="{{ article.url }}">
+                    <img src="{{ article.image }}">
+                </a>
+            </div>
+
+            <div class="category">
+                <span>{{ article.category }}</span>
+            </div>
+
+            <div class="title"><a href="{{ article.url }}">{{ article.title }}</a></div>
+
+            <div class="description">
+              {{ article.body|safe|striptags|truncatewords:20 }}
+            </div>
+        </div>
+
+    {% endfor %}
+
+    </section>
+
+</section>
+
 
 {% endblock %}
 

@@ -73,6 +73,15 @@
       div.image {
         width: 400px;
         height: 400px;
+
+        img.fullsize {
+          width: 400px;
+          height: 400px;
+        }
+        &::before {
+          width: 400px;
+          height: 400px;
+        }
       }
 
       div.category, div.title {

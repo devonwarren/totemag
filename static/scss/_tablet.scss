@@ -254,13 +254,13 @@ header nav div.center {
     }
     div.article:nth-child(1),
     div.article:nth-child(4) {
-      height: 400px;
-      width: 400px;
+      height: 300px;
+      width: 300px;
       position: relative;
 
       div.image {
-        width: 400px;
-        height: 400px;
+        width: 300px;
+        height: 300px;
         position: absolute;
         margin: 0;
 
@@ -268,8 +268,8 @@ header nav div.center {
           display: none;
         }
         img.fullsize {
-          width: 400px;
-          height: 400px;
+          width: 300px;
+          height: 300px;
           display: inline;
           object-fit: cover;
         }
@@ -279,8 +279,8 @@ header nav div.center {
           background-image: url(../images/gradient.png);
           background-repeat: repeat-x;
           background-position: bottom;
-          width: 400px;
-          height: 400px;
+          width: 300px;
+          height: 300px;
           pointer-events: none;
         }
       }
@@ -289,6 +289,7 @@ header nav div.center {
             padding: 0px 4px;
             margin: 0;
             top: 200px;
+
             text-align: left;
             width: 290px;
             background-color: transparent;

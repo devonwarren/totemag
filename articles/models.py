@@ -131,6 +131,12 @@ class Article(models.Model):
     def get_absolute_url(self):
         return '/article/' + self.slug + '/'
 
+    def thumbnail_url(self):
+        return self.image_thumbnail.url
+
+    def category_name(self):
+        return self.category.name
+
     def is_slideshow(self):
         if (SlideshowImage.objects.filter(article=self.id)):
             return True

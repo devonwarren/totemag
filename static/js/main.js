@@ -39,3 +39,22 @@ $(document).ready(function() {
 function toggleSub(t) {
     $(t).parent().toggleClass("open");
 }
+
+function addArticles(data) {
+    $('.recent-articles').append(data);
+}
+
+function moreArticles() {
+    var page = parseInt($('#load').attr('data-page'));
+    $('#load').attr('data-page', page + 1);
+    var category = $('#load').attr('data-category');
+    if (category) {
+        var articles = $.get("/api/article_list/" + category + '/' + page, function(data) { addArticles(data); }).fail(function() {
+                $('#load').hide();
+            });
+    } else {
+        var articles = $.get("/api/article_list/" + page, function(data) { addArticles(data); }).fail(function() {
+                $('#load').hide();
+            });
+    }
+}

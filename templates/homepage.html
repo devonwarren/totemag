@@ -6,6 +6,10 @@
 
 <div class="container articles-list">
 
+{% if category %}
+<h2>{{ category.name }}</h2>
+{% endif %}
+
 {% if featured_articles %}
 
     <section class="featured-articles">
@@ -96,6 +100,14 @@
 
 </section>
 
+{% if recent_articles|length > 0 %}
+<section id="load" data-page="2"{% if category %} data-category="{{ category.slug }}"{% endif %}>
+
+    <a onclick="moreArticles()">Load More</a>
+
+</section>
+{% endif %}
+
 </div>
 
 {{ month_articles }}
@@ -139,45 +151,5 @@
         $('[data-remodal-id=subscribe]').remodal().open();
     });
     {% endif %}
-
-    function loadArticle(slug, count) {
-        $.get( "api/article/" + slug, function( data ) {
-            $('#grid .container').remove();
-            var row = $('.count-' + Math.ceil(( count /4.0))*4)
-            if (row.length != 0) {
-                $(data).insertAfter(row);
-            } else {
-                $(data).appendTo($('#grid'));
-            }
-            startSlideshows();
-        });
-    }
-
-    function moreArticles() {
-        var page = parseInt($('#load').attr('data-page'));
-        $('#load').attr('data-page', page + 1);
-        var category = $('#grid').attr('data-category');
-        if (category != '') {
-            var articles = $.getJSON("api/article_list/" + category + '/' + page, function(data) { addArticles(data); }).fail(function() {
-                    $('#load').hide();
-                });
-        } else {
-            var articles = $.getJSON("api/article_list/" + page, function(data) { addArticles(data); }).fail(function() {
-                    $('#load').hide();
-                });
-        }
-    }
-
-    function addArticles(list) {
-        var grid = $('#grid');
-        $.each(list, function (key, article) {
-
-            grid.append('<div class="item"><a href="' + article.url +
-                '" title="' + article.title + '"><img src="' +
-                article.thumbnail_url + '"></a><a href="' + article.url +
-                '" title="' + article.title +
-                '" class="itemExcerpt">' + article.title + '</a></div>')
-        });
-    }
 </script>
 {% endblock %}

@@ -2,14 +2,14 @@ from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from articles.models import Article, SlideshowImage, Category
 from ads.models import HeaderAdImage, SideAdImage
-from articles.serializers import ArticleSerializer
+
 from rest_framework.renderers import JSONRenderer
-from django.template.loader import get_template
+from django.template.loader import get_template, render_to_string
 from django.template import RequestContext
 from django.http import HttpResponse, Http404
 
 
-ARTICLE_PAGINATION = 16
+ARTICLE_PAGINATION = 20
 
 
 class JSONResponse(HttpResponse):
@@ -95,5 +95,10 @@ def api_article_list(request, page=1, category=None):
         except EmptyPage:
             raise Http404('No more articles on page ' + page)
 
-        serializer = ArticleSerializer(articles, many=True)
-        return JSONResponse(serializer.data)
+        html = ''
+        for article in articles:
+            html += render_to_string('article_teaser.html', {
+                    'article': article,
+                })
+
+        return HttpResponse(html)

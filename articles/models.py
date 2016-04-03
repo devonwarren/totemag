@@ -9,7 +9,7 @@ from staff.models import Staff
 
 
 def refresh_navigation(**kwargs):
-    print("refreshing nav")
+    print('refresh nav')
     cache.delete('navigation')
 
 
@@ -41,8 +41,8 @@ class Category(models.Model):
         verbose_name_plural = "categories"
 
 
-models.signals.post_save.connect(refresh_navigation)
-models.signals.post_delete.connect(refresh_navigation)
+models.signals.post_save.connect(refresh_navigation, sender=Category)
+models.signals.post_delete.connect(refresh_navigation, sender=Category)
 
 
 class SlideshowImage(models.Model):

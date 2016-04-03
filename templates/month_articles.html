@@ -7,6 +7,7 @@
     <section class="articles-list month-articles">
 
     {% for article in articles %}
+        {% if article.article.published %}
         <div class="article">
             <div class="image">
                 <a href="{{ article.article.get_absolute_url }}">
@@ -25,6 +26,7 @@
               {{ article.article.body|safe|striptags|truncatewords:20 }}
             </div>
         </div>
+        {% endif %}
     {% endfor %}
 
     </section>

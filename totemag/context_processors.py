@@ -35,8 +35,8 @@ def navigation(request):
 
 
 def popular_articles(request):
-    popular_articles = Article.objects.filter(published_date__gte=(
-        date.today() - timedelta(days=31))).order_by('-count')[:4]
+    popular_articles = Article.objects.filter(published=True, 
+        published_date__gte=(date.today() - timedelta(days=31))).order_by('-count')[:4]
 
     html = render_to_string(
         'popular_articles.html',

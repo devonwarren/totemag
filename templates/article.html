@@ -20,8 +20,6 @@
 
         <div class="article-container">
 
-            <center><div class="category-tag">{{ article.category.name }}</div></center>
-
             <h2>{{ article.title }}</h2>
 
             <section class="sub-header">
@@ -33,7 +31,7 @@
                     <a href="{{ article.publisher.get_absolute_url }}">{{ article.image_attribution }}</a>
                 </author>
                 {% endif %}
-                <time>{{ article.published_date|date:"F j, Y" }}</time>
+                <time>{{ article.published_date|date:"F j, Y" }}</time> <span class="category">{{ article.category.name }}</span>
             </section>
 
             {% if not article.is_slideshow %}

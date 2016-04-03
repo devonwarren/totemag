@@ -7,7 +7,8 @@ def month_view(request, slug=None):
     if slug:
         theme = get_object_or_404(Theme, slug=slug)
     else:
-        theme = get_object_or_404(Theme,
+        theme = get_object_or_404(
+            Theme,
             month=date.today().month,
             year=date.today().year)
 
@@ -18,5 +19,17 @@ def month_view(request, slug=None):
         'month.html',
         {
             'theme': theme,
+            'articles': articles
+        })
+
+
+def featured_girls(request):
+    articles = ThemeArticle.objects.filter(
+        article__published=True).order_by('-article__published_date')
+
+    return render(
+        request,
+        'featured_girls.html',
+        {
             'articles': articles
         })

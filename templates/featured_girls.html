@@ -1,10 +1,9 @@
 {% extends "base.html" %}
-
 {% block content %}
 
 <div class="container">
 
-    <h2>{{ theme.name }}</h2>
+    <h2>Featured Girls</h2>
 
     <div class="articles-list">
     {% for article in articles %}
@@ -17,7 +16,7 @@
             </div>
 
             <div class="category">
-                <span>{{ theme.name }}</span>
+                <span>{{ article.theme.name }}</span>
             </div>
 
             <div class="title">

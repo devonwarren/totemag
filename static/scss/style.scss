@@ -6,7 +6,7 @@ $primary-color: #40c0c5;
 $secondary-color: #9B8BBF;
 $heading-color: #B3B4B8;
 $text-color: #848388;
-$dark-text-color: #141414;
+$dark-text-color: #222;
 
 /**
  Fonts
@@ -48,10 +48,12 @@ h2 {
     text-align: center;
     font-size: 1.6rem;
     font-family: $header-font;
+    color: #333;
 }
 
 h3 {
-    margin: 1.2rem;
+    margin: .8rem;
+    font-size: 1.2rem;
 }
 
 input,
@@ -132,6 +134,7 @@ header {
         top: 0;
         width: 100%;
         height: 3rem;
+        padding-top: 5px;
         z-index: 2;
         background-color: #FFF;
         border-bottom: solid 2px #DDD;
@@ -158,7 +161,7 @@ header {
                 font-size: .7rem;
                 font-weight: bold;
                 margin: 0 0.8em;
-                color: gray;
+                color: #333;
                 text-transform: uppercase;
             }
         }
@@ -255,7 +258,7 @@ sidebar {
                 padding-top: .6em;
             }
             a {
-                color: #111;
+                color: #333;
                 text-transform: uppercase;
                 font-size: 13px;
             }
@@ -433,6 +436,7 @@ sidebar {
     h2 {
         text-transform: uppercase;
         font-size: 15px;
+        font-family: $text-font;
         margin: 0 0 40px 0;
     }
     ul {
@@ -570,6 +574,11 @@ sidebar {
         -webkit-flex: 7;
         -ms-flex: 7;
         flex: 7;
+        line-height: 1.5em;
+        .category-tag {
+            color: $primary-color;
+            margin: 0;
+        }
     }
     #side-ad {
         transition: margin 200ms;
@@ -579,6 +588,12 @@ sidebar {
         flex: 3;
         text-align: right;
     }
+}
+
+section.slideshow {
+    margin: 1rem;
+    color: #333;
+    line-height: 1.5em;
 }
 
 blockquote {
@@ -610,20 +625,25 @@ article blockquote {
 .main-image {
     text-transform: uppercase;
     text-align: center;
-    margin: 2em 0;
-    font-size: .8em;
+    margin: 1em 0 2em;
+    line-height: 1.6em;
+    font-size: .7em;
     color: #585A59;
 }
 
-.sub-header author,
-.sub-header time {
-    display: block;
+.sub-header {
+    author {
+        display: block;
+    }
+    time {
+        font-size: .9em;
+        padding-top: .4em;
+    }
+    .category {
+        color: $primary-color;
+    }
 }
 
-.sub-header time {
-    font-size: .9em;
-    padding-top: .4em;
-}
 
 .main-image {
     text-align: left;
@@ -746,19 +766,20 @@ article blockquote {
             font-family: $header-font;
             margin-left: 240px;
             a {
-                color: $text-color;
+                color: #333;
                 font-weight: bold;
             }
         }
         div.description {
             padding: .8em 0 0;
+            color: $dark-text-color;
         }
     }
 }
 
 #load {
     text-align: center;
-    margin: 40px 0px;
+    margin: 60px 0px;
 
     a {
         border: 2px solid;
@@ -855,6 +876,20 @@ form.advertising {
         text-align: left;
         color: #58595b;
         font-size: 1.3em;
+    }
+}
+.staff-info {
+    h2, h3 {
+        font-family: $text-font;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+        text-transform: uppercase;
+        font-size: .9rem;
+    }
+    h2 {
+        font-size: 1rem;
+        color: $primary-color;
     }
 }
 

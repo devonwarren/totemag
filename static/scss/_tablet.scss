@@ -3,7 +3,9 @@ input, textarea, select {
 }
 
 header nav div.center {
-    justify-content: flex-start;
+    -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
 
     a {
       display: block;
@@ -13,10 +15,18 @@ header nav div.center {
 
 .featured-articles,
 .articles-list.horizontal {
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-around;
-  align-content: flex-start;
+  -webkit-flex-wrap: nowrap;
+      -ms-flex-wrap: nowrap;
+          flex-wrap: nowrap;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-align-content: flex-start;
+      -ms-flex-line-pack: start;
+          align-content: flex-start;
   font-family: $text-font;
   height: auto;
   float: none;
@@ -33,10 +43,18 @@ header nav div.center {
           margin: 0;
       }
       div.category {
+          display: -webkit-flex;
+          display: -ms-flexbox;
           display: flex;
-          align-items: center;
-          justify-content: center;
-          align-content: center;
+          -webkit-align-items: center;
+              -ms-flex-align: center;
+                  align-items: center;
+          -webkit-justify-content: center;
+              -ms-flex-pack: center;
+                  justify-content: center;
+          -webkit-align-content: center;
+              -ms-flex-line-pack: center;
+                  align-content: center;
           vertical-align: middle;
           height: 22px;
           position: relative;
@@ -64,9 +82,15 @@ header nav div.center {
 }
 
 .latest-articles {
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
     height: 300px;
     margin: 3em 0;
 
@@ -74,9 +98,15 @@ header nav div.center {
         height: 150px;
         min-height: 0;
         width: 300px;
+        display: -webkit-flex;
+        display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
+        -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
         margin: 0;
 
         div.image {
@@ -93,13 +123,19 @@ header nav div.center {
 
         }
         div.category, div.title {
-            align-content: flex-start;
+            -webkit-align-content: flex-start;
+                -ms-flex-line-pack: start;
+                    align-content: flex-start;
             width: 150px;
             background-color: #F5F7F6;
         }
         div.category {
+            display: -webkit-flex;
+            display: -ms-flexbox;
             display: flex;
-            flex-shrink: 1;
+            -webkit-flex-shrink: 1;
+                -ms-flex-negative: 1;
+                    flex-shrink: 1;
             box-sizing: border-box;
             width: 150px;
             height: 20px;
@@ -155,10 +191,14 @@ header nav div.center {
             text-align: right;
 
             div.image {
-                order: 1;
+                -webkit-order: 1;
+                    -ms-flex-order: 1;
+                        order: 1;
             }
             div.category {
-                flex-direction: row-reverse;
+                -webkit-flex-direction: row-reverse;
+                    -ms-flex-direction: row-reverse;
+                        flex-direction: row-reverse;
             }
         }
         &:nth-child(2), &:nth-child(4) {
@@ -220,9 +260,15 @@ header nav div.center {
 }
 
 .month-articles {
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
     margin: 3em auto;
     height: 300px;
     width: 900px;

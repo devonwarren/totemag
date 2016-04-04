@@ -7,15 +7,6 @@
 
 {% block content %}
 
-    <div class="container">
-
-        {% if header_ad %}
-        <div class="header-ad">
-            <a href="{{ header_ad.url }}" target="_blank"><img src="{{ header_ad.image_web.url }}" title="{{ header_ad.caption }}"></a>
-        </div>
-        {% endif %}
-
-    </div>
     <div class="container article-flex">
 
         <div class="article-container">
@@ -63,7 +54,7 @@
                 <div id="disqus_thread"></div>
                 <script>
                 var disqus_config = function () {
-                    this.page.url = 'www.totemag.com{{ article.get_absolute_url }}';
+                    this.page.url = '{{ article.get_absolute_url }}';
                     this.page.identifier = '{{ article.slug }}';
                 };
 
@@ -81,13 +72,7 @@
             </section>
 
         </div>
-
-        <div id="side-ad">
-            {% if side_ad %}
-                <a href="{{ side_ad.url }}"><img src="{{ side_ad.image_web.url }}" title="{{ side_ad.caption }}"></a>
-            {% endif %}
-        </div>
-
+    
     </div>
 
     {% load more_like_this %}
@@ -96,7 +81,7 @@
 
     <hr>
 
-    <h3>Recommended Articles</h3>
+    <h3>RECOMMENDED FOR YOU</h3>
 
     <section class="articles-list recommended-articles horizontal">
 
@@ -128,6 +113,7 @@
 
 </section>
 
+{{ popular_articles }}
 
 {% endblock %}
 

@@ -71,8 +71,12 @@
 
 {% endif %}
 
-
+{% if recent_articles|length > 0 %}
 <section class="recent-articles">
+
+<hr>
+
+<h3>MOST RECENT</h3>
 
 {% for article in recent_articles %}
     <div class="article">
@@ -99,8 +103,9 @@
 {% endfor %}
 
 </section>
+{% endif %}
 
-{% if recent_articles|length > 0 %}
+{% if recent_articles|length >= 10 %}
 <section id="load" data-page="2"{% if category %} data-category="{{ category.slug }}"{% endif %}>
 
     <a onclick="moreArticles()">Load More</a>
@@ -110,7 +115,9 @@
 
 </div>
 
+{% if not category %}
 {{ month_articles }}
+{% endif %}
 
 {{ popular_articles }}
 

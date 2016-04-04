@@ -23,17 +23,22 @@ class JSONResponse(HttpResponse):
 def list_articles(request, slug=None):
     if slug:
         category = get_object_or_404(Category, slug=slug)
+        featured_articles = Article.objects.filter(
+            published=True,
+            category=category
+            ).order_by('-published_date')[:4]
         articles = Article.objects.filter(
             published=True,
             category=category
-            ).order_by('-published_date')
+            ).order_by('-published_date')[4:20]
     else:
+        featured_articles = Article.objects.filter(
+            published=True
+            ).order_by('-published_date')[:4]
         articles = Article.objects.filter(
             published=True
-            ).order_by('-published_date')
+            ).order_by('-published_date')[4:20]
         category = None
-    paginator = Paginator(articles, ARTICLE_PAGINATION)
-    articles = paginator.page(1)
 
     shown_subscribe = False
     if request.session.get('shown_subscribe', False):
@@ -43,9 +48,9 @@ def list_articles(request, slug=None):
 
     t = get_template('homepage.html')
     html = t.render(RequestContext(request, {
+            'featured_articles': featured_articles,
             'recent_articles': articles,
             'category': category,
-            'has_more': articles.has_next(),
             'shown_subscribe': shown_subscribe,
         }))
     return HttpResponse(html)

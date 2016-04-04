@@ -20,11 +20,18 @@ def homepage(request):
     recent_articles = Article.objects.filter(
         published=True).order_by('-published_date')[10:20]
 
+    shown_subscribe = False
+    if request.session.get('shown_subscribe', False):
+        shown_subscribe = True
+    else:
+        request.session['shown_subscribe'] = True
+
     t = get_template('homepage.html')
     html = t.render(RequestContext(request, {
         'featured_articles': featured_articles,
         'latest_articles': latest_articles,
         'recent_articles': recent_articles,
+        'shown_subscribe': shown_subscribe,
     }))
     return HttpResponse(html)
 

@@ -802,6 +802,51 @@ article blockquote {
     margin: 1em 0 2em;
 }
 
+section.text {
+    margin: 1rem;
+}
+section#grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    .item:hover > .itemExcerpt,
+    .item.open > .itemExcerpt {
+        display: -webkit-flex;
+        -webkit-justify-content: center;
+        -webkit-align-items: center;
+        justify-content: center;
+        display: -webkit-flex;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+    }
+    div.item {
+        height: 200px;
+        position: relative;
+        float: left;
+        background-color: $primary-color;
+        overflow: hidden;
+        cursor: pointer;
+        a {
+            display: relative;
+        }
+        .itemExcerpt {
+            width: 185px;
+            height: 160px;
+            background-color: rgba(64, 192, 197, 0.8);
+            position: absolute;
+            text-align: center;
+            display: none;
+            color: #ffffff;
+            font-size: 20px;
+            text-transform: uppercase;
+            top: 0;
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
 #bazaarPage {
     article {
         display: -webkit-flex;

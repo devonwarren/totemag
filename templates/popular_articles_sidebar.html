@@ -1,0 +1,41 @@
+
+<aside class="popular-articles">
+
+    <hr>
+
+    <h3>MOST POPULAR</h3>
+
+    <section class="articles-list popular-articles">
+
+    {% for article in articles %}
+        <div class="article">
+            <div class="image">
+                <a href="{{ article.get_absolute_url }}"><img src="{{ article.image_thumbnail.url }}"></a>
+            </div>
+
+            <div class="category">
+                <span>{{ article.category.name }}</span>
+            </div>
+
+            <div class="title"><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></div>
+
+            <div class="description">
+              {{ article.body|safe|striptags|truncatewords:20 }}
+            </div>
+        </div>
+    {% endfor %}
+
+    </section>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- Responsive -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-3397135870422995"
+         data-ad-slot="2521800464"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+
+</aside>

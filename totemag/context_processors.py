@@ -35,8 +35,10 @@ def navigation(request):
 
 
 def popular_articles(request):
-    popular_articles = Article.objects.filter(published=True, 
-        published_date__gte=(date.today() - timedelta(days=31))).order_by('-count')[:4]
+    popular_articles = Article.objects.filter(
+        published=True,
+        published_date__gte=(date.today() - timedelta(days=31))
+        ).order_by('-count')[:4]
 
     html = render_to_string(
         'popular_articles.html',
@@ -44,6 +46,21 @@ def popular_articles(request):
 
     return {
         'popular_articles': html
+    }
+
+
+def popular_articles_sidebar(request):
+    popular_articles = Article.objects.filter(
+        published=True,
+        published_date__gte=(date.today() - timedelta(days=31))
+        ).order_by('-count')[:6]
+
+    html = render_to_string(
+        'popular_articles_sidebar.html',
+        {'articles': popular_articles})
+
+    return {
+        'popular_articles_sidebar': html
     }
 
 

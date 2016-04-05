@@ -75,8 +75,10 @@
     
     </div>
 
-    {% load more_like_this %}
+{% load more_like_this %}
+{% more_like_this article as related_content limit 4 %}
 
+{% if related_content %}
 <section class="container">
 
     <hr>
@@ -85,7 +87,7 @@
 
     <section class="articles-list recommended-articles horizontal">
 
-    {% more_like_this article as related_content limit 4 %}
+    
     
     {% for article in related_content %}
     
@@ -112,8 +114,13 @@
     </section>
 
 </section>
+{% endif %}
 
 {{ popular_articles }}
+
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5701d0620c2738c9"></script>
+
+
 
 {% endblock %}
 

@@ -30,8 +30,7 @@ body {
 body {
     color: $text-color;
     letter-spacing: 1px;
-    line-height: 1.6rem;
-    font-size: 1.05em;
+    font-size: .95em;
     font-weight: 200;
     font-family: $text-font;
 }
@@ -905,6 +904,11 @@ section#grid {
             }
         }
     }
+}
+
+div.intro {
+    font-size: 1.05rem;
+    line-height: 1.6rem;
 }
 
 form.contact,

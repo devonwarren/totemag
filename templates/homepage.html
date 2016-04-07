@@ -103,16 +103,17 @@
       <h3>No articles added here yet, try again later</h3>
   {% endfor %}
 
+    {% if recent_articles|length >= 10 %}
+    <section id="load" data-page="2"{% if category %} data-category="{{ category.slug }}"{% endif %}>
+
+        <a onclick="moreArticles()">Load More</a>
+
+    </section>
+    {% endif %}
+
   </section>
   {% endif %}
 
-  {% if recent_articles|length >= 10 %}
-  <section id="load" data-page="2"{% if category %} data-category="{{ category.slug }}"{% endif %}>
-
-      <a onclick="moreArticles()">Load More</a>
-
-  </section>
-  {% endif %}
 
   {% if popular_articles_side %}
     {% include "popular_articles_sidebar.html" %}

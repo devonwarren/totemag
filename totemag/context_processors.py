@@ -49,21 +49,6 @@ def popular_articles(request):
     }
 
 
-def popular_articles_sidebar(request):
-    popular_articles = Article.objects.filter(
-        published=True,
-        published_date__gte=(date.today() - timedelta(days=31))
-        ).order_by('-count')[:6]
-
-    html = render_to_string(
-        'popular_articles_sidebar.html',
-        {'articles': popular_articles})
-
-    return {
-        'popular_articles_sidebar': html
-    }
-
-
 def month_articles(request):
     theme = Theme.objects.current_theme()
     if theme:

@@ -2,11 +2,11 @@ from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from articles.models import Article, SlideshowImage, Category
 from ads.models import HeaderAdImage, SideAdImage
-
 from rest_framework.renderers import JSONRenderer
 from django.template.loader import get_template, render_to_string
 from django.template import RequestContext
 from django.http import HttpResponse, Http404
+from datetime import date, timedelta
 
 
 ARTICLE_PAGINATION = 20
@@ -31,6 +31,11 @@ def list_articles(request, slug=None):
             published=True,
             category=category
             ).order_by('-published_date')[4:20]
+        popular_articles = Article.objects.filter(
+            published=True,
+            published_date__gte=(date.today() - timedelta(days=31)),
+            category=category
+            ).order_by('-count')[:6]
     else:
         featured_articles = Article.objects.filter(
             published=True
@@ -39,6 +44,7 @@ def list_articles(request, slug=None):
             published=True
             ).order_by('-published_date')[4:20]
         category = None
+        popular_articles = None
 
     shown_subscribe = False
     if request.session.get('shown_subscribe', False):
@@ -51,6 +57,7 @@ def list_articles(request, slug=None):
             'featured_articles': featured_articles,
             'recent_articles': articles,
             'category': category,
+            'popular_articles_side': popular_articles,
             'shown_subscribe': shown_subscribe,
         }))
     return HttpResponse(html)
@@ -60,21 +67,11 @@ def article(request, slug):
     article = get_object_or_404(Article, slug=slug)
     slideshow_images = SlideshowImage.objects.filter(article=article)
 
-    header_ad = HeaderAdImage.objects.filter(published=True)
-    if header_ad:
-        header_ad = header_ad[0]
-
-    side_ad = SideAdImage.objects.filter(published=True)
-    if side_ad:
-        side_ad = side_ad[0]
-
     article.count += 1
     article.save(update_fields=["count"])
 
     t = get_template('article.html')
     html = t.render(RequestContext(request, {
-        'header_ad': header_ad,
-        'side_ad': side_ad,
         'article': article,
         'slideshow': slideshow_images
         }))

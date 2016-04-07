@@ -29,8 +29,9 @@ body {
 
 body {
     color: $text-color;
-    font-size: 1rem;
     letter-spacing: 1px;
+    line-height: 1.6rem;
+    font-size: 1.05em;
     font-weight: 200;
     font-family: $text-font;
 }
@@ -656,7 +657,7 @@ article blockquote {
         float: left;
         margin: 0;
         padding: 0 1em 1em;
-        width: 500px;
+        width: 425px;
     }
     img {
         max-width: 100%;
@@ -778,9 +779,6 @@ article blockquote {
             padding: .8em 0 0;
             color: $dark-text-color;
         }
-    }
-    hr, h3 {
-        display: none;
     }
 }
 
@@ -946,6 +944,9 @@ p.subtitle {
     h2 {
         font-size: 1rem;
         color: $primary-color;
+    }
+    .articles-list {
+        margin-top: 2.4rem;
     }
 }
 

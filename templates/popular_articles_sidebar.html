@@ -7,7 +7,7 @@
 
     <section class="articles-list popular-articles">
 
-    {% for article in articles %}
+    {% for article in popular_articles_side %}
         <div class="article">
             <div class="image">
                 <a href="{{ article.get_absolute_url }}"><img src="{{ article.image_thumbnail.url }}"></a>

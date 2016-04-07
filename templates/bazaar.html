@@ -33,13 +33,6 @@
                 <div class="text">
                     <h2>{{ shop.title }}</h2>
                     <p>{{ shop.body|safe }}</p>
-                    <p class="share-icons">
-                        {% for site,location in shop.social_media.items %}
-                            {% if location %}
-                                <a href="{{ location }}" title="{{ site }}"><img src="{% static "images/icons/social_" %}{{ site }}_dark.png"></a>
-                            {% endif %}
-                        {% endfor %}
-                    </p>
                 </div>
                 
                 <div class="images">

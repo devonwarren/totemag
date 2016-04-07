@@ -1,5 +1,6 @@
 h2 {
-    font-size: 1.7rem;
+    font-size: 1.8rem;
+    line-height: 2rem;
 }
 
 h3 {
@@ -45,6 +46,7 @@ header nav div.center {
     font-family: $text-font;
     height: auto;
     float: none;
+    margin-bottom: 2rem;
     div.article {
         height: auto;
         width: 210px;
@@ -85,7 +87,7 @@ header nav div.center {
         div.title {
             font-weight: bold;
             text-align: center;
-            font-size: .95em;
+            font-size: 1.05rem;
             margin: 0;
         }
         div.description {
@@ -391,7 +393,7 @@ header nav div.center {
 aside.popular-articles {
     border-left: solid 1px $heading-color;
     width: 325px;
-    margin-left: 1rem;
+    margin-left: 1.4rem;
     -webkit-flex: 3;
         -ms-flex: 3;
             flex: 3;
@@ -427,6 +429,7 @@ aside.popular-articles {
                 width: 70px;
                 height: 70px;
                 border-radius: 35px;
+                object-fit: cover;
             }
         }
         div.description, div.category {

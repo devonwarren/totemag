@@ -7,75 +7,70 @@
 
 {% block content %}
 
-    <div class="container article-flex">
+<div class="article-container">
 
-        <div class="article-container">
+    <h2>{{ article.title }}</h2>
 
-            <h2>{{ article.title }}</h2>
+    <section class="sub-header">
+        <author>TEXT: 
+            <a href="{{ article.publisher.get_absolute_url }}">{{ article.publisher }}</a>
+        </author>
+        {% if article.is_slideshow and article.image_attribution %}
+        <author>PHOTOS: 
+            <a href="{{ article.publisher.get_absolute_url }}">{{ article.image_attribution }}</a>
+        </author>
+        {% endif %}
+        <time>{{ article.published_date|date:"F j, Y" }}</time> <span class="category">{{ article.category.name }}</span>
+    </section>
 
-            <section class="sub-header">
-                <author>TEXT: 
-                    <a href="{{ article.publisher.get_absolute_url }}">{{ article.publisher }}</a>
-                </author>
-                {% if article.is_slideshow and article.image_attribution %}
-                <author>PHOTOS: 
-                    <a href="{{ article.publisher.get_absolute_url }}">{{ article.image_attribution }}</a>
-                </author>
-                {% endif %}
-                <time>{{ article.published_date|date:"F j, Y" }}</time> <span class="category">{{ article.category.name }}</span>
-            </section>
+    {% if not article.is_slideshow %}
+    <section class="main-image{% if article.is_tall_image %} tall{% endif %}">
+        <img src="{{ article.image_web.url }}">
+        {% if article.image_attribution %}
+            <br>PHOTOS: {{ article.image_attribution }}
+        {% endif %}
+    </section>
+    {% endif %}
 
-            {% if not article.is_slideshow %}
-            <section class="main-image{% if article.is_tall_image %} tall{% endif %}">
-                <img src="{{ article.image_web.url }}">
-                {% if article.image_attribution %}
-                    <br>PHOTOS: {{ article.image_attribution }}
-                {% endif %}
-            </section>
-            {% endif %}
+    <article>
+        {{ article.body|safe }}
+    </article>
 
-            <article>
-                {{ article.body|safe }}
-            </article>
-
-            {% if article.is_slideshow %}
-            <section class="slideshow">
-                {% for img in slideshow %}
-                <div class="image">
-                    <img src="{{ img.image_web.url }}" alt="{{ img.description|striptags }}"><br>
-                    {{ forloop.counter }}/{{ slideshow|length }} - {{ img.description|safe }}
-                </div>
-                {% endfor %}
-            </section>
-            {% endif %}
-
-            <section class="article-footer">
-
-                <div id="disqus_thread"></div>
-                <script>
-                var disqus_config = function () {
-                    this.page.url = '{{ article.get_absolute_url }}';
-                    this.page.identifier = '{{ article.slug }}';
-                };
-
-                (function() {
-                var d = document, s = d.createElement('script');
-
-                s.src = '//totemag.disqus.com/embed.js';
-
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-                })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-
-            </section>
-
+    {% if article.is_slideshow %}
+    <section class="slideshow">
+        {% for img in slideshow %}
+        <div class="image">
+            <img src="{{ img.image_web.url }}" alt="{{ img.description|striptags }}"><br>
+            {{ forloop.counter }}/{{ slideshow|length }} - {{ img.description|safe }}
         </div>
+        {% endfor %}
+    </section>
+    {% endif %}
 
-        {{ popular_articles_sidebar }}
-    
-    </div>
+    <section class="article-footer">
+
+        <div id="disqus_thread"></div>
+        <script>
+        var disqus_config = function () {
+            this.page.url = '{{ article.get_absolute_url }}';
+            this.page.identifier = '{{ article.slug }}';
+        };
+
+        (function() {
+        var d = document, s = d.createElement('script');
+
+        s.src = '//totemag.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+
+    </section>
+
+</div>
+
 
 {% load more_like_this %}
 {% more_like_this article as related_content limit 4 %}

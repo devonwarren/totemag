@@ -7,37 +7,40 @@
 
 {% block content %}
 
-<div class="container staff-info">
+<div class="container article-flex">
+  <div class="article-container staff-info">
 
-  <h2>{{ staff.name }}</h2>
-  <h3>{{ staff.title }}</h3>
+    <h2>{{ staff.name }}</h2>
+    <h3>{{ staff.title }}</h3>
 
-  {{ staff.info_text|safe }}
+    {{ staff.info_text|safe }}
 
-  <div class="articles-list">
-  {% for article in articles %}
-    <div class="article">
+    <div class="articles-list">
+    {% for article in articles %}
+      <div class="article">
 
-        <div class="image">
-            <a href="{{ article.get_absolute_url }}"><img src="{{ article.image_thumbnail.url }}"></a>
-        </div>
+          <div class="image">
+              <a href="{{ article.get_absolute_url }}"><img src="{{ article.image_thumbnail.url }}"></a>
+          </div>
 
-        <div class="category">
-            <span>{{ article.category.name }}</span>
-        </div>
+          <div class="category">
+              <span>{{ article.category.name }}</span>
+          </div>
 
-        <div class="title">
-            <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
-        </div>
+          <div class="title">
+              <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+          </div>
 
-        <div class="description">
-          {{ article.body|safe|striptags|truncatewords:20 }}
-        </div>
+          <div class="description">
+            {{ article.body|safe|striptags|truncatewords:20 }}
+          </div>
 
+      </div>
+    {% endfor %}
     </div>
-  {% endfor %}
-  </div>
 
+  </div>
+  {% include "popular_articles_sidebar.html" %}
 </div>
 
 {% endblock %}

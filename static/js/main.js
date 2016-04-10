@@ -41,7 +41,7 @@ function toggleSub(t) {
 }
 
 function addArticles(data) {
-    $('.recent-articles').append(data);
+    $('.recent-articles #load').before(data);
 }
 
 function moreArticles() {

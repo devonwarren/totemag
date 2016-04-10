@@ -59,7 +59,7 @@ class Theme(models.Model):
 
     image_web = ImageSpecField(
         source='image',
-        processors=[ResizeToFill(width=800, height=100)],
+        processors=[ResizeToFill(width=1200, height=150)],
         format='JPEG',
         options={'quality': 90})
 

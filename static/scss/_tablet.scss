@@ -25,7 +25,8 @@ header nav div.center {
 .container.article-flex {
     margin: 0;
     .container {
-        max-width: 580px;
+        width: 580px;
+        margin: 0;
     }
 }
 
@@ -403,12 +404,10 @@ header nav div.center {
 
 aside.popular-articles, aside.advertising {
     border-left: solid 1px $heading-color;
-    width: 325px;
-    margin-left: 1.4rem;
-    -webkit-flex: 3;
-        -ms-flex: 3;
-            flex: 3;
-    padding: 1rem;
+    box-sizing: border-box;
+    width: 280px;
+    margin-left: 20px;
+    padding: 10px;
     overflow: hidden;
 
     hr {

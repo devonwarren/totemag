@@ -4,7 +4,9 @@
 
 <div class="container">
 
-    <h2>{{ theme.name }}</h2>
+    <div class="theme-image">
+        <img src="{{ theme.image_web.url }}" alt="{{ theme }}">
+    </div>
 
     <div class="articles-list">
     {% for article in articles %}

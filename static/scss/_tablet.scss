@@ -22,8 +22,11 @@ header nav div.center {
     }
 }
 
-.article-flex .container {
-    max-width: 580px;
+.container.article-flex {
+    margin: 0;
+    .container {
+        max-width: 580px;
+    }
 }
 
 .article-details {

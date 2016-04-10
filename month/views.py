@@ -24,12 +24,15 @@ def month_view(request, slug=None):
 
 
 def featured_girls(request):
+    featured_articles = ThemeArticle.objects.filter(
+        article__published=True).order_by('-article__published_date')[:4]
     articles = ThemeArticle.objects.filter(
-        article__published=True).order_by('-article__published_date')
+        article__published=True).order_by('-article__published_date')[4:]
 
     return render(
         request,
         'featured_girls.html',
         {
+            'featured_articles': featured_articles,
             'articles': articles
         })

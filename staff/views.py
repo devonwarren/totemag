@@ -1,9 +1,6 @@
 from staff.models import Staff
 from articles.models import Article
-from django.shortcuts import get_object_or_404
-from django.template.loader import get_template
-from django.template import Context
-from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, render
 from datetime import date, timedelta
 
 
@@ -16,10 +13,11 @@ def staff_view(request, slug):
         publisher=staff.id
         ).order_by('-count')[:6]
 
-    t = get_template('staff_view.html')
-    html = t.render(Context({
-        'staff': staff,
-        'articles': articles,
-        'popular_articles_side': popular_articles,
-        }))
-    return HttpResponse(html)
+    return render(
+        request,
+        'staff_view.html',
+        {
+            'staff': staff,
+            'articles': articles,
+            'popular_articles_side': popular_articles,
+        })

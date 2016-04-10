@@ -15,9 +15,9 @@
         <author>TEXT: 
             <a href="{{ article.publisher.get_absolute_url }}">{{ article.publisher }}</a>
         </author>
-        {% if article.is_slideshow and article.image_attribution %}
+        {% if article.image_attribution %}
         <author>PHOTOS: 
-            <a href="{{ article.publisher.get_absolute_url }}">{{ article.image_attribution }}</a>
+            <a href="{{ article.image_attribution.get_absolute_url }}">{{ article.image_attribution }}</a>
         </author>
         {% endif %}
         <time>{{ article.published_date|date:"F j, Y" }}</time> <span class="category">{{ article.category.name }}</span>

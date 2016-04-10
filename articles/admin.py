@@ -9,6 +9,8 @@ class SlideshowInline(admin.StackedInline):
 
 class ArticleAdmin(admin.ModelAdmin):
     list_display = ('title', 'published', 'publisher', 'category')
+    search_fields = ['title',]
+    list_filter = ('published', 'category')
     inlines = [SlideshowInline]
     exclude = ['slideshow_images', ]
 

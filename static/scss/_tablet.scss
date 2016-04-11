@@ -24,6 +24,9 @@ header nav div.center {
 
 .container.article-flex {
     margin: 0;
+    &.center {
+        margin: 0 auto;
+    }
     .container {
         width: 580px;
         margin: 0;

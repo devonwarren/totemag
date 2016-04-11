@@ -382,9 +382,9 @@ sidebar {
         -webkit-justify-content: space-around;
         -ms-flex-pack: distribute;
         justify-content: space-around;
-        -webkit-align-content: flex-start;
         -ms-flex-line-pack: start;
-        align-content: flex-start;
+        -webkit-align-content: flex-start;
+                align-content: flex-start;
     }
     .column {
         width: 275px;
@@ -575,7 +575,7 @@ sidebar {
     flex-wrap: wrap;
     -ms-flex-preferred-size: 10%;
     -webkit-flex-basis: 10%;
-    flex-basis: 10%;
+            flex-basis: 10%;
     display: flex;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -597,6 +597,10 @@ sidebar {
         flex: 3;
         text-align: right;
     }
+}
+
+aside.popular-articles {
+    width: 100%;
 }
 
 section.slideshow {
@@ -808,18 +812,29 @@ section.text {
     margin: 1rem;
 }
 section#grid {
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+    -webkit-justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     .item:hover > .itemExcerpt,
     .item.open > .itemExcerpt {
         display: -webkit-flex;
         -webkit-justify-content: center;
         -webkit-align-items: center;
-        justify-content: center;
+        -webkit-justify-content: center;
+            -ms-flex-pack: center;
+                justify-content: center;
         display: -webkit-flex;
+        display: -ms-flexbox;
         display: flex;
-        align-items: center;
+        -webkit-align-items: center;
+            -ms-flex-align: center;
+                align-items: center;
         padding: 20px;
     }
     div.item {

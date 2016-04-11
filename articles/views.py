@@ -35,7 +35,7 @@ class LatestEntriesFeed(Feed):
         return item.body
 
     def item_author_name(self, item):
-        return item.publisher.name
+        return item.publisher
 
     def item_pubdate(self, item):
         return datetime.combine(item.published_date, time())

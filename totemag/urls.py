@@ -20,8 +20,9 @@ from django.views.generic import TemplateView
 
 from totemag.views import homepage, about, videos, \
     contact, advertise, subscribe
-from articles.views import LatestEntriesFeed, article, \
-    list_articles, api_article_list
+from articles.views import article, list_articles, \
+    api_article_list
+from articles.feeds import LatestEntriesFeed
 from bazaar.views import bazaar
 from staff.views import staff_view
 from month.views import month_view, featured_girls

@@ -1,12 +1,11 @@
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.contrib.syndication.views import Feed
 from articles.models import Article, SlideshowImage, Category
 from rest_framework.renderers import JSONRenderer
 from django.template.loader import get_template, render_to_string
 from django.template import RequestContext
 from django.http import HttpResponse, Http404
-from datetime import date, timedelta, datetime, time
+from datetime import date, timedelta
 
 
 ARTICLE_PAGINATION = 20
@@ -18,27 +17,6 @@ class JSONResponse(HttpResponse):
         content = JSONRenderer().render(data)
         kwargs['content_type'] = 'application/json'
         super(JSONResponse, self).__init__(content, **kwargs)
-
-
-class LatestEntriesFeed(Feed):
-    title = "Totemag.com"
-    link = "/"
-    description = "Latest articles from Tote"
-
-    def items(self):
-        return Article.objects.order_by('-published_date')[:25]
-
-    def item_title(self, item):
-        return item.title
-
-    def item_description(self, item):
-        return item.body
-
-    def item_author_name(self, item):
-        return item.publisher
-
-    def item_pubdate(self, item):
-        return datetime.combine(item.published_date, time())
 
 
 def list_articles(request, slug=None):

@@ -5,6 +5,8 @@
 
 {% block shareimage %}{{ article.image_web.url }}{% endblock %}
 
+{% block description %}{{ article.body|striptags|truncatewords:14 }}{% endblock %}
+
 {% block content %}
 
 <div class="container article-flex center">
